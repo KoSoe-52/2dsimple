@@ -32,6 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix'=>'Admin','middleware'=>['Admin','auth']],function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+    Route::get('user',[AdminController::class,'showUsers'])->name('admin.showUsers');
 
     
 

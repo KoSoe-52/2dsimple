@@ -64,8 +64,9 @@
 					<li class="nav-item pcoded-hasmenu">
 					    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Basic</span></a>
 					    <ul class="pcoded-submenu">
-					        <li><a href="{{url(Auth::user()->roles->name.'/categories')}}">Category</a></li>
+					        
 					        <li><a href="{{url(Auth::user()->roles->name.'/users')}}">Member List</a></li>
+							<li><a href="{{url(Auth::user()->roles->name.'/categories')}}">Category</a></li>
 					        <li><a href="bc_badges.html">Badges</a></li>
 					        <li><a href="bc_breadcrumb-pagination.html">Breadcrumb & paggination</a></li>
 					        <li><a href="bc_card.html">Cards</a></li>
