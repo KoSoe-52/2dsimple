@@ -18,18 +18,18 @@ class RoleSeeder extends Seeder
     {
         $roles =array(
             array(
-                'name' =>'admin',
+                'name' =>'Admin',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
             
             array(
-                'name' =>'superadmin',
+                'name' =>'SuperAdmin',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
             array(
-                'name'  =>'moderator',
+                'name'  =>'Moderator',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             )

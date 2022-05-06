@@ -32,9 +32,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix'=>'Admin','middleware'=>['Admin','auth']],function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
-    Route::get('user',[AdminController::class,'showUsers'])->name('admin.showUsers');
-
-    
+    Route::get('users',[AdminController::class,'showUsers'])->name('admin.showUsers');
+    Route::post('users',[AdminController::class,'storeUsers'])->name('admin.storeUsers');
+    Route::get('users/{id}',[AdminController::class, 'editUsers'])->name('admin.userEdit');
+    Route::post('users/{id}',[AdminController::class, 'updateUsers'])->name('admin.userUpdate');   
 
 });
 
