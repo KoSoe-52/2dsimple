@@ -46,8 +46,8 @@ Route::group(['prefix'=>'SuperAdmin','middleware'=>['SuperAdmin','auth']],functi
 
 });
 
-Route::group(['prefix'=>'Moderator','middleware'=>['Moderator','auth']],function(){
-    Route::get('dashboard',[ModeratorController::class,'index'])->name('moderator.dashboard');
+Route::group(['middleware'=>['Moderator','auth']],function(){
+    Route::get('twod',[ModeratorController::class,'index'])->name('moderator.dashboard');
 
     
 

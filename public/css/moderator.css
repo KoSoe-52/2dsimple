@@ -1,0 +1,179 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  body {
+    background: #282f39;
+    padding:0;margin:0;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  
+  }
+  .container {
+    width: 100%;
+    margin: auto;
+  }
+  .calc-body {
+    width: 100%;
+    margin-top:83px;
+    margin-bottom:70px;
+  }
+  .calc-screen {
+    background: #3A4655;
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .calc-button-row {
+    width: 100%;
+    background: #3C4857;
+  }
+  .calc-button-row2 {
+    width: 100%;
+    background: #3C4857;
+  }
+  .fast-operation{
+    width:50%;
+  }
+  .fastBtn,.rBtn{
+      width:50%;
+  }
+  .button {
+    width: 20%;
+    display: inline-block;
+    margin-right: -4px;
+    text-align:center;
+    padding-bottom:5px;
+  }
+  
+  .button span{
+    background: #425062;
+    color: #fff;
+    padding: 5px 14px;
+    display: inline-block;
+    font-size: 22px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+    margin-right: -4px;
+    margin-top:5px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  }
+  .fast-choose{
+    width: 30%;
+    background: #E0B612;
+    color: #fff;
+    padding: 10px;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: -4px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+  }
+  .r{
+    background: #E0B612;
+    color: #fff;
+    padding: 10px;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: -4px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+  }
+  .last-price{
+    width: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    margin-right: -4px;
+    vertical-align: middle;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+  }
+  .last-price input{
+      width:100%;
+      padding: 8px;
+      outline:none;
+      color: #AEB3BA;
+      text-align:center;
+      font-weight:bold;
+      font-size:12px;
+  }
+  
+  .button.r {
+    color: #AEB3BA;
+    background: #D95D4E;
+  }
+  
+  .blink-me {
+    color: #E0B612;
+  }
+  .footer-row{
+      width: 100%;
+      position: fixed;        
+      color: #AEB3BA;
+      bottom:0;
+      background:#f5f5f5;
+  }
+  .header-row{
+      width:100%;position:fixed;top:0;
+  }
+  .menu {
+    width: 50%;
+    color: #AEB3BA;
+    padding: 10px;
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: -4px;
+  }
+  .menu2d{
+      border-right:1px solid #ddd;
+  }
+  .hour-txt{
+    width: 60%;
+    background: #425062;
+    color: #fff;
+    padding: 10px;
+    display: inline-block;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: -4px;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+  }
+  .lucky-btn{
+    width: 40%;
+    background: #425062;
+    color: #fff;
+    padding: 10px;
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: -4px;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+  }
+  .selectedColor{
+    background-color: #E0B612 !important;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+  }
+  .lucky-btn-selected{
+      background-color:#04aa6d;
+  }
