@@ -41,7 +41,7 @@
 							<img src="{{asset('assets/images/adlogo.png')}}" alt="" class="img-fluid mb-4">
 							<h3 class="mb-3 f-w-400 text-c-green">SignIn</h3>
 							<div class="form-group mb-3">
-								<label class="floating-label text-dark" for="login">Email address</label>
+								<label class="floating-label text-dark" for="login">Username</label>
 								<input id="login" type="text"
 									class="form-control{{ $errors->has('name') || $errors->has('email') ? ' is-invalid' : '' }}"
 									name="login" value="{{ old('name') ?: old('email') }}" autocomplete="off" required autofocus>

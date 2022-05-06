@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
+use App\Models\User;
+use App\Models\Role;
+use App\Models\Branch;
 
 
 class LoginController extends Controller
@@ -44,7 +49,7 @@ class LoginController extends Controller
                 // LoginLog::create([
                 //     "user_id" => Auth::user()->id
                 // ]);
-                return route("user.dashboard");
+                return route("super.dashboard");
             }
             elseif( Auth()->user()->role_id==3)
             {
@@ -72,18 +77,25 @@ class LoginController extends Controller
         {
             if(auth()->user()->role_id==1)
             {
-                LoginLog::create([
-                    "user_id" => Auth::user()->id
-                ]);
+                // LoginLog::create([
+                //     "user_id" => Auth::user()->id
+                // ]);
                 return redirect()->route('admin.dashboard');
 
             }
             elseif(auth()->user()->role_id==2)
             {
-                LoginLog::create([
-                    "user_id" => Auth::user()->id
-                ]);
+                // LoginLog::create([
+                //     "user_id" => Auth::user()->id
+                // ]);
                 return redirect()->route('super.dashboard');
+            }
+            elseif(auth()->user()->role_id==3)
+            {
+                // LoginLog::create([
+                //     "user_id" => Auth::user()->id
+                // ]);
+                return redirect()->route('moderator.dashboard');
             }
         }
         else

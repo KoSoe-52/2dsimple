@@ -22,7 +22,9 @@ use App\Http\Controllers\ModeratorController;
 Route::get('/', function () {
     return view('auth.login');
 });
-
+Route::get('/hash', function () {
+    return view('auth.login');
+});
 
 Auth::routes();
 
