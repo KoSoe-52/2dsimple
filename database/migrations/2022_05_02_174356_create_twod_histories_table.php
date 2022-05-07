@@ -17,8 +17,9 @@ class CreateTwodHistoriesTable extends Migration
             $table->id();
             $table->date("date")->index();
             $table->bigInteger("time_id")->unsigned();
-            $table->integer("number");
+            $table->string("number");
             $table->foreign("time_id")->references("id")->on("twod_times");
+            $table->foreign("number")->references("number")->on("twod_lists");
             $table->timestamps();
         });
     }

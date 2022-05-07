@@ -19,11 +19,11 @@ class CreateTwodLuckyRecordsTable extends Migration
             $table->string("phone")->nullable();
             $table->date("date");
             $table->bigInteger("time_id")->unsigned();
-            $table->bigInteger("twod_id")->unsigned();
+            $table->string("number");
             $table->double("price",12,2);
             $table->bigInteger("user_id")->unsigned();
             $table->foreign("user_id")->references("id")->on("users");
-            $table->foreign("twod_id")->references("id")->on("twod_lists");
+            $table->foreign("number")->references("number")->on("twod_lists");
             $table->foreign("time_id")->references("id")->on("twod_times");
             $table->timestamps();
         });

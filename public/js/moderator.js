@@ -1,3 +1,4 @@
+
 //assign selected number
 var selectedNumbers =[];
 //same digit 
@@ -41,21 +42,30 @@ $(document).ready(function(){
     $(document).on("click",".lucky-btn",function(){
         $("#luckyList").modal("show");
         var amount = $("#amount").val();
-        var total = [];
-        selectedNumbers.sort();
-        var html="<table class='table mt-0'><tr><th>ထိုးဂဏန်း</th><th style='text-align:center'>ငွေပမာဏ</th><th style='text-align:center'>ဖျက်</th></tr>";
-        for(var i=0;i<selectedNumbers.length;i++)
+        if(amount =="")
         {
-            total[i]=amount;
-            html+="<tr>"+
-                    "<td style='text-align:left'><span class='rounded-circle bg-success p-2 text-white twod-number'>"+selectedNumbers[i]+"</span></td>"+
-                    "<td style='width:30%;text-align:center'><input type='number' value='"+amount+"' class='amount' style='width:80px'></td>"+
-                    "<td style='text-align:right'><span class='btn btn-danger pt-1 pb-1 fs-6 fw-normal remove'>ပယ်မည်</span></td>"+
-                 "</tr>";
+            var html="<center class='text-danger mt-5'>ထိုးငွေအနည်းဆုံး(၁၀၀)ကျပ်ထည့်သွင်းပါ</center>";
+            $(".lucky-list").html(html);
+        }else
+        {
+            var total = [];
+            selectedNumbers.sort();
+            var html='<div class="spinner-border  text-info z-index-n1 position-fixed top-50 start-50"></div>';
+            html+="<table class='table mt-0'><tr><th>ထိုးဂဏန်း</th><th style='text-align:center'>ငွေပမာဏ</th><th style='text-align:center'>ဖျက်</th></tr>";
+            for(var i=0;i<selectedNumbers.length;i++)
+            {
+                total[i]=amount;
+                html+="<tr>"+
+                        "<td style='text-align:left'><span class='rounded-circle bg-success p-2 text-white twod-number'>"+selectedNumbers[i]+"</span><input type='hidden' name='number[]' value='"+selectedNumbers[i]+"'></td>"+
+                        "<td style='width:30%;text-align:center'><input type='number' value='"+amount+"' name='amount[]' class='amount' style='width:80px'></td>"+
+                        "<td style='text-align:right'><span class='btn btn-danger pt-1 pb-1 fs-6 fw-normal remove'>ပယ်မည်</span></td>"+
+                    "</tr>";
+            }
+            html+="<tr><td>ထိုးငွေစုစုပေါင်း</td><td colspan='2' class='fw-bold total align-center'>"+eval(total.join('+'))+"</td></tr>";
+            html+="</table>";
+            html+="<label for=''>ထီထိုးသူ </label><input type='text' name='name' autocomplete='off' required style='padding:7px;border:1px solid #ddd;width:100%;margin-top:4px;'>";
+            $(".lucky-list").html(html);
         }
-        html+="<tr><td>ထိုးငွေစုစုပေါင်း</td><td colspan='2' class='fw-bold total align-center'>"+eval(total.join('+'))+"</td></tr>";
-        html+="</table>";
-        $(".lucky-list").html(html);
     });
     $(document).on("keyup",".amount",function(){
         //collect amount data into totalArray

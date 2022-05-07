@@ -14,22 +14,25 @@
     <!-- ထီထိုးသည့် lists -->
 	<div class="modal" id="luckyList">
 	  <div class="modal-dialog modal-fullscreen">
-		<div class="modal-content">
-		  <!-- Modal Header -->
-		  <div class="modal-header">
-			<h4 class="modal-title fs-6 p-0" style="color:#E0B612">ထီထိုးမည့်စာရင်းများ</h4>
-			<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-		  </div>
-		  <!-- Modal body -->
-		  <div class="modal-body lucky-list pt-0">
-				<center class='text-danger mt-5'>ထိုးငွေအနည်းဆုံး(၁၀၀)ကျပ်ထည့်သွင်းပါ</center>
-		  </div>
-		  <!-- Modal footer -->
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-success">အတည်ပြုမည်</button>
-			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">ပိတ်မည်</button>
-		  </div>
-		</div>
+        <form method="post" id="luckyListFormSubmit">
+            @csrf
+            <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-6 p-0" style="color:#E0B612">ထီထိုးမည့်စာရင်းများ</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body lucky-list pt-0">
+
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i> အတည်ပြုမည်</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ပိတ်မည်</button>
+                    </div>
+            </div>
+        </form>
 	  </div>
 	</div>
 	<!-- အမြန်ရွေး -->
@@ -91,3 +94,28 @@
 	  </div>
 	</div>
 @endsection
+<script>
+    var baseUrl = '{{url("")}}';
+    alert(baseUrl);
+    $(document).on("submit","#luckyListFormSubmit",function(event){
+        event.preventDefault();
+        $.ajax({
+            url: baseUrl+'/2d',
+            type: "POST",
+            data:  new FormData(this),
+            cache:false,
+            contentType:false,
+            processData:false,
+            success: function(response) {
+               console.log(JSON.stringify(response))
+               if(response.status === true)
+                {
+                    
+                }else
+                {
+                    
+                }
+            }
+        });
+    });
+</script>

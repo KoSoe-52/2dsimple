@@ -14,8 +14,7 @@ class CreateTwodListsTable extends Migration
     public function up()
     {
         Schema::create('twod_lists', function (Blueprint $table) {
-            $table->id();
-            $table->string("name");
+            $table->string("number")->primary();
             $table->integer("status")->default(0)->comment("0 is active 1 is inactive");
             $table->timestamps();
         });

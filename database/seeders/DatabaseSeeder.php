@@ -126,10 +126,10 @@ class DatabaseSeeder extends Seeder
             "90","91","92","93","94","95","96","97","98","99"
         );
         foreach ($twodlists as $twodlist) {
-            $count = TwodList::where("name",$twodlist)->count();
+            $count = TwodList::where("number",$twodlist)->count();
             if($count < 1)
             {
-                $row= array("name"=>$twodlist);
+                $row= array("number"=>$twodlist);
                 TwodList::insert($row);
             }
         }

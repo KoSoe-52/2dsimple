@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->string("phone");
-            $table->integer("status");
+            $table->integer("status")->default(1)->comment("1 is active 2 is inactive");
             $table->integer("break")->nullable();
             $table->bigInteger("role_id")->unsigned();
             $table->foreign("role_id")->references("id")->on("roles");
