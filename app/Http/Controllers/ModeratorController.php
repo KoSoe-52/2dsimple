@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\TwodList;
 class ModeratorController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class ModeratorController extends Controller
      */
     public function index()
     {
-        return view("moderator.index");
+        $twodlists = TwodList::all();
+        return view("moderator.index",compact("twodlists"));
     }
 
     /**
