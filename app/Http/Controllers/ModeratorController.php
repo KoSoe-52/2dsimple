@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\Models\TwodList;
 use App\Models\TwodLuckyRecord;
 class ModeratorController extends Controller
@@ -48,30 +49,64 @@ class ModeratorController extends Controller
             date_default_timezone_set("Asia/Yangon");
             //07-05-2022 15:19
             $time = date("Hi");
-            //$time="0001";
+           // $time="0003";
             //မနက်ပိုင်း
             if($time >= "0001" && $time <= "1150")
             {
+                $vouncher_id = $this->getVouncherId();
                foreach($request->number as $key=>$number)
                 {
                     TwodLuckyRecord::create([
-                        "name"   => $request->get("name")[$key],
+                        "name"   => $request->get("name"),
                         "date"   => date("Y-m-d"),
-                        "time_id" => 1,
-                        "twod_id" => aa,
+                        "time" => "12:01",
+                        "number" => $request->get("number")[$key],
                         "price" => $request->get("amount")[$key],
-                        "user_id" => Auth::user()->id
+                        "user_id" => Auth::user()->id,
+                        "vouncher_id" => $vouncher_id
                     ]);
                 }
             }else if($time >= "1230" && $time <= "1620")
             {
-                return date("d-m-Y Hi")."evening";
+                $vouncher_id = $this->getVouncherId();
+                foreach($request->number as $key=>$number)
+                {
+                    TwodLuckyRecord::create([
+                        "name"   => $request->get("name"),
+                        "date"   => date("Y-m-d"),
+                        "time" => "16:30",
+                        "number" => $request->get("number")[$key],
+                        "price" => $request->get("amount")[$key],
+                        "user_id" => Auth::user()->id,
+                        "vouncher_id" => $vouncher_id
+                    ]);
+                }
             }else
             {
                 return date("d-m-Y Hi")."Rest time";
-            }
-            
+            } 
         }
+    }
+    public function getVouncherId()
+    {
+        $vouncher = TwodLuckyRecord::latest()->first();
+        if(!empty($vouncher))
+        {
+            return $vouncher->vouncher_id + 1;
+        }else
+        {
+            return 1;
+        }
+    }
+    public function history(Request $request)
+    {
+        date_default_timezone_set("Asia/Yangon");
+        $date = date("Y-m-d");
+        $histories = TwodLuckyRecord::whereDate("date",$date)
+                    ->select("name","date","time","vouncher_id")
+                    ->groupBy("name","date","time","vouncher_id")
+                    ->get();
+        return $histories;
     }
     /**
      * Display the specified resource.

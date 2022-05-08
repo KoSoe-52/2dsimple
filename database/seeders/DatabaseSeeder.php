@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Branch;
 use App\Models\TwodList;
+use App\Models\TwodTime;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -131,6 +132,25 @@ class DatabaseSeeder extends Seeder
             {
                 $row= array("number"=>$twodlist);
                 TwodList::insert($row);
+            }
+        }
+        $times =array(
+            array(
+                'name' =>'12:01',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
+            array(
+                'name' =>'16:30',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            )            
+        );
+        foreach ($times as $time) {
+            $count = TwodTime::where("name",$time["name"])->count();
+            if($count < 1)
+            {
+                TwodTime::insert($time);
             }
         }
     }

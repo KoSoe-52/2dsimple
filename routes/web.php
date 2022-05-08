@@ -49,6 +49,5 @@ Route::group(['prefix'=>'SuperAdmin','middleware'=>['SuperAdmin','auth']],functi
 Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::get('2d',[ModeratorController::class,'index'])->name('moderator.dashboard');
     Route::post("2d",[ModeratorController::class,'store']);
-    
-
+    Route::get("history",[ModeratorController::class,'history']);
 });

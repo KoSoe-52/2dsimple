@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class TwodLuckyRecord extends Model
 {
     use HasFactory;
+    protected $fillable =["name","phone","date","time","number","price","user_id","vouncher_id"];
 }

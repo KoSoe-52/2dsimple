@@ -5,7 +5,7 @@
 		<div class="calc-body">
             <div class="calc-button-row">
                 @foreach($twodlists as $key=>$twodlist)
-                    <div class="button l"><span class="{{$twodlist->name}}">{{$twodlist->name}}</span></div>
+                    <div class="button l"><span class="{{$twodlist->number}}">{{$twodlist->number}}</span></div>
                 @endforeach
             </div>
 		</div><!--calc-body -->
@@ -96,13 +96,15 @@
 @endsection
 <script>
     var baseUrl = '{{url("")}}';
-    alert(baseUrl);
+    //alert(baseUrl);
     $(document).on("submit","#luckyListFormSubmit",function(event){
         event.preventDefault();
+		var formdata= new FormData(this);
+		$("#luckyListFormSubmit")[0].reset();
         $.ajax({
             url: baseUrl+'/2d',
             type: "POST",
-            data:  new FormData(this),
+            data:  formdata,
             cache:false,
             contentType:false,
             processData:false,
@@ -110,10 +112,10 @@
                console.log(JSON.stringify(response))
                if(response.status === true)
                 {
-                    
+                    alert("Success");
                 }else
                 {
-                    
+                    alert("Fail");
                 }
             }
         });

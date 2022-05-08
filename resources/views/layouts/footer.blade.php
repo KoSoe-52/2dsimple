@@ -4,7 +4,7 @@
             <a href="{{url('2d')}}">2D</a>
         </div> 
         <div class="menu history">
-            <a href="{{url('histories')}}">History</a>
+            <a href="{{url('history')}}">History</a>
         </div>
     </nav>
 </div>

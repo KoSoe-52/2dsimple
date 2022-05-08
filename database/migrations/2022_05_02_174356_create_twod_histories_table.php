@@ -16,9 +16,9 @@ class CreateTwodHistoriesTable extends Migration
         Schema::create('twod_histories', function (Blueprint $table) {
             $table->id();
             $table->date("date")->index();
-            $table->bigInteger("time_id")->unsigned();
+            $table->string("time");
             $table->string("number");
-            $table->foreign("time_id")->references("id")->on("twod_times");
+            $table->foreign("time")->references("name")->on("twod_times");
             $table->foreign("number")->references("number")->on("twod_lists");
             $table->timestamps();
         });
