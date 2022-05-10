@@ -5,7 +5,7 @@
   body {
     background: #282f39;
     padding:0;margin:0;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    /*box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;*/
   
   }
   .container {
@@ -45,9 +45,9 @@
     padding-bottom:5px;
   }
   
-  .button span{
-    background: #425062;
-    color: #fff;
+  .button .number{
+    background: #000;
+    color: #727B86;
     padding: 5px 14px;
     display: inline-block;
     font-size: 22px;
@@ -59,6 +59,22 @@
     margin-right: -4px;
     margin-top:5px;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  }
+  .button .stop{
+    background: #000;
+    color: #f573af;
+    padding: 5px 14px;
+    display: inline-block;
+    font-size: 22px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+    margin-right: -4px;
+    margin-top:5px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  
   }
   .fast-choose{
     width: 30%;
@@ -180,4 +196,32 @@
   }
   .lucky-btn-selected{
       background-color:#04aa6d;
+  }
+  .card-div{
+
+    width:100%;
+    background: #000;
+    color: #868b92;
+    padding: 7px 14px;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  }
+  .card-div a{
+    color: #868b92 !important;
+  }
+  .card-div a:link { text-decoration: none;    color: #868b92 !important;  }
+  .card-div a:hover { text-decoration: underline;color: #868b92 !important;  }
+  .card-div a:active { text-decoration: underline;color: #868b92 !important;  }
+  .card-div .card-text{
+    font-size:14px;
+  }
+  .card-detail,.card-detail table{
+    background: #000;
+    color: #868b92 !important;
   }

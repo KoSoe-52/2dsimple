@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\TwodList;
 use App\Models\TwodLuckyRecord;
 class ModeratorController extends Controller
@@ -16,10 +17,75 @@ class ModeratorController extends Controller
      */
     public function index()
     {
-        $twodlists = TwodList::all();
+        $twod100 = TwodList::all();
+        $twodlists = $this->remaining($twod100);
         return view("moderator.index",compact("twodlists"));
     }
-
+    public function remaining($array=array())
+    {
+        date_default_timezone_set("Asia/Yangon");
+        //07-05-2022 15:19
+        $time = date("Hi");
+        $date = date("Y-m-d");
+        // $time="0003";
+        //မနက်ပိုင်း
+        if($time >= "0001" && $time <= "1150")
+        {
+            $time = "12:01";
+            /*
+            * loop 100
+            */ 
+            $amountOfNumber = array();
+            foreach($array as $key=>$data)
+            {
+                $results = DB::select( DB::raw("SELECT SUM(price) as amount FROM twod_lucky_records 
+                    WHERE number = :number AND date=:date AND time=:time AND user_id=:user_id"), 
+                    array(
+                        'number' => $data->number,
+                        'date'   => $date,
+                        'time'   => $time,
+                        'user_id' => Auth::user()->id
+                    )
+                );
+                $remainingAmount = Auth::user()->break - $results[0]->amount;
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
+            }
+            return $amountOfNumber;
+        }else if($time >= "1230" && $time <= "1630")
+        {
+            $time="16:30";
+            /*
+            * loop 100
+            */ 
+            $amountOfNumber = array();
+            foreach($array as $key=>$data)
+            {
+                $results = DB::select( DB::raw("SELECT SUM(price) as amount FROM twod_lucky_records 
+                    WHERE number = :number AND date=:date AND time=:time AND user_id=:user_id"), 
+                    array(
+                        'number' => $data->number,
+                        'date'   => $date,
+                        'time'   => $time,
+                        'user_id' => Auth::user()->id
+                    )
+                );
+                $remainingAmount = Auth::user()->break - $results[0]->amount;
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
+            }
+            return $amountOfNumber;
+        }else
+        {
+            /*
+            * loop 100
+            */ 
+            $amountOfNumber = array();
+            foreach($array as $key=>$data)
+            {
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>"breaktime","status"=>$data->status);
+            }
+            return $amountOfNumber;
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -49,7 +115,7 @@ class ModeratorController extends Controller
             date_default_timezone_set("Asia/Yangon");
             //07-05-2022 15:19
             $time = date("Hi");
-           // $time="0003";
+            // $time="0003";
             //မနက်ပိုင်း
             if($time >= "0001" && $time <= "1150")
             {
@@ -66,6 +132,10 @@ class ModeratorController extends Controller
                         "vouncher_id" => $vouncher_id
                     ]);
                 }
+                return response()->json([
+                    "status" => true,
+                    "data"   => $vouncher_id
+                ]);
             }else if($time >= "1230" && $time <= "1620")
             {
                 $vouncher_id = $this->getVouncherId();
@@ -81,9 +151,16 @@ class ModeratorController extends Controller
                         "vouncher_id" => $vouncher_id
                     ]);
                 }
+                return response()->json([
+                    "status" => true,
+                    "data"   => $vouncher_id
+                ]);
             }else
             {
-                return date("d-m-Y Hi")."Rest time";
+                return response()->json([
+                    "status" => false,
+                    "data"   => "ခဏရပ်နားထားပါသည်"
+                ]);
             } 
         }
     }
@@ -104,9 +181,20 @@ class ModeratorController extends Controller
         $date = date("Y-m-d");
         $histories = TwodLuckyRecord::whereDate("date",$date)
                     ->select("name","date","time","vouncher_id")
-                    ->groupBy("name","date","time","vouncher_id")
+                    ->groupBy("vouncher_id","date","time","name")
+                    ->orderBy("vouncher_id","DESC")
                     ->get();
-        return $histories;
+        return view("moderator.history",compact("histories"));
+    }
+    /*
+    * vouncher id
+    */
+    public function vouncher($id)
+    {
+        $vounchers = TwodLuckyRecord::where("vouncher_id",$id)
+                   ->where("user_id",Auth::user()->id)
+                   ->get();
+        return view("moderator.vouncher",compact("vounchers"));
     }
     /**
      * Display the specified resource.

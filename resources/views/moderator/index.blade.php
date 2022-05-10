@@ -2,19 +2,25 @@
 @section('title','2D')
 @section('content')
     @include('layouts.header')
-		<div class="calc-body">
-            <div class="calc-button-row">
-                @foreach($twodlists as $key=>$twodlist)
-                    <div class="button l"><span class="{{$twodlist->number}}">{{$twodlist->number}}</span></div>
-                @endforeach
-            </div>
-		</div><!--calc-body -->
+	<div class="calc-body">
+		<div class="calc-button-row">
+			@foreach($twodlists as $key=>$twodlist)
+				<!--- breaktime, number status ==1 or  login user status == 2 -->
+				@if($twodlist["remaining"] == "breaktime" || $twodlist["status"] == 1 || Auth::user()->status == 2)
+					<div class="button l"><span class="stop">{{$twodlist["number"]}}</span></div>
+				@else
+					<div class="button l"><span data-id="{{$twodlist['remaining']}}" class="number  {{$twodlist['number']}}">{{$twodlist['number']}}</span></div>
+				@endif
+			@endforeach
+		</div>
+	</div><!--calc-body -->
+	
 @endsection
 @section('modals')
     <!-- ထီထိုးသည့် lists -->
 	<div class="modal" id="luckyList">
 	  <div class="modal-dialog modal-fullscreen">
-        <form method="post" id="luckyListFormSubmit">
+        <form method="post" action="{{url('/2d')}}" id="luckyListFormSubmit">
             @csrf
             <div class="modal-content">
                     <!-- Modal Header -->
@@ -94,30 +100,43 @@
 	  </div>
 	</div>
 @endsection
+@section('script')
 <script>
     var baseUrl = '{{url("")}}';
+	//alert(baseUrl);
     //alert(baseUrl);
-    $(document).on("submit","#luckyListFormSubmit",function(event){
-        event.preventDefault();
-		var formdata= new FormData(this);
-		$("#luckyListFormSubmit")[0].reset();
-        $.ajax({
-            url: baseUrl+'/2d',
-            type: "POST",
-            data:  formdata,
-            cache:false,
-            contentType:false,
-            processData:false,
-            success: function(response) {
-               console.log(JSON.stringify(response))
-               if(response.status === true)
-                {
-                    alert("Success");
-                }else
-                {
-                    alert("Fail");
-                }
-            }
-        });
-    });
+	$(document).ready(function(){
+		$(document).on("submit","#luckyListFormSubmit",function(event){
+			event.preventDefault();
+			var formdata= new FormData(this);
+			var conf = confirm("ထီထိုးမည်မှာ သေချာပြီလား?");
+			if(conf == true)
+			{
+				$(".loader").fadeIn();
+				$("#luckyListFormSubmit")[0].reset();
+				$.ajax({
+					url: baseUrl+'/2d',
+					type: "POST",
+					data:  formdata,
+					cache:false,
+					contentType:false,
+					processData:false,
+					success: function(response) {
+					console.log(JSON.stringify(response))
+					$("#luckyListFormSubmit")[0].reset();
+					if(response.status === true)
+						{
+							alert("အောင်မြင်ပါသည်");
+							$("luckyListFormSubmit").modal("hide");
+							window.location.href= baseUrl+"/history/"+response.data;
+						}else
+						{
+							alert(response.data);
+						}
+					}
+				});
+			}
+		});
+	});
 </script>
+@endsection

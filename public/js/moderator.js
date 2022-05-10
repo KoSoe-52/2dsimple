@@ -18,7 +18,7 @@ var maSone = ["10","12","14","16","18","30","32","34","36","38","50","52","54","
 //var maMa
 var maMa = ["11","13","15","17","19","31","33","35","37","39","51","53","55","57","59","71","73","75","77","79","91","93","95","97","99"];
 $(document).ready(function(){
-    $(".button span").click(function(){
+    $(".button .number").click(function(){
         $(this).toggleClass("selectedColor");
         var clickedNumber = $(this).text();
         /*
@@ -32,7 +32,7 @@ $(document).ready(function(){
             }
         }else
         {
-            selectedNumbers.push($(this).text());
+            selectedNumbers.push({remaining:$(this).data("id"),number:$(this).text()});
         }
         //ထိုးမည် button အား color change ခြင်း
         selectedNumberCheck(selectedNumbers);
@@ -50,18 +50,19 @@ $(document).ready(function(){
         {
             var total = [];
             selectedNumbers.sort();
-            var html='<div class="spinner-border  text-info z-index-n1 position-fixed top-50 start-50"></div>';
-            html+="<table class='table mt-0'><tr><th>ထိုးဂဏန်း</th><th style='text-align:center'>ငွေပမာဏ</th><th style='text-align:center'>ဖျက်</th></tr>";
+            var html='<div class="spinner-border loader text-info z-index-n1 position-fixed top-50 start-50 d-none"></div>';
+            html+="<table class='table mt-0'><tr><th>ဂဏန်း</th><th style='text-align:center'>ခွင့်ပြုငွေ</th><th style='text-align:center'>ထိုးငွေ</th><th style='text-align:center'>ဖျက်</th></tr>";
             for(var i=0;i<selectedNumbers.length;i++)
             {
                 total[i]=amount;
                 html+="<tr>"+
-                        "<td style='text-align:left'><span class='rounded-circle bg-success p-2 text-white twod-number'>"+selectedNumbers[i]+"</span><input type='hidden' name='number[]' value='"+selectedNumbers[i]+"'></td>"+
-                        "<td style='width:30%;text-align:center'><input type='number' value='"+amount+"' name='amount[]' class='amount' style='width:80px'></td>"+
-                        "<td style='text-align:right'><span class='btn btn-danger pt-1 pb-1 fs-6 fw-normal remove'>ပယ်မည်</span></td>"+
+                        "<td style='text-align:left'><span class='rounded-circle bg-success p-2 text-white twod-number'>"+selectedNumbers[i]["number"]+"</span><input type='hidden' name='number[]' value='"+selectedNumbers[i]["number"]+"'></td>"+
+                        "<td style='width:25%;text-align:center'>"+selectedNumbers[i]["remaining"]+"</td>"+
+                        "<td style='width:20%;text-align:center'><input type='number' value='"+amount+"' name='amount[]' max='"+selectedNumbers[i]["remaining"]+"' class='amount' style='width:80px'></td>"+
+                        "<td style='text-align:right'><span class='btn btn-danger pt-1 pb-1 fs-6 fw-normal remove fa fa-trash'></span></td>"+
                     "</tr>";
             }
-            html+="<tr><td>ထိုးငွေစုစုပေါင်း</td><td colspan='2' class='fw-bold total align-center'>"+eval(total.join('+'))+"</td></tr>";
+            html+="<tr><td colspan='2'>ထိုးငွေစုစုပေါင်း</td><td colspan='2' class='fw-bold total align-center'>"+eval(total.join('+'))+"</td></tr>";
             html+="</table>";
             html+="<label for=''>ထီထိုးသူ </label><input type='text' name='name' autocomplete='off' required style='padding:7px;border:1px solid #ddd;width:100%;margin-top:4px;'>";
             $(".lucky-list").html(html);
@@ -109,7 +110,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(sameDigit[i]);
+                    var classDigit= $(".number").hasClass(sameDigit[i]);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+sameDigit[i]).data("id");
+                        selectedNumbers.push({remaining:remaining,number:sameDigit[i]});
+                    }
                 }
                 $("#fast-choose-modal").modal("hide");
             }
@@ -128,7 +134,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(powerDigit[i]);
+                    var classDigit= $(".number").hasClass(powerDigit[i]);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+powerDigit[i]).data("id");
+                        selectedNumbers.push({remaining:remaining,number:powerDigit[i]});
+                    }
                 }
                 $("#fast-choose-modal").modal("hide");
             }
@@ -147,7 +158,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(nagkhatDigit[i]);
+                    var classDigit= $(".number").hasClass(nagkhatDigit[i]);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+nagkhatDigit[i]).data("id");
+                        selectedNumbers.push({remaining:remaining,number:nagkhatDigit[i]});
+                    }
                 }
                 $("#fast-choose-modal").modal("hide");
             }
@@ -166,7 +182,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(nyikoDigit[i]);
+                    var classDigit= $(".number").hasClass(nyikoDigit[i]);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+nyikoDigit[i]).data("id");
+                        selectedNumbers.push({remaining:remaining,number:nyikoDigit[i]});
+                    }
                 }
                 $("#fast-choose-modal").modal("hide");
             }
@@ -185,7 +206,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(soneSone[i]);
+                    var classDigit= $(".number").hasClass(soneSone[i]);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+soneSone[i]).data("id");
+                        selectedNumbers.push({remaining:remaining,number:soneSone[i]});
+                    }
                 }
                 $("#fast-choose-modal").modal("hide");
             }
@@ -204,7 +230,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(soneMa[i]);
+                    var classDigit= $(".number").hasClass(soneMa[i]);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+soneMa[i]).data("id");
+                        selectedNumbers.push({remaining:remaining,number:soneMa[i]});
+                    }
                 }
                 $("#fast-choose-modal").modal("hide");
             }
@@ -223,7 +254,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(maMa[i]);
+                    var classDigit= $(".number").hasClass(maMa[i]);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+maMa[i]).data("id");
+                        selectedNumbers.push({remaining:remaining,number:maMa[i]});
+                    }
                 }
                 $("#fast-choose-modal").modal("hide");
             }
@@ -242,7 +278,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(maSone[i]);
+                    var classDigit= $(".number").hasClass(maSone[i]);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+maSone[i]).data("id");
+                        selectedNumbers.push({remaining:remaining,number:maSone[i]});
+                    }
                 }
                 $("#fast-choose-modal").modal("hide");
             }
@@ -270,7 +311,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(number+i);
+                    var classDigit= $(".number").hasClass(number+i);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+number+i).data("id");
+                        selectedNumbers.push({remaining:remaining,number:number+i});
+                    }
                 }
             }
         }else if(groupName == "back")
@@ -288,7 +334,12 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(i+number);
+                    var classDigit= $(".number").hasClass(i+number);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+i+number).data("id");
+                        selectedNumbers.push({remaining:remaining,number:i+number});
+                    }
                 }
             }
         }
@@ -305,9 +356,6 @@ $(document).ready(function(){
         {
             for(var i=0; i< 10; i++)
             {
-                //color changed
-                $("."+number+i).addClass("selectedColor");
-                $("."+i+number).addClass("selectedColor");
                 /*
                 * check selected number is already existed or not
                 */
@@ -317,7 +365,14 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(number+i);
+                    var classDigit= $(".number").hasClass(number+i);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+number+i).data("id");
+                        selectedNumbers.push({remaining:remaining,number:number+i});
+                        //color changed
+                        $("."+number+i).addClass("selectedColor");
+                    }
                 }
                 if(selectedNumbers.includes(i+number))
                 {
@@ -325,7 +380,13 @@ $(document).ready(function(){
                 }else
                 {
                     //push to selectedNumbers
-                    selectedNumbers.push(i+number);
+                    var classDigit= $(".number").hasClass(i+number);
+                    if(classDigit == true)
+                    {
+                        var remaining =$("."+i+number).data("id");
+                        selectedNumbers.push({remaining:remaining,number:i+number});
+                        $("."+i+number).addClass("selectedColor");
+                    }
                 }
             }
         }
@@ -346,9 +407,14 @@ $(document).ready(function(){
                 //already selected
             }else
             {
-                //push to selectedNumbers
-                selectedNumbers.push(reverseNumber);
-                $("."+reverseNumber).addClass("selectedColor");
+                var classDigit= $(".number").hasClass(reverseNumber);
+                if(classDigit == true)
+                {
+                    //push to selectedNumbers
+                    var remaining =$("."+reverseNumber).data("id");
+                    selectedNumbers.push({remaining:remaining,number:reverseNumber});
+                    $("."+reverseNumber).addClass("selectedColor");
+                }
             }
         }
         console.log(selectedNumbers);
@@ -369,8 +435,13 @@ $(document).ready(function(){
                     }else
                     {
                         //push to global array
-                        selectedNumbers.push(resultDigit);
-                        $("."+resultDigit).addClass("selectedColor");
+                        var classDigit= $(".number").hasClass(resultDigit);
+                        if(classDigit == true)
+                        {
+                            var remaining =$("."+resultDigit).data("id");
+                            selectedNumbers.push({remaining:remaining,number:resultDigit});
+                            $("."+resultDigit).addClass("selectedColor");
+                        }
                     }
                 }
             }
@@ -380,7 +451,8 @@ $(document).ready(function(){
         selectedNumberCheck(selectedNumbers);
         console.log(selectedNumbers.sort());
     });
-});
+   
+});//end ready
 function calculateTotal()
 {
     var total =[];
