@@ -32,7 +32,8 @@ class AdminController extends Controller
     }
     public function twodrecords(Request $request)
     {
-        $records = TwodLuckyRecord::whereDate("date",Carbon::now())->get();
+        $records = TwodLuckyRecord::leftJoin("users","users.id","=","twod_lucky_records.user_id")
+            ->whereDate("date",Carbon::now())->paginate(10);
         return view("twod_lucky_records.index",compact("records"));
     }
     public function storeUsers(Request $request)

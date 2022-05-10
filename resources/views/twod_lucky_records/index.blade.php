@@ -2,7 +2,7 @@
 @section('title','ကိုယ်စားလှယ်များ')
 @section('header')
     <div class="col-5 align-self-center">
-        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">2D Records</h4>
+        <h4 class="page-title text-truncate text-dark font-weight-normal mb-3">ထိုးထားသည့်စာရင်းများ</h4>
     </div>
     <div class="col-1 align-self-center">
         
@@ -48,6 +48,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{$records->links()}}
         </div>
     </div>
 </div>
