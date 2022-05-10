@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Category list')
+@section('title','ကိုယ်စားလှယ်များ')
 @section('header')
     <div class="col-5 align-self-center">
         <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">User List</h4>

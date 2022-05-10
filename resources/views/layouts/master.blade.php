@@ -39,7 +39,8 @@
 					<li class="nav-item pcoded-menu-caption">
 					    <label>Menu lists</label>
 					</li>
-					<li class="nav-item"><a href="{{url('/users')}}">Member List</a></li>
+					<li class="nav-item"><a href="{{url('/twodrecords')}}">ထိုးထားသည့်စာရင်းများ</a></li>
+					<li class="nav-item"><a href="{{url('/users')}}">ကိုယ်စားလှယ်များ</a></li>
 				</ul>
 			</div>
 		</div>

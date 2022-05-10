@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Branch;
+use App\Models\TwodLuckyRecord;
 class AdminController extends Controller
 {
     /**
@@ -28,6 +29,11 @@ class AdminController extends Controller
         $users = User::paginate(10);
         return  view("users.index",compact('users','roles','branches'));
 
+    }
+    public function twodrecords(Request $request)
+    {
+        $records = TwodLuckyRecord::whereDate("date",Carbon::now())->get();
+        return view("twod_lucky_records.index",compact("records"));
     }
     public function storeUsers(Request $request)
     {
