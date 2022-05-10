@@ -29,8 +29,8 @@ Route::get('/hash', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::group(['prefix'=>'Admin','middleware'=>['Admin','auth']],function(){
+//2d ဒိုင်ဖြစ်သညါ
+Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('users',[AdminController::class,'showUsers'])->name('admin.showUsers');
     Route::post('users',[AdminController::class,'storeUsers'])->name('admin.storeUsers');
@@ -38,7 +38,7 @@ Route::group(['prefix'=>'Admin','middleware'=>['Admin','auth']],function(){
     Route::post('users/{id}',[AdminController::class, 'updateUsers'])->name('admin.userUpdate');   
 
 });
-
+//superadmin သည်  system admin ဖြစ်သညါ
 Route::group(['prefix'=>'SuperAdmin','middleware'=>['SuperAdmin','auth']],function(){
     Route::get('dashboard',[SuperAdminController::class,'index'])->name('super.dashboard');
 

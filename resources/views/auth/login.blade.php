@@ -17,10 +17,6 @@
 
 	<!-- vendor css -->
 	<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-	
-	
-
-
 </head>
 
 <!-- [ auth-signin ] start -->
@@ -44,7 +40,7 @@
 								<label class="floating-label text-dark" for="login">Username</label>
 								<input id="login" type="text"
 									class="form-control{{ $errors->has('name') || $errors->has('email') ? ' is-invalid' : '' }}"
-									name="login" value="{{ old('name') ?: old('email') }}" autocomplete="off" required autofocus>
+									name="login" value="{{ old('name') ?: old('email') }}"  required>
 									@if ($errors->has('name') || $errors->has('email'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('name') ?: $errors->first('email') }}</strong>
@@ -62,14 +58,14 @@
 							</div>
 							<div class="custom-control custom-checkbox text-left mb-4 mt-2">
 								<input type="checkbox" class="custom-control-input" id="customCheck1">
-								<label class="custom-control-label" for="customCheck1">Save credentials.</label>
+								<!-- <label class="custom-control-label" for="customCheck1">Save credentials.</label> -->
 							</div>
 							
 							<div><button type="submit" class="btn btn-block btn-primary mb-4">Signin</button></div>
 							</form>
-							<p class="mb-2 text-muted">Forgot password? <a href="{{url('/login')}}" class="f-w-400">Reset</a></p>
+							<!-- <p class="mb-2 text-muted">Forgot password? <a href="{{url('/login')}}" class="f-w-400">Reset</a></p>
 							<p class="mb-0 text-muted">Don’t have an account? <a href="{{url('/logout')}}" class="f-w-400">Signup</a></p>
-                        
+                         -->
 					</div>
 				</div>
 			</div>

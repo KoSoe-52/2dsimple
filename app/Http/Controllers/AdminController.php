@@ -23,8 +23,8 @@ class AdminController extends Controller
     }
     public function showUsers()
     {
-        $roles=Role::all();
-        $branches=Branch::all();
+        $roles= Role::all();
+        $branches= Branch::all();
         $users = User::paginate(10);
         return  view("users.index",compact('users','roles','branches'));
 
