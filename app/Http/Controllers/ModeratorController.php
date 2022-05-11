@@ -118,7 +118,7 @@ class ModeratorController extends Controller
             $time = date("Hi");
             // $time="0003";
             //မနက်ပိုင်း
-            if($time >= "0001" && $time <= "1150")
+            if($time >= "0001" && $time <= "1159")
             {
                 $vouncher_id = $this->getVouncherId();
                foreach($request->number as $key=>$number)
