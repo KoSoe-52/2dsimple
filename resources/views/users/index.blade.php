@@ -54,7 +54,7 @@
                             @if($user->status == 1)
                                 <td class='text-success'>Active-User</td>
                             @else
-                                <td class="text-white">Inactive-User</td>
+                                <td class="text-danger">Inactive-User</td>
                             @endif                            
                             <td>
                                 <button class="btn btn-primary"><a href="{{url('/users/'.$user->id)}}"  class="text-white" ><i class="fa fa-edit"></i> Edit </a> </button>
