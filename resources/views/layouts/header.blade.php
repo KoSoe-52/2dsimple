@@ -7,7 +7,7 @@
         <div class="fast-choose"  class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#fast-choose-modal">အမြန်ရွေး</div>
         <div class="button r">R</div>
         <div class="last-price">
-        <input type="number" id="amount" placeholder="အနည်းဆုံး (100) ကျပ်">
+        <input type="number" id="amount" placeholder="အနည်းဆုံး (50) ကျပ်">
         </div>
     </div>
 </div>
