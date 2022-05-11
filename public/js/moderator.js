@@ -374,18 +374,23 @@ $(document).ready(function(){
                         $("."+number+i).addClass("selectedColor");
                     }
                 }
-                if(selectedNumbers.includes(i+number))
+                let findNum =i+number;
+                if(selectedNumbers.includes(findNum))
                 {
                     //already selected
                 }else
                 {
-                    //push to selectedNumbers
-                    var classDigit= $(".number").hasClass(i+number);
-                    if(classDigit == true)
+                    if(i+number == number+number)
+                    {}else
                     {
-                        var remaining =$("."+i+number).data("id");
-                        selectedNumbers.push({remaining:remaining,number:i+number});
-                        $("."+i+number).addClass("selectedColor");
+                       //push to selectedNumbers
+                        var classDigit= $(".number").hasClass(i+number);
+                        if(classDigit == true)
+                        {
+                            var remaining =$("."+i+number).data("id");
+                            selectedNumbers.push({remaining:remaining,number:i+number});
+                            $("."+i+number).addClass("selectedColor");
+                        }     
                     }
                 }
             }

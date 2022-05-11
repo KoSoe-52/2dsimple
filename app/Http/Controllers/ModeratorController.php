@@ -29,7 +29,7 @@ class ModeratorController extends Controller
         $date = date("Y-m-d");
         // $time="0003";
         //မနက်ပိုင်း
-        if($time >= "0001" && $time <= "1150")
+        if($time >= "0001" && $time <= "1159")
         {
             $time = "12:01";
             /*
