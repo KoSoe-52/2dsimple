@@ -51,8 +51,9 @@ class ModeratorController extends Controller
                 $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
             }
             return $amountOfNumber;
-        }else if($time >= "1230" && $time <= "1630")
+        }else if($time >= "1230" && $time <= "1620")
         {
+            //db ထဲထည့်ရန်
             $time="16:30";
             /*
             * loop 100

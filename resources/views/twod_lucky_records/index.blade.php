@@ -21,17 +21,17 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <div class="row">
+        <div class="container">
             <form class="col-12 row">
-                <div class="form-group col-2">
+                <div class="form-group col-md-3 col-xl-2">
                     <label for="number">ဂဏန်း</label>
-                    <input type="text" class="form-control" name="number" id="number">
+                    <input type="text" class="form-control" autocomplete="off" name="number" id="number">
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group col-md-3 col-xl-2">
                     <label for="date">ရက်စွဲ</label>
-                    <input type="text" class="form-control" name="date" id="date">
+                    <input type="date" class="form-control" name="date" id="date" autocomplete="off">
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group col-md-3 col-xl-2">
                     <label for="time">အချိန်</label>
                     <select name="time" id="time" class="form-control">
                         <option value=""></option>
@@ -39,7 +39,7 @@
                         <option value="16:30">16:30</option>
                     </select>
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group col-md-3 col-xl-2">
                     <label for="user_id">ကိုယ်စားလှယ်အမည်</label>
                     <select name="user_id" id="user_id" class="form-control">
                         <option value=""></option>
@@ -50,7 +50,7 @@
                         @endif
                     </select>
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group col-md-3 col-xl-2">
                     <label for="pricegroup">ငွေပမာဏ</label>
                     <table id="pricegroup">
                         <tr>
@@ -61,12 +61,12 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="text" class="form-control" name="price" id="price">
+                                <input type="text" class="form-control" name="price" id="price" autocomplete="off">
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group col-md-3 col-xl-2">
                     <button type="submit" id="search" class="btn btn-primary mt-3">ရှာမည်</button>
                 </div>
             </form>
