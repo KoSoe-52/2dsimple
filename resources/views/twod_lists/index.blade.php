@@ -31,7 +31,7 @@
                             <td><span class="rounded-circle bg-success p-2">{{$number}}</span></td>
                             <td>{{date('d-m-Y')}}</td>
                             <td>{{$twodTime}}</td>
-                            <td>{{$amount}}</td>
+                            <td><span style="font-size:25px;font-weight:bold;color:red;">{{$amount}}</span></td>
                         </tr>
                         @php $total[]=$amount; @endphp
                     @endforeach

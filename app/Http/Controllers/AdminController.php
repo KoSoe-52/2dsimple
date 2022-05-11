@@ -59,11 +59,23 @@ class AdminController extends Controller
             $countArray[] =$records->where("twod_lucky_records.price",$request->get("condition"),$request->get("price"));
         }
         if (count($countArray) > 0) {
-            $records = $records->get();
+            $records = $records->orderBy("twod_lucky_records.id","DESC")->get();
             //$records = $records->appends($request->all());
         }else
         {
-           $records = $records->whereDate("date",Carbon::now())->get();
+            $time = date("Hi");
+            $date = date("Y-m-d");
+            // $time="0003";
+            //မနက်ပိုင်း
+            if($time >= "0001" && $time <= "1229")
+            {
+                $twodTime = "12:01";
+            }else 
+            {
+                $twodTime = "16:30";
+            }
+           $records = $records->whereDate("date",Carbon::now())
+                        ->where("time",$twodTime)->orderBy("twod_lucky_records.id","DESC")->get();
            // $records = $records->paginate(10);
         }
         return view("twod_lucky_records.index",compact("records","users"));
