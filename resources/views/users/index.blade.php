@@ -21,11 +21,6 @@
                 CREATE NEW <i class="fa fa-plus text-success"></i>
             </button>
         </div>
-        <div class="customize-input float-right" style="margin-right:5px;">
-            <button  class=" form-control bg-success border-0 custom-shadow custom-radius text-white">
-               <a href="{{url(Auth::user()->roles->name.'/alluserExport')}}" class='text-white'>Excel-Export <i class="fa fa-file-excel text-white"></i></a>
-            </button>
-        </div>
     </div>
     @if(session('status'))
         <div class="offset-lg-4 col-lg-4 alert alert-success p-2">{{session('status')}}</div>
@@ -42,8 +37,6 @@
                         <th>Name</th>
                         <th>Phone Number</th>
                         <th>Break</th>
-                        <th>Role</th>
-                        <th>Branch</th>
                         <th>Created at</th>
                         <th>Status</th>
                         <th>Edit/Delete</th>
@@ -57,8 +50,6 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->phone}}</td>
                             <td class='text-danger'>{{$user->break}}</td>
-                            <td>{{$user->roles->name}}</td>
-                            <td>{{$user->branches->name}}</td>
                             <td>{{$user->created_at}}</td>                            
                             @if($user->status == 1)
                                 <td class='text-success'>Active-User</td>
@@ -73,7 +64,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="8" style="text-align:center">There is no user</td>
+                            <td colspan="7" style="text-align:center">There is no user</td>
                         </tr>
                     @endif
                 </tbody>
@@ -115,28 +106,7 @@
                         <label for="break" class="col-form-label pt-0">Break<b class="text-danger">*</b></label>
                         <input type="text" class="form-control" autocomplete= "off" style="background:#eee" name="break" id="break" required />
                     </div>
-                    <div class="form-group mt-0 pt-0">
-                            <label for="role" class="col-form-label text-md-right pt-0">Role<b class="text-danger">*</b></label>
-                            <div >
-                                <select name="role_id" id="role" style="background:#eee" class="form-control">
-                                    <option value="">---Selected-role---</option>
-                                    @foreach($roles as $key=>$role)
-                                        <option value="{{$role->id}}">{{$role->name}}</option>
-                                    @endforeach   
-                                </select>
-                            </div>
-                    </div>
-                    <div class="form-group mt-0 pt-0 ">
-                            <label for="branch" class="col-form-label text-md-right pt-0">Branch<b class="text-danger">*</b></label>
-                            <div >
-                                <select name="branch_id" id="branch" style="background:#eee" class="form-control">
-                                    <option value="">---Selected-branch---</option>
-                                        @foreach($branches as $key=>$branch)
-                                            <option value="{{$branch->id}}">{{$branch->name}}</option>
-                                        @endforeach
-                                </select>
-                            </div>
-                    </div>
+                    
                     <div class="form-group mt-0 pt-0">
                         <label for="password" class="col-form-label pt-0">Password<b class="text-danger">*</b></label>
                         <input type="password" class="form-control" autocomplete="off" style="background:#eee" name="password" id="password" required />
