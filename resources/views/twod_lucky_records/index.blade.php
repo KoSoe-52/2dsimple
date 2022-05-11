@@ -85,6 +85,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $total = array(); ?>
                     @foreach($records as $key=>$record)
                         <tr>
                             <td>{{$key + 1}}</td>
@@ -95,10 +96,14 @@
                             <td>{{$record->name}}</td>
                             <td>{{$record->users->name}}</td>
                         </tr>
+                        <?php $total[]=$record->price; ?>
                     @endforeach
+                    <tr>
+                        <td colspan="4" style="text-align:right">စုစုပေါင်း</td>
+                        <td>{{array_sum($total)}}</td>
+                    </tr>
                 </tbody>
             </table>
-            {{$records->links()}}
         </div>
     </div>
 </div>

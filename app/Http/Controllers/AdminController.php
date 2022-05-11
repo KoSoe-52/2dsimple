@@ -58,12 +58,12 @@ class AdminController extends Controller
             $countArray[] =$records->where("twod_lucky_records.price",$request->get("condition"),$request->get("price"));
         }
         if (count($countArray) > 0) {
-            $records = $records->paginate(10);
-            $records = $records->appends($request->all());
+            $records = $records->get();
+            //$records = $records->appends($request->all());
         }else
         {
-            $records->whereDate("date",Carbon::now())->paginate(10);
-            $records = $records->paginate(10);
+           $records = $records->whereDate("date",Carbon::now())->get();
+           // $records = $records->paginate(10);
         }
         return view("twod_lucky_records.index",compact("records","users"));
     }
