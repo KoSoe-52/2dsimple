@@ -35,8 +35,8 @@
                     <label for="time">အချိန်</label>
                     <select name="time" id="time" class="form-control">
                         <option value=""></option>
-                        <option value="1">12:01</option>
-                        <option value="2">16:30</option>
+                        <option value="12:01">12:01</option>
+                        <option value="16:30">16:30</option>
                     </select>
                 </div>
                 <div class="form-group col-2">

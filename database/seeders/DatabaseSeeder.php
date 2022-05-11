@@ -89,8 +89,52 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()->toDateTimeString()
             ),
             array(
-                'name'  =>'moderator',
-                'password' => Hash::make('moderator!@#098'),
+                'name'  =>'moderator1',
+                'password' => Hash::make('moderator1!@#473'),
+                'phone'   => '094450',
+                'status' => 1,
+                'break' => 50000,
+                'role_id'  => 3,
+                'branch_id' => 2,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
+            array(
+                'name'  =>'moderator2',
+                'password' => Hash::make('moderator2!@#543'),
+                'phone'   => '094450',
+                'status' => 1,
+                'break' => 50000,
+                'role_id'  => 3,
+                'branch_id' => 2,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
+            array(
+                'name'  =>'moderator3',
+                'password' => Hash::make('moderator3!@#142'),
+                'phone'   => '094450',
+                'status' => 1,
+                'break' => 50000,
+                'role_id'  => 3,
+                'branch_id' => 2,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
+            array(
+                'name'  =>'moderator4',
+                'password' => Hash::make('moderator4!@#564'),
+                'phone'   => '094450',
+                'status' => 1,
+                'break' => 50000,
+                'role_id'  => 3,
+                'branch_id' => 2,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
+            array(
+                'name'  =>'moderator5',
+                'password' => Hash::make('moderator5!@#123'),
                 'phone'   => '094450',
                 'status' => 1,
                 'break' => 50000,

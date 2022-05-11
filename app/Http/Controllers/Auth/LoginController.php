@@ -42,7 +42,8 @@ class LoginController extends Controller
                 // LoginLog::create([
                 //     "user_id" => Auth::user()->id
                 // ]);
-                return route("admin.showUsers");
+                return "/twodrecords";
+                //return route("admin.showUsers");
             }
             elseif( Auth()->user()->role_id==2)
             {
