@@ -40,7 +40,7 @@
 								<label class="floating-label text-dark" for="login">Username</label>
 								<input id="login" type="text"
 									class="form-control{{ $errors->has('name') || $errors->has('email') ? ' is-invalid' : '' }}"
-									name="login" value="{{ old('name') ?: old('email') }}"  required>
+									name="login" value="{{ old('name') ?: old('email') }}" autocomplete="off"  required>
 									@if ($errors->has('name') || $errors->has('email'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('name') ?: $errors->first('email') }}</strong>
@@ -49,7 +49,7 @@
 							</div>
 							<div class="form-group mb-4">
 								<label class="floating-label text-dark" for="Password">Password</label>
-								<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="off">
+								<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" autocomplete="off" name="password" required autocomplete="off">
 									@error('password')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
