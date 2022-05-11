@@ -182,6 +182,7 @@ class ModeratorController extends Controller
         $date = date("Y-m-d");
         $histories = TwodLuckyRecord::whereDate("date",$date)
                     ->select("name","date","time","vouncher_id")
+                    ->where("user_id",Auth::user()->id)
                     ->groupBy("vouncher_id","date","time","name")
                     ->orderBy("vouncher_id","DESC")
                     ->get();
