@@ -24,9 +24,11 @@ $(document).ready(function(){
         /*
         * check selected number is already existed or not
         */
-        if(selectedNumbers.includes(clickedNumber))
+        var result = selectedNumbers.filter(p => p.number == clickedNumber);
+        if(result.length> 0)
         {
-            var index = selectedNumbers.indexOf(clickedNumber); // get index if value found otherwise -1
+            //console.log(result[0]);
+            var index = selectedNumbers.indexOf(result[0]); // get index if value found otherwise -1
             if (index > -1) { //if found
               selectedNumbers.splice(index, 1);
             }
@@ -34,9 +36,20 @@ $(document).ready(function(){
         {
             selectedNumbers.push({remaining:$(this).data("id"),number:$(this).text()});
         }
-        //ထိုးမည် button အား color change ခြင်း
         selectedNumberCheck(selectedNumbers);
         console.log(selectedNumbers);
+        // if(selectedNumbers.includes(clickedNumber.trim))
+        // {
+        //     var index = selectedNumbers.indexOf(clickedNumber); // get index if value found otherwise -1
+        //     if (index > -1) { //if found
+        //       selectedNumbers.splice(index, 1);
+        //     }
+        // }else
+        // {
+        //     selectedNumbers.push({remaining:$(this).data("id"),number:$(this).text()});
+        // }
+        //ထိုးမည် button အား color change ခြင်း
+        
     });
     //ထိုးမည် button
     $(document).on("click",".lucky-btn",function(){
@@ -62,7 +75,7 @@ $(document).ready(function(){
                         "<td style='text-align:right'><span class='btn btn-danger pt-1 pb-1 fs-6 fw-normal remove fa fa-trash'></span></td>"+
                     "</tr>";
             }
-            html+="<tr><td colspan='2'>ထိုးငွေစုစုပေါင်း</td><td colspan='2' class='fw-bold total align-center'>"+eval(total.join('+'))+"</td></tr>";
+            html+="<tr><td colspan='2'>ထိုးငွေစုစုပေါင်း</td><td colspan='1' class='fw-bold total align-center' style='text-align:center'>"+eval(total.join('+'))+"</td></tr>";
             html+="</table>";
             html+="<label for=''>ထီထိုးသူ </label><input type='text' name='name' autocomplete='off' required style='padding:7px;border:1px solid #ddd;width:100%;margin-top:4px;'>";
             $(".lucky-list").html(html);
@@ -80,9 +93,14 @@ $(document).ready(function(){
         //remove tr row
         $(this).parent().parent().remove();
         //remove clicked number in the selectedNumbers
-        var index = selectedNumbers.indexOf(removedTwodNumber); // get index if value found otherwise -1
-        if (index > -1) { //if found
-          selectedNumbers.splice(index, 1);
+        var result = selectedNumbers.filter(p => p.number == removedTwodNumber);
+        if(result.length> 0)
+        {
+            //console.log(result[0]);
+            var index = selectedNumbers.indexOf(result[0]); // get index if value found otherwise -1
+            if (index > -1) { //if found
+              selectedNumbers.splice(index, 1);
+            }
         }
         //toggleClass to change background-color
         $("."+removedTwodNumber).toggleClass("selectedColor");
@@ -104,7 +122,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(sameDigit[i]))
+                var result = selectedNumbers.filter(p => p.number == sameDigit[i]);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -128,7 +147,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(powerDigit[i]))
+                var result = selectedNumbers.filter(p => p.number == powerDigit[i]);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -152,7 +172,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(nagkhatDigit[i]))
+                var result = selectedNumbers.filter(p => p.number == nagkhatDigit[i]);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -176,7 +197,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(nyikoDigit[i]))
+                var result = selectedNumbers.filter(p => p.number == nyikoDigit[i]);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -200,7 +222,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(soneSone[i]))
+                var result = selectedNumbers.filter(p => p.number == soneSone[i]);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -224,7 +247,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(soneMa[i]))
+                var result = selectedNumbers.filter(p => p.number == soneMa[i]);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -248,7 +272,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(maMa[i]))
+                var result = selectedNumbers.filter(p => p.number == maMa[i]);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -272,7 +297,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(maSone[i]))
+                var result = selectedNumbers.filter(p => p.number == maSone[i]);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -305,7 +331,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(number+i))
+                var result = selectedNumbers.filter(p => p.number == number+i);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -328,7 +355,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(i+number))
+                var result = selectedNumbers.filter(p => p.number == i+number);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -359,7 +387,8 @@ $(document).ready(function(){
                 /*
                 * check selected number is already existed or not
                 */
-                if(selectedNumbers.includes(number+i))
+                var result = selectedNumbers.filter(p => p.number == number+i);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
@@ -374,24 +403,20 @@ $(document).ready(function(){
                         $("."+number+i).addClass("selectedColor");
                     }
                 }
-                let findNum =i+number;
-                if(selectedNumbers.includes(findNum))
+                var result = selectedNumbers.filter(p => p.number == i+number);
+                if(result.length> 0)
                 {
                     //already selected
                 }else
                 {
-                    if(i+number == number+number)
-                    {}else
+                    //push to selectedNumbers
+                    var classDigit= $(".number").hasClass(i+number);
+                    if(classDigit == true)
                     {
-                       //push to selectedNumbers
-                        var classDigit= $(".number").hasClass(i+number);
-                        if(classDigit == true)
-                        {
-                            var remaining =$("."+i+number).data("id");
-                            selectedNumbers.push({remaining:remaining,number:i+number});
-                            $("."+i+number).addClass("selectedColor");
-                        }     
-                    }
+                        var remaining =$("."+i+number).data("id");
+                        selectedNumbers.push({remaining:remaining,number:i+number});
+                        $("."+i+number).addClass("selectedColor");
+                    }      
                 }
             }
         }
@@ -405,9 +430,10 @@ $(document).ready(function(){
         for(var i=0; i< selectedNumbers.length;i++)
         {
             //console.log(selectedNumbers[i]);
-            let number = selectedNumbers[i];//01
+            let number = selectedNumbers[i]["number"];//01
             let reverseNumber = number[1]+number[0];
-            if(selectedNumbers.includes(reverseNumber))
+            var result = selectedNumbers.filter(p => p.number == reverseNumber);
+            if(result.length> 0)
             {
                 //already selected
             }else
@@ -435,8 +461,10 @@ $(document).ready(function(){
                 {
                     let resultDigit = loopDigit+digits.charAt(ii);
                     //check exist
-                    if(selectedNumbers.includes(resultDigit))
+                    var result = selectedNumbers.filter(p => p.number == resultDigit);
+                    if(result.length> 0)
                     {
+                        //already selected
                     }else
                     {
                         //push to global array

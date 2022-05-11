@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ModeratorController;
@@ -22,13 +23,13 @@ use App\Http\Controllers\ModeratorController;
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/hash', function () {
-    return view('auth.login');
-});
+// Route::get('/hash', function () {
+//     return view('auth.login');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //2d ဒိုင်ဖြစ်သညါ
 Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
@@ -51,4 +52,6 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::post("2d",[ModeratorController::class,'store']);
     Route::get("history",[ModeratorController::class,'history']);
     Route::get("history/{id}",[ModeratorController::class,'vouncher'])->name("history.vouncher");
+    Route::get("logout",[LoginController::class,'logout']);
+
 });

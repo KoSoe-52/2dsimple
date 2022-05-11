@@ -66,7 +66,7 @@
 								</a>
 								<div class="dropdown-menu dropdown-menu-right profile-notification">
 									<div class="pro-head">
-										<img src="{{asset('assets/images/user/avatar-5.jpg')}}" class="img-radius" alt="User-Profile-Image">
+										<img src="{{asset('assets/images/logo.png')}}" class="img-radius" alt="User-Profile-Image">
 										<span>{{Auth::user()->name}}( {{Auth::user()->roles->name}} )</span>
 										<a href="{{ route('logout') }}" class="dud-logout" title="Logout">
 											<i class="feather icon-log-out"></i>

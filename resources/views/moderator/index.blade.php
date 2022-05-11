@@ -126,7 +126,7 @@
 					$("#luckyListFormSubmit")[0].reset();
 					if(response.status === true)
 						{
-							alert("အောင်မြင်ပါသည်");
+							//alert("အောင်မြင်ပါသည်");
 							$("luckyListFormSubmit").modal("hide");
 							window.location.href= baseUrl+"/history/"+response.data;
 						}else
