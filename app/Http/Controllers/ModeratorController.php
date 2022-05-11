@@ -51,7 +51,7 @@ class ModeratorController extends Controller
                 $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
             }
             return $amountOfNumber;
-        }else if($time >= "1217" && $time <= "2320")
+        }else if($time >= "1230" && $time <= "1620")
         {
             //db ထဲထည့်ရန်
             $time="16:30";
@@ -137,7 +137,7 @@ class ModeratorController extends Controller
                     "status" => true,
                     "data"   => $vouncher_id
                 ]);
-            }else if($time >= "1230" && $time <= "2320")
+            }else if($time >= "1230" && $time <= "1620")
             {
                 $vouncher_id = $this->getVouncherId();
                 foreach($request->number as $key=>$number)
