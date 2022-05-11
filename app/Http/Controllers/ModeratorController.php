@@ -105,10 +105,10 @@ class ModeratorController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = Validator::make($request->only('number','amount','name'), [
+        $validate = Validator::make($request->only('number','amount'), [
             'number' => 'required',
             'amount' => 'required',
-            'name'   => 'required'
+            //'name'   => 'required'
         ]);
         if ($validate->fails()) {
             return "hello";
