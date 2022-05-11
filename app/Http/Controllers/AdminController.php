@@ -83,10 +83,10 @@ class AdminController extends Controller
     }
     public function editUsers($user_id)
     {
-        $roles=Role::all();
-        $branches=Branch::all();
+        //$roles=Role::all();
+       // $branches=Branch::all();
         $users = User::whereId($user_id)->get();
-        return  view("users.userEdit",compact('users','roles','branches'));
+        return  view("users.useredit",compact('users'));
     }
     public function updateUsers(Request $request, $update_id)
     {
