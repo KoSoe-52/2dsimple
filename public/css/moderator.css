@@ -157,7 +157,7 @@
     text-decoration: none;
     color:#666;
   }
-  .menu2d{
+  .menu2d,.history{
       border-right:1px solid #ddd;
   }
   .hour-txt{
