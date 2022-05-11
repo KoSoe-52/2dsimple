@@ -44,7 +44,7 @@ $(document).ready(function(){
         var amount = $("#amount").val();
         if(amount =="")
         {
-            var html="<center class='text-danger mt-5'>ထိုးငွေအနည်းဆုံး(၁၀၀)ကျပ်ထည့်သွင်းပါ</center>";
+            var html="<center class='text-danger mt-5'>ထိုးငွေအနည်းဆုံး(၅၀)ကျပ်ထည့်သွင်းပါ</center>";
             $(".lucky-list").html(html);
         }else
         {
