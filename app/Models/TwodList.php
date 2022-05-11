@@ -9,4 +9,7 @@ class TwodList extends Model
 {
     use HasFactory;
     protected $fillable =["name","status"];
+    public function twodTotal(){
+        return $this->hasMany("App\Models\TwodLuckyRecord","number","number");
+    }
 }

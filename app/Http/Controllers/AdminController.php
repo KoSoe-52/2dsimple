@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Branch;
 use App\Models\TwodLuckyRecord;
+use App\Models\TwodList;
 class AdminController extends Controller
 {
     /**
@@ -169,5 +170,37 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function twodList(Request $request)
+    {
+        date_default_timezone_set("Asia/Yangon");
+        //07-05-2022 15:19
+        $time = date("Hi");
+        $date = date("Y-m-d");
+        // $time="0003";
+        //မနက်ပိုင်း
+        if($time >= "0001" && $time <= "1229")
+        {
+            $twodTime = "12:01";
+            //whereDate("date",$date)->where("time",$twodTime)
+            $twodlists = TwodList::all();
+            $numberTotal = array();
+            foreach($twodlists as $key=>$twodlist)
+            {
+                $numberTotal[$twodlist->number]=$twodlist->twodTotal()->whereDate("date",$date)->where("time",$twodTime)->where("number",$twodlist->number)->sum("price");
+            }
+        }else if($time >= "1230" && $time <= "2359")
+        {
+            $twodTime = "16:30";
+            
+            $twodlists = TwodList::all();
+            $numberTotal = array();
+            foreach($twodlists as $key=>$twodlist)
+            {
+                $numberTotal[$twodlist->number]=$twodlist->twodTotal()->whereDate("date",$date)->where("time",$twodTime)->where("number",$twodlist->number)->sum("price");
+            }
+        }
+        
+        return view("twod_lists.index",compact("numberTotal","twodTime"));
     }
 }

@@ -37,13 +37,12 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('users/{id}',[AdminController::class, 'editUsers'])->name('admin.userEdit');
     Route::post('users/{id}',[AdminController::class, 'updateUsers'])->name('admin.userUpdate');   
     Route::get('twodrecords',[AdminController::class, 'twodrecords'])->name('admin.twodrecords');   
+    Route::get('twodList',[AdminController::class, 'twodList']);   
 
 });
 //superadmin သည်  system admin ဖြစ်သညါ
 Route::group(['prefix'=>'SuperAdmin','middleware'=>['SuperAdmin','auth']],function(){
     Route::get('dashboard',[SuperAdminController::class,'index'])->name('super.dashboard');
-
-    
 
 });
 
