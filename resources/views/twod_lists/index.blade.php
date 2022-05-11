@@ -28,7 +28,7 @@
                     @php $total=array(); @endphp
                     @foreach($numberTotal as $number=>$amount)
                         <tr>
-                            <td>{{$number}}</td>
+                            <td><span class="rounded-circle bg-success p-2">{{$number}}</span></td>
                             <td>{{date('d-m-Y')}}</td>
                             <td>{{$twodTime}}</td>
                             <td>{{$amount}}</td>
