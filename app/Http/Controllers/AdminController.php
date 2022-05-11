@@ -20,7 +20,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('dashboards.admin.index');
+        return redirect()->route("admin.twodrecords");
     }
     public function showUsers()
     {

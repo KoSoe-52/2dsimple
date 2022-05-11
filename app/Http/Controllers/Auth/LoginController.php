@@ -33,7 +33,12 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
     protected function redirectTo(){
         if(Auth::check())
         {
@@ -42,15 +47,15 @@ class LoginController extends Controller
                 // LoginLog::create([
                 //     "user_id" => Auth::user()->id
                 // ]);
-                return "/twodrecords";
-                //return route("admin.showUsers");
+                //return "/twodrecords";
+                return route("admin.twodrecords");
             }
             elseif( Auth()->user()->role_id==2)
             {
                 // LoginLog::create([
                 //     "user_id" => Auth::user()->id
                 // ]);
-                return route("super.dashboard");
+               // return route("super.dashboard");
             }
             elseif( Auth()->user()->role_id==3)
             {
