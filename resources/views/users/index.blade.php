@@ -57,7 +57,7 @@
                                 <td class="text-white">Inactive-User</td>
                             @endif                            
                             <td>
-                                <button class="btn btn-primary"><a href="{{url(Auth::user()->roles->name.'/users/'.$user->id)}}"  class="text-white" ><i class="fa fa-edit"></i> Edit </a> </button>
+                                <button class="btn btn-primary"><a href="{{url('/users/'.$user->id)}}"  class="text-white" ><i class="fa fa-edit"></i> Edit </a> </button>
                                 <button class="btn btn-danger"><a href="#" data-id="{{$user->id}}" class="text-white user-delete"><i class="fa fa-times"></i> Delete </a></button>
                             </td>
                         </tr>

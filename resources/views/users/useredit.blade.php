@@ -54,38 +54,7 @@
                                 <input type="text" style="background:#eee" class="form-control @error('phone') is-invalid @enderror" id="break" name="break" value="{{ $users[0]->break }}" required autocomplete="break" autofocus>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-                            <div class="col-md-6">
-                                <select name="role_id" id="role" style="background:#eee" class="form-control">
-                                    @if(count($roles) > 0)
-                                        @foreach($roles as $key=>$role)
-                                            @if($role->id == $users[0]->role_id)
-                                                <option class='text-warning' value="{{$role->id}}" selected>{{$role->name}}</option>
-                                            @else
-                                                <option value="{{$role->id}}">{{$role->name}}</option>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="branch" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-                            <div class="col-md-6">
-                                <select name="branch_id" id="branch" style="background:#eee" class="form-control">
-                                    @if(count($branches) > 0)
-                                        @foreach($branches as $key=>$branch)
-                                            @if($branch->id == $users[0]->branch_id)
-                                                <option class='text-warning' value="{{$branch->id}}" selected>{{$branch->name}}</option>
-                                            @else
-                                                <option value="{{$branch->id}}">{{$branch->name}}</option>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-                        </div>                                      
+                                                   
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

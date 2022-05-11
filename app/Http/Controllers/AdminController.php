@@ -101,13 +101,10 @@ class AdminController extends Controller
         $users->phone= $request->get('phone');
         $users->status= $request->get('status');
         $users->break= $request->get('break');
-        $users->role_id= $request->get('role_id');
-        $users->branch_id= $request->get('branch_id');        
         $users->update();
         return redirect()->action([AdminController::class,'editUsers'], ['id' => $update_id])
         ->with("status","Successfully updated!");
     }
-
     /**
      * Show the form for creating a new resource.
      *
