@@ -124,7 +124,7 @@ class ModeratorController extends Controller
                foreach($request->number as $key=>$number)
                 {
                     TwodLuckyRecord::create([
-                        "name"   => NULL,//$request->get("name"),
+                        "name"   => Auth::user()->name,//$request->get("name"),
                         "date"   => date("Y-m-d"),
                         "time" => "12:01",
                         "number" => $request->get("number")[$key],
@@ -143,7 +143,7 @@ class ModeratorController extends Controller
                 foreach($request->number as $key=>$number)
                 {
                     TwodLuckyRecord::create([
-                        "name"   => NULL,//$request->get("name"),
+                        "name"   => Auth::user()->name,//$request->get("name"),
                         "date"   => date("Y-m-d"),
                         "time" => "16:30",
                         "number" => $request->get("number")[$key],
