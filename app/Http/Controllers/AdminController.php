@@ -24,10 +24,10 @@ class AdminController extends Controller
     }
     public function showUsers()
     {
-        $roles= Role::all();
-        $branches= Branch::all();
-        $users = User::paginate(10);
-        return  view("users.index",compact('users','roles','branches'));
+        //$roles= Role::all();
+        //$branches= Branch::all();
+        $users = User::where("branch_id",Auth::user()->branch_id)->where("role_id",3)->paginate(10);
+        return  view("users.index",compact('users'));
 
     }
     public function twodrecords(Request $request)
@@ -75,10 +75,10 @@ class AdminController extends Controller
             "phone" => $request->get("phone"),
             "status" => $request->get("status"),
             "break" => $request->get("break"),            
-            "role_id" => $request->get("role_id"),
-            "branch_id" => $request->get("branch_id")            
+            "role_id" => 3,
+            "branch_id" => Auth::user()->branch_id,          
         ]);
-        return redirect(Auth::user()->roles->name."/users")->with("status","Successfully created New_user");
+        return redirect("/users")->with("status","Successfully created New_user");
     }
     public function editUsers($user_id)
     {
