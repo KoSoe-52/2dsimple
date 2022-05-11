@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()->toDateTimeString()
             ),
             array(
-                'id' => 3,
                 'name' =>'Testing Branch',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()

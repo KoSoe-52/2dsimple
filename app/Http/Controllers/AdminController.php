@@ -187,7 +187,12 @@ class AdminController extends Controller
             $numberTotal = array();
             foreach($twodlists as $key=>$twodlist)
             {
-                $numberTotal[$twodlist->number]=$twodlist->twodTotal()->whereDate("date",$date)->where("time",$twodTime)->where("number",$twodlist->number)->sum("price");
+                $numberTotal[$twodlist->number]=$twodlist->twodTotal()->whereDate("date",$date)
+                ->where("time",$twodTime)
+                ->where("number",$twodlist->number)
+                ->leftJoin("users","users.id","=","user_id")
+                ->where("users.branch_id",Auth::user()->branch_id)
+                ->sum("price");
             }
         }else if($time >= "1230" && $time <= "2359")
         {
@@ -197,7 +202,12 @@ class AdminController extends Controller
             $numberTotal = array();
             foreach($twodlists as $key=>$twodlist)
             {
-                $numberTotal[$twodlist->number]=$twodlist->twodTotal()->whereDate("date",$date)->where("time",$twodTime)->where("number",$twodlist->number)->sum("price");
+                $numberTotal[$twodlist->number]=$twodlist->twodTotal()->whereDate("date",$date)
+                ->where("time",$twodTime)
+                ->where("number",$twodlist->number)
+                ->leftJoin("users","users.id","=","user_id")
+                ->where("users.branch_id",Auth::user()->branch_id)
+                ->sum("price");
             }
         }
         
