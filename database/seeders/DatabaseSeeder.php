@@ -23,9 +23,14 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
-            
             array(
                 'name' =>'2D Branch',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
+            array(
+                'id' => 3,
+                'name' =>'Testing Branch',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
@@ -140,6 +145,17 @@ class DatabaseSeeder extends Seeder
                 'break' => 50000,
                 'role_id'  => 3,
                 'branch_id' => 2,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
+            array(
+                'name'  =>'testingadmin',
+                'password' => Hash::make('test22655!@#'),
+                'phone'   => '0934050',
+                'status' => 1,
+                'break' => 5000,
+                'role_id'  => 1,
+                'branch_id' => 3,
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
