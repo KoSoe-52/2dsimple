@@ -32,9 +32,32 @@ class AdminController extends Controller
     }
     public function twodrecords(Request $request)
     {
+        
+        $users = User::where("branch_id",Auth::user()->branch_id)->where("role_id",3)->get();
         $records = TwodLuckyRecord::leftJoin("users","users.id","=","twod_lucky_records.user_id")
-            ->whereDate("date",Carbon::now())->paginate(10);
-        return view("twod_lucky_records.index",compact("records"));
+            ->where("users.branch_id",Auth::user()->branch_id);
+        if(!empty($request->get("number")))
+        {
+            $records->where("twod_lucky_records.number","=",$request->get("number"));
+        }
+        if(!empty($request->get("date")))
+        {
+            $records->whereDate("twod_lucky_records.date","=",date("Y-m-d",strtotime($request->get("date"))));
+        }
+        if(!empty($request->get("time")))
+        {
+            $records->where("twod_lucky_records.time","=",$request->get("time"));
+        }
+        if(!empty($request->get("user_id")))
+        {
+            $records->where("twod_lucky_records.user_id","=",$request->get("user_id"));
+        }
+        if(!empty($request->get("condition")) && !empty($request->get("price")))
+        {
+            $records->where("twod_lucky_records.price",$request->get("condition"),$request->get("price"));
+        }
+            //->whereDate("date",Carbon::now())->paginate(10);
+        return view("twod_lucky_records.index",compact("records","users"));
     }
     public function storeUsers(Request $request)
     {

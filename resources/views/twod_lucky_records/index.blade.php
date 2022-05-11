@@ -21,6 +21,56 @@
 @section('content')
 <div class="card">
     <div class="card-body">
+        <div class="row">
+            <form class="col-12 row">
+                <div class="form-group col-2">
+                    <label for="number">ဂဏန်း</label>
+                    <input type="text" class="form-control" name="number" id="number">
+                </div>
+                <div class="form-group col-2">
+                    <label for="date">ရက်စွဲ</label>
+                    <input type="text" class="form-control" name="date" id="date">
+                </div>
+                <div class="form-group col-2">
+                    <label for="time">အချိန်</label>
+                    <select name="time" id="time" class="form-control">
+                        <option value=""></option>
+                        <option value="1">12:01</option>
+                        <option value="2">16:30</option>
+                    </select>
+                </div>
+                <div class="form-group col-2">
+                    <label for="user_id">ကိုယ်စားလှယ်အမည်</label>
+                    <select name="user_id" id="user_id" class="form-control">
+                        <option value=""></option>
+                        @if(count($users) > 0)
+                            @foreach($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                        @endif
+                    </select>
+                </div>
+                <div class="form-group col-2">
+                    <label for="pricegroup">ငွေပမာဏ</label>
+                    <table id="pricegroup">
+                        <tr>
+                            <td style="width:40%">
+                                <select name="condition" id="condition" class="form-control" style="text-align:center;width:100%;">
+                                    <option value=">=">>=</option>
+                                    <option value="<="><=</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" name="price" id="price">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="form-group col-2">
+                    <button type="submit" id="search" class="btn btn-primary mt-3">ရှာမည်</button>
+                </div>
+            </form>
+        </div>
         <div class="table-responsive">
             <table id="zero_config" class="table table-striped table-bordered no-wrap">
                 <thead>
