@@ -58,6 +58,8 @@
 							
 							<div><button type="submit" class="btn btn-block btn-primary mb-4">ဝင်မည်</button></div>
 							</form>
+							<p class="text-muted">Version 1.0.0</p>
+							<p class="text-muted">Developed by IT Brother</p>
 							<!-- <p class="mb-2 text-muted">Forgot password? <a href="{{url('/login')}}" class="f-w-400">Reset</a></p>
 							<p class="mb-0 text-muted">Don’t have an account? <a href="{{url('/logout')}}" class="f-w-400">Signup</a></p>
                          -->

@@ -29,7 +29,7 @@ class ModeratorController extends Controller
         $date = date("Y-m-d");
         // $time="0003";
         //မနက်ပိုင်း
-        if($time >= "0001" && $time <= "1159")
+        if($time >= "0001" && $time <= "1159")//changed
         {
             $time = "12:01";
             /*
@@ -51,7 +51,7 @@ class ModeratorController extends Controller
                 $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
             }
             return $amountOfNumber;
-        }else if($time >= "1230" && $time <= "2350")
+        }else if($time >= "1230" && $time <= "1620")//changed
         {
             //db ထဲထည့်ရန်
             $time="16:30";
@@ -78,6 +78,7 @@ class ModeratorController extends Controller
         {
             /*
             * loop 100
+            * rest time
             */ 
             $amountOfNumber = array();
             foreach($array as $key=>$data)
@@ -118,7 +119,7 @@ class ModeratorController extends Controller
             $time = date("Hi");
             // $time="0003";
             //မနက်ပိုင်း
-            if($time >= "0001" && $time <= "1159")
+            if($time >= "0001" && $time <= "1159")//changed
             {
                 $vouncher_id = $this->getVouncherId();
                foreach($request->number as $key=>$number)
@@ -137,7 +138,7 @@ class ModeratorController extends Controller
                     "status" => true,
                     "data"   => $vouncher_id
                 ]);
-            }else if($time >= "1230" && $time <= "2350")
+            }else if($time >= "1230" && $time <= "1620")//changed
             {
                 $vouncher_id = $this->getVouncherId();
                 foreach($request->number as $key=>$number)
