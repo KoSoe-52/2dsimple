@@ -18,10 +18,16 @@
             <form class="row">
                 <div class="form-group col-xs-6 col-sm-6 col-md-3 col-xl-3">
                     <label for="sorting">စီမည်</label>
+                    <?php $sorting = array("sortingnumber"=>"ဂဏန်းငယ်စဉ်ကြီးလိုက်","sortingamount"=>"ထိုးငွေကြီးစဉ်ငယ်လိုက်"); ?>
                     <select name="sorting" id="sorting" class="form-control">
-                        <option value="sortingnumber">ဂဏန်းငယ်စဉ်ကြီးလိုက်</option>
-                        <option value="sortingamount">ထိုးငွေကြီးစဉ်ငယ်လိုက်</option>
-                    </select>
+                        @foreach($sorting as $key=>$data)
+                            @if($key == request()->sorting)
+                                <option value="{{$key}}" selected>{{$data}}</option>
+                            @else
+                                <option value="{{$key}}">{{$data}}</option>
+                            @endif
+                        @endforeach
+                                            </select>
                 </div>
                 <div class="form-group col-xs-6 col-sm-6 col-md-3 col-xl-3">
                     <button type="submit" id="search" class="btn btn-primary mt-3">ရှာမည်</button>
