@@ -222,7 +222,10 @@ class AdminController extends Controller
                 ->sum("price");
             }
         }
-        
+        if($request->get("sorting") == "sortingamount")
+        {
+            arsort($numberTotal);
+        }
         return view("twod_lists.index",compact("numberTotal","twodTime"));
     }
 }

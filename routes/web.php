@@ -38,7 +38,7 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('users/{id}',[AdminController::class, 'editUsers'])->name('admin.userEdit');
     Route::post('users/{id}',[AdminController::class, 'updateUsers'])->name('admin.userUpdate');   
     Route::get('twodrecords',[AdminController::class, 'twodrecords'])->name('admin.twodrecords');   
-    Route::get('twodList',[AdminController::class, 'twodList'])->name("twodList");   
+    Route::get('twodList/{sort?}',[AdminController::class, 'twodList'])->name("twodList");   
 
 });
 //superadmin သည်  system admin ဖြစ်သညါ

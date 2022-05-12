@@ -14,6 +14,20 @@
 @section('content')
 <div class="card">
     <div class="card-body">
+        <div class="container-fluid">
+            <form class="row">
+                <div class="form-group col-xs-6 col-sm-6 col-md-3 col-xl-3">
+                    <label for="sorting">စီမည်</label>
+                    <select name="sorting" id="sorting" class="form-control">
+                        <option value="sortingnumber">ဂဏန်းငယ်စဉ်ကြီးလိုက်</option>
+                        <option value="sortingamount">ထိုးငွေကြီးစဉ်ငယ်လိုက်</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-6 col-sm-6 col-md-3 col-xl-3">
+                    <button type="submit" id="search" class="btn btn-primary mt-3">ရှာမည်</button>
+                </div>
+            </form>
+        </div>
         <div class="table-responsive">
             <table id="zero_config" class="table table-striped table-bordered no-wrap">
                 <thead>
