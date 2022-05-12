@@ -1,5 +1,12 @@
 @extends('layouts.moderator')
 @section('title','2D')
+@section('style')
+	<style type="text/css">
+		.menu2d a{
+			color:#0099FF;
+		}
+	</style>
+@endsection
 @section('content')
     @include('layouts.header')
 	<div class="calc-body">
@@ -35,7 +42,7 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i> အတည်ပြုမည်</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ပိတ်မည်</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa fa-times"></i> ပိတ်မည်</button>
                     </div>
             </div>
         </form>

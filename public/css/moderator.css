@@ -141,7 +141,7 @@
       width:100%;position:fixed;top:0;
   }
   .menu {
-    width: 30%;
+    width: 33%;
     color: #AEB3BA;
     padding: 10px;
     display: inline-block;
@@ -153,6 +153,11 @@
   .menu a{
     text-decoration: none;
     color:#666;
+    width: 33%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: -4px;
   }
   .menu2d,.history{
       border-right:1px solid #ddd;

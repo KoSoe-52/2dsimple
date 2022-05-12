@@ -1,5 +1,12 @@
 @extends('layouts.moderator')
 @section('title','Vouncher')
+@section('style')
+	<style type="text/css">
+		.menu2d a{
+			color:#0099FF;
+		}
+	</style>
+@endsection
 @section('content')
 <div style="margin-bottom:70px;margin-top:6px;">
         <div class="card card-detail mb-1 pt-2">

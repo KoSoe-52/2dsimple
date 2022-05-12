@@ -1,5 +1,12 @@
 @extends('layouts.moderator')
 @section('title','2D')
+@section('style')
+	<style type="text/css">
+		.history a{
+			color:#0099FF;
+		}
+	</style>
+@endsection
 @section('content')
 <div style="margin-bottom:70px;margin-top:8px;">
     @if(count($histories) > 0)
