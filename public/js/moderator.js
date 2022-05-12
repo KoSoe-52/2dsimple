@@ -55,6 +55,7 @@ $(document).ready(function(){
     //ထိုးမည် button
     $(document).on("click",".lucky-btn",function(){
         $("#luckyList").modal("show");
+        console.log(selectedNumbers);
         var amount = $("#amount").val();
         if(amount =="")
         {
@@ -428,7 +429,8 @@ $(document).ready(function(){
     });//group 3
     $(document).on("click",".r",function()
     {
-        $(this).css("background-color","#4285f4");
+        
+        $(this).addClass("rSelected");
         for(var i=0; i< selectedNumbers.length;i++)
         {
             //console.log(selectedNumbers[i]);
@@ -486,7 +488,7 @@ $(document).ready(function(){
         selectedNumberCheck(selectedNumbers);
         console.log(selectedNumbers.sort());
     });
-   
+    
 });//end ready
 function calculateTotal()
 {

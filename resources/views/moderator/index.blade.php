@@ -113,13 +113,25 @@
 	//alert(baseUrl);
     //alert(baseUrl);
 	$(document).ready(function(){
+		//ထီထိုး
 		$(document).on("submit","#luckyListFormSubmit",function(event){
 			event.preventDefault();
 			var formdata= new FormData(this);
 			var conf = confirm("ထီထိုးမည်မှာ သေချာပြီလား?");
 			if(conf == true)
 			{
-				$(".loader").fadeIn();
+				//cleart original array to empty
+				selectedNumbers=[];
+				console.log("test"+selectedNumbers);
+				//remove selectedColor
+				$(".number").removeClass("selectedColor");
+				//hide modal
+				$("#luckyList").modal("hide");
+				//Rbutton clear background
+				$(".r").removeClass("rSelected");
+				//clear amount
+				$("#amount").val('');
+				//$(".loader").fadeIn();
 				$("#luckyListFormSubmit")[0].reset();
 				$.ajax({
 					url: baseUrl+'/2d',
@@ -133,6 +145,7 @@
 					$("#luckyListFormSubmit")[0].reset();
 					if(response.status === true)
 						{
+							
 							//alert("အောင်မြင်ပါသည်");
 							$("luckyListFormSubmit").modal("hide");
 							window.location.href= baseUrl+"/history/"+response.data;

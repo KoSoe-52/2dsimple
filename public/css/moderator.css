@@ -227,3 +227,6 @@
     background: #000;
     color: #868b92 !important;
   }
+  .rSelected{
+    background-color: #4285f4;
+  }

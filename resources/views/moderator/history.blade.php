@@ -21,6 +21,14 @@
                 </a>
             </div>
         @endforeach
+    @else
+        <div class="card mb-2 card-div">
+            <a href="">
+                <div class="card-body p-3">
+                    <p class="card-text  p-0" style="line-height:20px">အချက်အလက်မရှိသေးပါ</p>
+                </div>
+            </a>
+        </div>
     @endif
 </div>
 @endsection
