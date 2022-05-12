@@ -427,6 +427,7 @@ $(document).ready(function(){
     });//group 3
     $(document).on("click",".r",function()
     {
+        $(this).css("background-color","#4285f4");
         for(var i=0; i< selectedNumbers.length;i++)
         {
             //console.log(selectedNumbers[i]);

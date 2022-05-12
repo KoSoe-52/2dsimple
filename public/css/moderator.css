@@ -90,19 +90,7 @@
     border-bottom: solid 2px #3C4857;
     transition: all 0.2s ease-in-out;
   }
-  .r{
-    background: #E0B612;
-    color: #fff;
-    padding: 10px;
-    display: inline-block;
-    font-size: 14px;
-    margin-right: -4px;
-    text-align: center;
-    vertical-align: middle;
-    border-right: solid 2px #3C4857;
-    border-bottom: solid 2px #3C4857;
-    transition: all 0.2s ease-in-out;
-  }
+  
   .last-price{
     width: 50%;
     color: #fff;
@@ -128,6 +116,15 @@
   .button.r {
     color: #AEB3BA;
     background: #D95D4E;
+    padding: 10px;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: -4px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: solid 2px #3C4857;
+    border-bottom: solid 2px #3C4857;
+    transition: all 0.2s ease-in-out;
   }
   
   .blink-me {
