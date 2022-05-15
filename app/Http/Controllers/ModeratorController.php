@@ -26,12 +26,13 @@ class ModeratorController extends Controller
         date_default_timezone_set("Asia/Yangon");
         //07-05-2022 15:19
         $time = date("Hi");
-        $date = date("Y-m-d");
+        
         // $time="0003";
         //မနက်ပိုင်း
         if($time >= "0001" && $time <= "1159")//changed
         {
             $time = "12:01";
+            $date = date("Y-m-d");
             /*
             * loop 100
             */ 
@@ -55,6 +56,7 @@ class ModeratorController extends Controller
         {
             //db ထဲထည့်ရန်
             $time="16:30";
+            $date = date("Y-m-d");
             /*
             * loop 100
             */ 
@@ -66,6 +68,31 @@ class ModeratorController extends Controller
                     array(
                         'number' => $data->number,
                         'date'   => $date,
+                        'time'   => $time,
+                        'user_id' => Auth::user()->id
+                    )
+                );
+                $remainingAmount = Auth::user()->break - $results[0]->amount;
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
+            }
+            return $amountOfNumber;
+        }else if($time >= "1800" && $time <= "0000"){
+            // နောက်ရက် မနက်ပိုင်းအတွက်ထိုးပေးရမယ်
+            //db ထဲထည့်ရန်
+            $time="12:01";
+            $currentDate = date("Y-m-d");
+            $nextDate = date('Y-m-d', strtotime($currentDate . ' +1 day'));
+            /*
+            * loop 100
+            */ 
+            $amountOfNumber = array();
+            foreach($array as $key=>$data)
+            {
+                $results = DB::select( DB::raw("SELECT SUM(price) as amount FROM twod_lucky_records 
+                    WHERE number = :number AND date=:date AND time=:time AND user_id=:user_id"), 
+                    array(
+                        'number' => $data->number,
+                        'date'   => $nextDate,//next day
                         'time'   => $time,
                         'user_id' => Auth::user()->id
                     )
