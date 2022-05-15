@@ -17,6 +17,7 @@ class ModeratorController extends Controller
      */
     public function index()
     {
+        
         $twod100 = TwodList::all();
         $twodlists = $this->remaining($twod100);
         return view("moderator.index",compact("twodlists"));
@@ -29,7 +30,7 @@ class ModeratorController extends Controller
         
         // $time="0003";
         //မနက်ပိုင်း
-        if($time >= "0001" && $time <= "1159")//changed
+        if($time >= "0000" && $time <= "1159")//changed
         {
             $time = "12:01";
             $date = date("Y-m-d");
@@ -76,10 +77,11 @@ class ModeratorController extends Controller
                 $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
             }
             return $amountOfNumber;
-        }else if($time >= "1800" && $time <= "0000"){
+        }else if($time >= "1700" && $time <= "2359")
+        {
             // နောက်ရက် မနက်ပိုင်းအတွက်ထိုးပေးရမယ်
             //db ထဲထည့်ရန်
-            $time="12:01";
+             $time="12:01";
             $currentDate = date("Y-m-d");
             $nextDate = date('Y-m-d', strtotime($currentDate . ' +1 day'));
             /*
