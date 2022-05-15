@@ -79,7 +79,7 @@ $(document).ready(function(){
             }
             html+="<tr><td colspan='2'>ထိုးငွေစုစုပေါင်း</td><td colspan='1' class='fw-bold total align-center' style='text-align:center'>"+eval(total.join('+'))+"</td></tr>";
             html+="</table>";
-            //html+="<label for=''>ထီထိုးသူ </label><input type='text' name='name' autocomplete='off' required style='padding:7px;border:1px solid #ddd;width:100%;margin-top:4px;'>";
+            html+="<label for=''>ထီထိုးသူ </label><input type='text' name='name' autocomplete='off'  style='padding:7px;border:1px solid #ddd;width:100%;margin-top:4px;'>";
             $(".lucky-list").html(html);
         }
     });
