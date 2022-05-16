@@ -174,17 +174,17 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
-            array(
-                'name'  =>'branch1',
-                'password' => Hash::make(''),
-                'phone'   => '094450',
-                'status' => 1,
-                'break' => 50000,
-                'role_id'  => 3,
-                'branch_id' => 4,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
+            // array(
+            //     'name'  =>'branch1',
+            //     'password' => Hash::make(''),
+            //     'phone'   => '094450',
+            //     'status' => 1,
+            //     'break' => 50000,
+            //     'role_id'  => 3,
+            //     'branch_id' => 4,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
         );
         foreach ($users as $user) {
             $count = User::where("name",$user["name"])->count();
