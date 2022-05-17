@@ -232,30 +232,31 @@ class ModeratorController extends Controller
     {
         date_default_timezone_set("Asia/Yangon");
         $time = date("Hi");
-        if($time >= "0000" && $time <= "1159")//changed
-        {
-            $date = date("Y-m-d");
-            $time = "12:01";
-        }else if($time >= "1230" && $time <= "1620")//changed
-        {
-            $date = date("Y-m-d");
-            $time="16:30";
-        }else if($time >= "1700" && $time <= "2359") // ညနေပိုင်းဖြစ်လို့ နောက်ရက် 12:01 အချိန်ဖြစ်ပါသည်
-        {
-            //နောက်ရက် မနက်ပိုင်း 12:01 အချိန်အတွက်ထိုးခြင်းဖြစ်ပါသည်
-            $currentDate = date("Y-m-d");
-            $date = date('Y-m-d', strtotime($currentDate . ' +1 day'));
-            $time ="12:01";
-        }else
-        {
-            //အချက်အလက်မရှိပါ
-            $histories = [];
-            return view("moderator.history",compact("histories"));
-        }
+        // if($time >= "0000" && $time <= "1159")//changed
+        // {
+        //     $date = date("Y-m-d");
+        //     $time = "12:01";
+        // }else if($time >= "1230" && $time <= "1620")//changed
+        // {
+        //     $date = date("Y-m-d");
+        //     $time="16:30";
+        // }else if($time >= "1700" && $time <= "2359") // ညနေပိုင်းဖြစ်လို့ နောက်ရက် 12:01 အချိန်ဖြစ်ပါသည်
+        // {
+        //     //နောက်ရက် မနက်ပိုင်း 12:01 အချိန်အတွက်ထိုးခြင်းဖြစ်ပါသည်
+        //     $currentDate = date("Y-m-d");
+        //     $date = date('Y-m-d', strtotime($currentDate . ' +1 day'));
+        //     $time ="12:01";
+        // }else
+        // {
+        //     //အချက်အလက်မရှိပါ
+        //     $histories = [];
+        //     return view("moderator.history",compact("histories"));
+        // }
+        $date = date("Y-m-d");
         $histories = TwodLuckyRecord::whereDate("date",$date)
                     ->select("name","date","time","vouncher_id")
                     ->where("user_id",Auth::user()->id)
-                    ->where("time",$time)
+                    //->where("time",$time)
                     ->groupBy("vouncher_id","date","time","name")
                     ->orderBy("vouncher_id","DESC")
                     ->get();
