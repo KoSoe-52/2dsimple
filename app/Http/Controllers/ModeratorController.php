@@ -252,14 +252,27 @@ class ModeratorController extends Controller
         //     $histories = [];
         //     return view("moderator.history",compact("histories"));
         // }
-        $date = date("Y-m-d");
-        $histories = TwodLuckyRecord::whereDate("date",$date)
-                    ->select("name","date","time","vouncher_id")
+        $histories = TwodLuckyRecord::select("name","date","time","vouncher_id")
                     ->where("user_id",Auth::user()->id)
                     //->where("time",$time)
                     ->groupBy("vouncher_id","date","time","name")
-                    ->orderBy("vouncher_id","DESC")
-                    ->get();
+                    ->orderBy("vouncher_id","DESC");
+        $countArray = array();
+        if(!empty($request->get("date")))
+        {
+            $countArray[] =$histories->whereDate("twod_lucky_records.date","=",$request->get("date"));
+        }
+        if(!empty($request->get("time")))
+        {
+            $countArray[] =$histories->where("twod_lucky_records.time","=",$request->get("time"));
+        }
+        if (count($countArray) > 0) {
+            $histories = $histories->get();
+        }else
+        {
+            $date = date("Y-m-d");
+            $histories = $histories->whereDate("twod_lucky_records.date","=",$date)->get();
+        }
         return view("moderator.history",compact("histories"));
     }
     /*
