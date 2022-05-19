@@ -8,7 +8,6 @@
 	</style>
 @endsection
 @section('content')
-
 <div style="margin-bottom:70px;margin-top:8px;">
     <form class="card-div" id="searchHistory"> 
         <table style="width:100%">
