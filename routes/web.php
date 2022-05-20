@@ -29,7 +29,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home',function(){
+    Auth::logout();
+    return view("auth.login");
+});
 //2d ဒိုင်ဖြစ်သညါ
 Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
@@ -39,6 +42,8 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     Route::post('users/{id}',[AdminController::class, 'updateUsers'])->name('admin.userUpdate');   
     Route::get('twodrecords',[AdminController::class, 'twodrecords'])->name('admin.twodrecords');   
     Route::get('twodList/{sort?}',[AdminController::class, 'twodList'])->name("twodList");   
+    Route::get('twodList/{number?}/terminate',[AdminController::class, 'terminate']);   
+    Route::get('twodList/{number?}/open',[AdminController::class, 'open']);   
 
 });
 //superadmin သည်  system admin ဖြစ်သညါ

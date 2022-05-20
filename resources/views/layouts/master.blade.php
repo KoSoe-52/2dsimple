@@ -42,6 +42,7 @@
 					<li class="nav-item"><a href="{{url('/twodrecords')}}">ထိုးထားသည့်စာရင်းများ</a></li>
 					<li class="nav-item"><a href="{{url('/twodList')}}">2D ဂဏန်း</a></li>
 					<li class="nav-item"><a href="{{url('/users')}}">ကိုယ်စားလှယ်များ</a></li>
+					<li class="nav-item"><a href="{{ route('logout') }}">ထွက်မည်</a></li>
 				</ul>
 			</div>
 		</div>
@@ -130,7 +131,8 @@
     <script src="{{asset('assets/js/plugins/bootstrap.min.js')}}"></script>
     <!-- <script src="assets/js/ripple.js"></script-->
     <script src="{{asset('assets/js/pcoded.min.js')}}"></script>
-
+	<script src="{{asset('https://cdn.jsdelivr.net/npm/sweetalert2@11')}}"></script>
+	@yield('script')
 <!-- Apex Chart -->
 <!-- <script src="{{asset('assets/js/plugins/apexcharts.min.js')}}"></script> -->
 

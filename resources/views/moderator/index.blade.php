@@ -9,7 +9,7 @@
 @endsection
 @section('content')
     @include('layouts.header')
-	<div class="calc-body">
+	<div class="calc-body pt-3">
 		<div class="calc-button-row">
 			@foreach($twodlists as $key=>$twodlist)
 				<!--- breaktime, number status ==1 or  login user status == 2 -->

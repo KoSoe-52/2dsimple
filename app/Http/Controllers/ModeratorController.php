@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\TwodList;
 use App\Models\TwodLuckyRecord;
+use App\Models\TerminateNumber;
 class ModeratorController extends Controller
 {
     /**
@@ -49,8 +50,9 @@ class ModeratorController extends Controller
                         'user_id' => Auth::user()->id
                     )
                 );
+                $status = $this->breakNumbers($date,$time,$data->number);
                 $remainingAmount = Auth::user()->break - $results[0]->amount;
-                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$status);
             }
             return $amountOfNumber;
         }else if($time >= "1230" && $time <= "1620")//changed
@@ -73,8 +75,9 @@ class ModeratorController extends Controller
                         'user_id' => Auth::user()->id
                     )
                 );
+                $status = $this->breakNumbers($date,$time,$data->number);
                 $remainingAmount = Auth::user()->break - $results[0]->amount;
-                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$status);
             }
             return $amountOfNumber;
         }else if($time >= "1700" && $time <= "2359")
@@ -99,8 +102,9 @@ class ModeratorController extends Controller
                         'user_id' => Auth::user()->id
                     )
                 );
+                $status = $this->breakNumbers($nextDate,$time,$data->number);
                 $remainingAmount = Auth::user()->break - $results[0]->amount;
-                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$data->status);
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>$status);
             }
             return $amountOfNumber;
         }else
@@ -108,13 +112,29 @@ class ModeratorController extends Controller
             /*
             * loop 100
             * rest time
+            * status 1 is in active
             */ 
             $amountOfNumber = array();
             foreach($array as $key=>$data)
             {
-                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>"breaktime","status"=>$data->status);
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>"breaktime","status"=>1);
             }
             return $amountOfNumber;
+        }
+    }
+    public function breakNumbers($date,$time,$number)
+    {
+        $count = TerminateNumber::whereDate("date",$date)
+                ->where("time",$time)
+                ->where("number",$number)
+                ->where("branch_id",Auth::user()->branch_id)
+                ->count();
+        if($count > 0)
+        {
+            return 1;
+        }else
+        {
+            return 0;
         }
     }
     /**

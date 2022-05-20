@@ -12,6 +12,7 @@ use App\Models\Role;
 use App\Models\Branch;
 use App\Models\TwodLuckyRecord;
 use App\Models\TwodList;
+use App\Models\TerminateNumber;
 class AdminController extends Controller
 {
     /**
@@ -189,6 +190,7 @@ class AdminController extends Controller
         //07-05-2022 15:19
         $time = date("Hi");
         $date = date("Y-m-d");
+        $terminatedNumbers = array();
         // $time="0003";
         //မနက်ပိုင်း
         if($time >= "0001" && $time <= "1229")
@@ -205,11 +207,25 @@ class AdminController extends Controller
                 ->leftJoin("users","users.id","=","user_id")
                 ->where("users.branch_id",Auth::user()->branch_id)
                 ->sum("price");
+                /*
+                *terminate ထဲမှာ ပိတ်လား မပိတ်လား သိအောင် စစ်ဆေးမည်
+                */
+                $numberOfRow = $twodlist->terminateNumber()->whereDate("terminate_numbers.date",$date)
+                                            ->where("terminate_numbers.time",$twodTime)
+                                            ->where("terminate_numbers.number",$twodlist->number)
+                                            ->where("terminate_numbers.branch_id",Auth::user()->branch_id)
+                                            ->count();
+                /*
+                * break လုပ်ထားတဲ့ number တွေကို terminatedNumbers  array ထဲထည့်ခဲ့ရမယ်
+                */
+                if($numberOfRow > 0)
+                {
+                    $terminatedNumbers[] = $twodlist->number;
+                }
             }
-        }else if($time >= "1230" && $time <= "2359")
+        }else if($time >= "1230" && $time <= "1659")
         {
-            $twodTime = "16:30";
-            
+            $twodTime = "16:30"; 
             $twodlists = TwodList::all();
             $numberTotal = array();
             foreach($twodlists as $key=>$twodlist)
@@ -220,12 +236,128 @@ class AdminController extends Controller
                 ->leftJoin("users","users.id","=","user_id")
                 ->where("users.branch_id",Auth::user()->branch_id)
                 ->sum("price");
+                /*
+                *terminate ထဲမှာ ပိတ်လား မပိတ်လား သိအောင် စစ်ဆေးမည်
+                */
+                $numberOfRow = $twodlist->terminateNumber()->whereDate("terminate_numbers.date",$date)
+                                            ->where("terminate_numbers.time",$twodTime)
+                                            ->where("terminate_numbers.number",$twodlist->number)
+                                            ->where("terminate_numbers.branch_id",Auth::user()->branch_id)
+                                            ->count();
+                /*
+                * break လုပ်ထားတဲ့ number တွေကို terminatedNumbers  array ထဲထည့်ခဲ့ရမယ်
+                */
+                if($numberOfRow > 0)
+                {
+                    $terminatedNumbers[] = $twodlist->number;
+                }
+            }
+        }else
+        {
+            //နောက်ရက်အတွက်
+            $twodlists = TwodList::all();
+            $twodTime = "12:01";
+            $currentDate = date("Y-m-d");
+            $date = date('Y-m-d', strtotime($currentDate . ' +1 day'));
+            $numberTotal = array();
+            foreach($twodlists as $key=>$twodlist)
+            {
+                $numberTotal[$twodlist->number]=$twodlist->twodTotal()->whereDate("date",$date)
+                ->where("time",$twodTime)
+                ->where("number",$twodlist->number)
+                ->leftJoin("users","users.id","=","user_id")
+                ->where("users.branch_id",Auth::user()->branch_id)
+                ->sum("price");
+                /*
+                *terminate ထဲမှာ ပိတ်လား မပိတ်လား သိအောင် စစ်ဆေးမည်
+                */
+                $numberOfRow = $twodlist->terminateNumber()->whereDate("terminate_numbers.date",$date)
+                                            ->where("terminate_numbers.time",$twodTime)
+                                            ->where("terminate_numbers.number",$twodlist->number)
+                                            ->where("terminate_numbers.branch_id",Auth::user()->branch_id)
+                                            ->count();
+                /*
+                * break လုပ်ထားတဲ့ number တွေကို terminatedNumbers  array ထဲထည့်ခဲ့ရမယ်
+                */
+                if($numberOfRow > 0)
+                {
+                    $terminatedNumbers[] = $twodlist->number;
+                }
             }
         }
         if($request->get("sorting") == "sortingamount")
         {
             arsort($numberTotal);
         }
-        return view("twod_lists.index",compact("numberTotal","twodTime"));
+        return view("twod_lists.index",compact("numberTotal","twodTime","date","terminatedNumbers"));
+    }
+    public function terminate($id)
+    {
+        date_default_timezone_set("Asia/Yangon");
+        $time = date("Hi");
+        if($time >= "0001" && $time <= "1229")
+        {
+            $date = date("Y-m-d");
+            $time = "12:01";
+        }else if($time >= "1230" && $time <= "1659")
+        {
+            $date = date("Y-m-d");
+            $time = "16:30";
+        }else
+        {
+            $currentDate = date("Y-m-d");
+            $date = date('Y-m-d', strtotime($currentDate . ' +1 day'));
+            $time = "12:01";
+        }
+       $break =  TerminateNumber::create([
+            "date"   => $date,
+            "time"   => $time,
+            "number" => $id,
+            "branch_id" => Auth::user()->branch_id
+        ]);
+        return response()->json([
+            "status" => true,
+            "msg" => "Success",
+            "data" => $break
+        ]);
+    }
+    public function open($id)
+    {
+        date_default_timezone_set("Asia/Yangon");
+        $time = date("Hi");
+        if($time >= "0001" && $time <= "1229")
+        {
+            $date = date("Y-m-d");
+            $time = "12:01";
+        }else if($time >= "1230" && $time <= "1659")
+        {
+            $date = date("Y-m-d");
+            $time = "16:30";
+        }else
+        {
+            $currentDate = date("Y-m-d");
+            $date = date('Y-m-d', strtotime($currentDate . ' +1 day'));
+            $time = "12:01";
+        }
+        $delete = TerminateNumber::whereDate("date",$date)
+                        ->where("time",$time)
+                        ->where("number",$id)
+                        ->where("branch_id",Auth::user()->branch_id)
+                        ->delete();
+        if($delete == true)
+        {
+            return response()->json([
+                "status" => true,
+                "msg" => "Success",
+                "data" => []
+            ]);
+        }else
+        {
+            return response()->json([
+                "status" => false,
+                "msg" => "Fail",
+                "data" => []
+            ]); 
+        }
     }
 }

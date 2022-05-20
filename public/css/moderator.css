@@ -191,10 +191,11 @@
     transition: all 0.2s ease-in-out;
   }
   .selectedColor{
-    background-color: #E0B612 !important;
+    background-color: #e0b612 !important;
     border-right: solid 2px #3C4857;
     border-bottom: solid 2px #3C4857;
     transition: all 0.2s ease-in-out;
+    color:#FFF !important;
   }
   .lucky-btn-selected{
       background-color:#04aa6d;

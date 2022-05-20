@@ -12,4 +12,7 @@ class TwodList extends Model
     public function twodTotal(){
         return $this->hasMany("App\Models\TwodLuckyRecord","number","number");
     }
+    public function terminateNumber(){
+        return $this->belongsTo("App\Models\TerminateNumber","number","number");
+    }
 }
