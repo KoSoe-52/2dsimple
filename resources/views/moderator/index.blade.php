@@ -93,6 +93,17 @@
 			<button type="button" id="back"  class="btn btn-outline-primary group2">7</button>
 			<button type="button" id="back"  class="btn btn-outline-primary mt-1 group2">8</button>
 			<button type="button" id="back"  class="btn btn-outline-primary mt-1 group2">9</button>
+			<h5 class="mt-2">ဘရိတ်</h5>
+			<button type="button" id="break"  class="btn btn-outline-primary group4">0</button>
+			<button type="button" id="break"  class="btn btn-outline-primary group4">1</button>
+			<button type="button" id="break"  class="btn btn-outline-primary group4">2</button>
+			<button type="button" id="break"  class="btn btn-outline-primary group4">3</button>
+			<button type="button" id="break"  class="btn btn-outline-primary group4">4</button>
+			<button type="button" id="break"  class="btn btn-outline-primary group4">5</button>
+			<button type="button" id="break"  class="btn btn-outline-primary group4">6</button>
+			<button type="button" id="break"  class="btn btn-outline-primary group4">7</button>
+			<button type="button" id="break"  class="btn btn-outline-primary mt-1 group4">8</button>
+			<button type="button" id="break"  class="btn btn-outline-primary mt-1 group4">9</button>
 			<h5 class="mt-2">နက္ခတ်၊ ပါဝါ</h5>
 			<button type="button" id="nagkhatDigit" class="btn btn-outline-primary group1">နက္ခတ်</button>
 			<button type="button" id="powerDigit"   class="btn btn-outline-primary group1">ပါဝါ</button>

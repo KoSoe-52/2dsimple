@@ -18,6 +18,19 @@ var soneMa =["01","03","05","07","09","21","23","25","27","29","41","43","45","4
 var maSone = ["10","12","14","16","18","30","32","34","36","38","50","52","54","56","58","70","72","74","76","78","90","92","94","96","98"];
 //var maMa
 var maMa = ["11","13","15","17","19","31","33","35","37","39","51","53","55","57","59","71","73","75","77","79","91","93","95","97","99"];
+//break
+var breakNumbers = [
+    ["00","19","91","28","82","37","73","46","64","55"],
+    ["01","10","29","92","38","83","47","74","56","65"],
+    ["02","20","11","39","93","48","84","57","75","66"],
+    ["03","30","12","21","49","94","58","85","67","76"],
+    ["04","40","13","31","22","59","95","68","86","77"],
+    ["05","50","14","41","23","32","69","96","78","87"],
+    ["06","60","15","51","24","42","33","79","97","88"],
+    ["07","70","16","61","25","52","34","43","89","98"],
+    ["08","80","17","71","26","62","35","53","44","99"],
+    ["09","90","18","81","27","72","36","63","45","54"]
+];
 $(document).ready(function(){
     $(".button .number").click(function(){
         $(this).toggleClass("selectedColor");
@@ -488,7 +501,38 @@ $(document).ready(function(){
         selectedNumberCheck(selectedNumbers);
         console.log(selectedNumbers.sort());
     });
-    
+    //break တွက်ခြင်း
+    $(document).on("click",".group4",function()
+    {
+       //var groupName = $(this).attr("id");
+        var number = $(this).text();
+        for(var i=0; i< 10; i++)
+        {
+            //color changed
+            $("."+breakNumbers[number][i]).addClass("selectedColor");
+            /*
+            * check selected number is already existed or not
+            */
+            var result = selectedNumbers.filter(p => p.number == breakNumbers[number][i]);
+            if(result.length> 0)
+            {
+                //already selected
+            }else
+            {
+                //push to selectedNumbers
+                var classDigit= $(".number").hasClass(breakNumbers[number][i]);
+                if(classDigit == true)
+                {
+                    var remaining =$("."+breakNumbers[number][i]).data("id");
+                    selectedNumbers.push({remaining:remaining,number:breakNumbers[number][i]});
+                }
+            }
+        }
+        $("#fast-choose-modal").modal("hide");
+        //ထိုးမည် button အား color change ခြင်း
+        selectedNumberCheck(selectedNumbers);
+        console.log(selectedNumbers);
+    });
 });//end ready
 function calculateTotal()
 {
