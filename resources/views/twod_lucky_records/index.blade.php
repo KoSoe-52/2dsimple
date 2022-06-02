@@ -7,13 +7,13 @@
     <div class="col-1 align-self-center">
         
     </div>
-    <div class="col-6 align-self-center">
+    <!-- <div class="col-6 align-self-center">
         <div class="customize-input float-right" style="margin-right:5px;">
             <button  class=" form-control bg-success border-0 custom-shadow custom-radius text-white">
                <a href="{{url(Auth::user()->roles->name.'/alluserExport')}}" class='text-white'>Excel-Export <i class="fa fa-file-excel text-white"></i></a>
             </button>
         </div>
-    </div>
+    </div> -->
     @if(session('status'))
         <div class="offset-lg-4 col-lg-4 alert alert-success p-2">{{session('status')}}</div>
     @endif
