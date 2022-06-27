@@ -38,6 +38,11 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
+            array(
+                'name' =>'T-R Related',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
         );
         //$chunks = array_chunk($userData, 500);
         foreach ($branches as $branch) {
@@ -76,104 +81,115 @@ class DatabaseSeeder extends Seeder
         }
         $users =array(
             array(
-                'name'  =>'thurein',
-                'password' => Hash::make('thu!@#098'),
+                'name'  =>'branch2',
+                'password' => Hash::make('br2!@#098'),
                 'phone'   => '0934050',
                 'status' => 1,
                 'break' => 5000,
                 'role_id'  => 1,
-                'branch_id' => 2,
+                'branch_id' => 5,
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
-            array(
-                'name'  =>'superadmin',
-                'password' => Hash::make('kosoe!@#098'),
-                'phone'   => '092521',
-                'status' => 1,
-                'break' => 3000,
-                'role_id'  => 2,
-                'branch_id' => 1,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
-            array(
-                'name'  =>'moderator1',
-                'password' => Hash::make('moderator1!@#473'),
-                'phone'   => '094450',
-                'status' => 1,
-                'break' => 50000,
-                'role_id'  => 3,
-                'branch_id' => 2,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
-            array(
-                'name'  =>'moderator2',
-                'password' => Hash::make('moderator2!@#543'),
-                'phone'   => '094450',
-                'status' => 1,
-                'break' => 50000,
-                'role_id'  => 3,
-                'branch_id' => 2,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
-            array(
-                'name'  =>'moderator3',
-                'password' => Hash::make('moderator3!@#142'),
-                'phone'   => '094450',
-                'status' => 1,
-                'break' => 50000,
-                'role_id'  => 3,
-                'branch_id' => 2,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
-            array(
-                'name'  =>'moderator4',
-                'password' => Hash::make('moderator4!@#564'),
-                'phone'   => '094450',
-                'status' => 1,
-                'break' => 50000,
-                'role_id'  => 3,
-                'branch_id' => 2,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
-            array(
-                'name'  =>'moderator5',
-                'password' => Hash::make('moderator5!@#123'),
-                'phone'   => '094450',
-                'status' => 1,
-                'break' => 50000,
-                'role_id'  => 3,
-                'branch_id' => 2,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
-            array(
-                'name'  =>'testingadmin',
-                'password' => Hash::make('test22655!@#'),
-                'phone'   => '0934050',
-                'status' => 1,
-                'break' => 5000,
-                'role_id'  => 1,
-                'branch_id' => 3,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
-            array(
-                'name'  =>'tinmoe2022',
-                'password' => Hash::make('2022tinmoe!@#'),
-                'phone'   => '0934050',
-                'status' => 1,
-                'break' => 5000,
-                'role_id'  => 1,
-                'branch_id' => 4,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
+            // array(
+            //     'name'  =>'thurein',
+            //     'password' => Hash::make('thu!@#098'),
+            //     'phone'   => '0934050',
+            //     'status' => 1,
+            //     'break' => 5000,
+            //     'role_id'  => 1,
+            //     'branch_id' => 2,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
+            // array(
+            //     'name'  =>'superadmin',
+            //     'password' => Hash::make('kosoe!@#098'),
+            //     'phone'   => '092521',
+            //     'status' => 1,
+            //     'break' => 3000,
+            //     'role_id'  => 2,
+            //     'branch_id' => 1,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
+            // array(
+            //     'name'  =>'moderator1',
+            //     'password' => Hash::make('moderator1!@#473'),
+            //     'phone'   => '094450',
+            //     'status' => 1,
+            //     'break' => 50000,
+            //     'role_id'  => 3,
+            //     'branch_id' => 2,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
+            // array(
+            //     'name'  =>'moderator2',
+            //     'password' => Hash::make('moderator2!@#543'),
+            //     'phone'   => '094450',
+            //     'status' => 1,
+            //     'break' => 50000,
+            //     'role_id'  => 3,
+            //     'branch_id' => 2,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
+            // array(
+            //     'name'  =>'moderator3',
+            //     'password' => Hash::make('moderator3!@#142'),
+            //     'phone'   => '094450',
+            //     'status' => 1,
+            //     'break' => 50000,
+            //     'role_id'  => 3,
+            //     'branch_id' => 2,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
+            // array(
+            //     'name'  =>'moderator4',
+            //     'password' => Hash::make('moderator4!@#564'),
+            //     'phone'   => '094450',
+            //     'status' => 1,
+            //     'break' => 50000,
+            //     'role_id'  => 3,
+            //     'branch_id' => 2,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
+            // array(
+            //     'name'  =>'moderator5',
+            //     'password' => Hash::make('moderator5!@#123'),
+            //     'phone'   => '094450',
+            //     'status' => 1,
+            //     'break' => 50000,
+            //     'role_id'  => 3,
+            //     'branch_id' => 2,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
+            // array(
+            //     'name'  =>'testingadmin',
+            //     'password' => Hash::make('test22655!@#'),
+            //     'phone'   => '0934050',
+            //     'status' => 1,
+            //     'break' => 5000,
+            //     'role_id'  => 1,
+            //     'branch_id' => 3,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
+            // array(
+            //     'name'  =>'tinmoe2022',
+            //     'password' => Hash::make('2022tinmoe!@#'),
+            //     'phone'   => '0934050',
+            //     'status' => 1,
+            //     'break' => 5000,
+            //     'role_id'  => 1,
+            //     'branch_id' => 4,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
             // array(
             //     'name'  =>'branch1',
             //     'password' => Hash::make(''),
