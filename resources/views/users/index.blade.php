@@ -87,7 +87,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mt-0 pt-0">
-                        <label for="name" class="col-form-label pt-0">Name<b class="text-danger">*</b></label>
+                        <label for="name" class="col-form-label pt-0">Username<b class="text-danger">*</b></label>
                         <input type="text" class="form-control" autocomplete="off" style="background:#eee" name="name" id="name" required />
                     </div>
                     <div class="form-group mt-0 pt-0">
