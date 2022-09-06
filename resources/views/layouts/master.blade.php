@@ -39,8 +39,10 @@
 					<li class="nav-item pcoded-menu-caption">
 					    <label>Menu lists</label>
 					</li>
-					<li class="nav-item"><a href="{{url('/twodrecords')}}">ထိုးထားသည့်စာရင်းများ</a></li>
-					<li class="nav-item"><a href="{{url('/twodList')}}">2D ဂဏန်း</a></li>
+					<li class="nav-item"><a href="{{url('/twodrecords')}}">Thai 2D စာရင်း</a></li>
+					<li class="nav-item"><a href="{{url('/twodList')}}"> Thai 2D ပေါင်းချုပ်</a></li>
+					<li class="nav-item"><a href="{{url('/dubaitwodrecords')}}">Dubai 2D စာရင်း</a></li>
+					<li class="nav-item"><a href="{{url('/dubaitwodList')}}"> Dubai 2D ပေါင်းချုပ်</a></li>
 					<li class="nav-item"><a href="{{url('/users')}}">ကိုယ်စားလှယ်များ</a></li>
 					<li class="nav-item"><a href="{{ route('logout') }}">ထွက်မည်</a></li>
 				</ul>

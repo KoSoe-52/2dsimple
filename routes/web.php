@@ -41,6 +41,11 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('twodList/{sort?}',[AdminController::class, 'twodList'])->name("twodList");   
     Route::get('twodList/{number?}/terminate',[AdminController::class, 'terminate']);   
     Route::get('twodList/{number?}/open',[AdminController::class, 'open']);   
+    //dubai
+    Route::get('dubaitwodrecords',[App\Http\Controllers\DubiaLuckyRecordController::class, 'twodrecords']);   
+    Route::get('dubaitwodList/{sort?}',[App\Http\Controllers\DubiaLuckyRecordController::class, 'twodList']);   
+    Route::get('dubaitwodList/{number?}/terminate',[App\Http\Controllers\DubiaLuckyRecordController::class, 'terminate']);   
+    Route::get('dubaitwodList/{number?}/open',[App\Http\Controllers\DubiaLuckyRecordController::class, 'open']);  
 });
 //superadmin သည်  system admin ဖြစ်သညါ
 Route::group(['prefix'=>'SuperAdmin','middleware'=>['SuperAdmin','auth']],function(){

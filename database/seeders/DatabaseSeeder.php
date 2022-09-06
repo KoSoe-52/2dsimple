@@ -80,17 +80,17 @@ class DatabaseSeeder extends Seeder
             }
         }
         $users =array(
-            // array(
-            //     'name'  =>'branch2',
-            //     'password' => Hash::make('br2!@#098'),
-            //     'phone'   => '0934050',
-            //     'status' => 1,
-            //     'break' => 5000,
-            //     'role_id'  => 1,
-            //     'branch_id' => 5,
-            //     'created_at' => now()->toDateTimeString(),
-            //     'updated_at' => now()->toDateTimeString()
-            // ),
+            array(
+                'name'  =>'branch2',
+                'password' => Hash::make('br2!@#098'),
+                'phone'   => '0934050',
+                'status' => 1,
+                'break' => 5000,
+                'role_id'  => 1,
+                'branch_id' => 5,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
             // array(
             //     'name'  =>'thurein',
             //     'password' => Hash::make('thu!@#098'),

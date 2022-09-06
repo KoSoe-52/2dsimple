@@ -15,4 +15,11 @@ class TwodList extends Model
     public function terminateNumber(){
         return $this->belongsTo("App\Models\TerminateNumber","number","number");
     }
+    //dubai
+    public function dubaitwodTotal(){
+        return $this->hasMany("App\Models\DubiaLuckRecord","number","number");
+    }
+    public function dubaiterminateNumber(){
+        return $this->belongsTo("App\Models\DubaiTerminateNumber","number","number");
+    }
 }
