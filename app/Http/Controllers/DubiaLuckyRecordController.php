@@ -248,4 +248,49 @@ class DubiaLuckyRecordController extends Controller
             "data" => $break
         ]);
     }
+    public function open($id)
+    {
+        date_default_timezone_set("Asia/Yangon");
+        $time = date("Hi");
+        $date = date("Y-m-d");
+        if($time >= "0000" && $time <= "1129")//for 11
+        {
+            $time = "11:00";
+        }else if($time >= "1130" && $time <= "1329")//for 11
+        {
+            $time = "13:00";
+        }else if($time >= "1330" && $time <= "1529")//for 11
+        {
+            $time = "15:00";
+        }else if($time >= "1530" && $time <= "1729")//for 11
+        {
+            $time = "17:00";
+        }else if($time >= "1730" && $time <= "1929")//for 11
+        {
+            $time = "19:00";
+        }else if($time >= "1930" && $time <= "2359")//for 11
+        {
+            $time = "21:00";
+        }
+        $delete = DubaiTerminateNumber::whereDate("date",$date)
+                        ->where("time",$time)
+                        ->where("number",$id)
+                        ->where("branch_id",Auth::user()->branch_id)
+                        ->delete();
+        if($delete == true)
+        {
+            return response()->json([
+                "status" => true,
+                "msg" => "Success",
+                "data" => []
+            ]);
+        }else
+        {
+            return response()->json([
+                "status" => false,
+                "msg" => "Fail",
+                "data" => []
+            ]); 
+        }
+    }
 }
