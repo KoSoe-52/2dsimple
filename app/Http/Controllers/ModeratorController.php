@@ -84,7 +84,7 @@ class ModeratorController extends Controller
         {
             // နောက်ရက် မနက်ပိုင်းအတွက်ထိုးပေးရမယ်
             //db ထဲထည့်ရန်
-             $time="12:01";
+            $time="12:01";
             $currentDate = date("Y-m-d");
             $nextDate = date('Y-m-d', strtotime($currentDate . ' +1 day'));
             /*

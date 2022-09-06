@@ -6,9 +6,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ModeratorController;
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,19 +41,15 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('twodList/{sort?}',[AdminController::class, 'twodList'])->name("twodList");   
     Route::get('twodList/{number?}/terminate',[AdminController::class, 'terminate']);   
     Route::get('twodList/{number?}/open',[AdminController::class, 'open']);   
-
 });
 //superadmin သည်  system admin ဖြစ်သညါ
 Route::group(['prefix'=>'SuperAdmin','middleware'=>['SuperAdmin','auth']],function(){
     Route::get('dashboard',[SuperAdminController::class,'index'])->name('super.dashboard');
-
 });
-
 Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::get('2d',[ModeratorController::class,'index'])->name('moderator.dashboard');
     Route::post("2d",[ModeratorController::class,'store']);
     Route::get("history",[ModeratorController::class,'history']);
     Route::get("history/{id}",[ModeratorController::class,'vouncher'])->name("history.vouncher");
     Route::get("logout",[LoginController::class,'logout']);
-
 });
