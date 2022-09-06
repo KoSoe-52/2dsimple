@@ -17,12 +17,12 @@ class CreateDubiaLuckRecordsTable extends Migration
             $table->id();
             $table->string("name")->nullable();
             $table->string("phone")->nullable();
-            $table->date("date");
-            $table->string("time");
+            $table->date("date")->index();
+            $table->string("time")->index();
             $table->string("number");
             $table->double("price",12,2);
             $table->bigInteger("user_id")->unsigned();
-            $table->bigInteger("vouncher_id");
+            $table->bigInteger("vouncher_id")->index();
             $table->foreign("user_id")->references("id")->on("users");
             $table->foreign("number")->references("number")->on("twod_lists");
             $table->foreign("time")->references("name")->on("twod_times");

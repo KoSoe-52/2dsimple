@@ -80,17 +80,17 @@ class DatabaseSeeder extends Seeder
             }
         }
         $users =array(
-            array(
-                'name'  =>'branch2',
-                'password' => Hash::make('br2!@#098'),
-                'phone'   => '0934050',
-                'status' => 1,
-                'break' => 5000,
-                'role_id'  => 1,
-                'branch_id' => 5,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
+            // array(
+            //     'name'  =>'branch2',
+            //     'password' => Hash::make('br2!@#098'),
+            //     'phone'   => '0934050',
+            //     'status' => 1,
+            //     'break' => 5000,
+            //     'role_id'  => 1,
+            //     'branch_id' => 5,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
             // array(
             //     'name'  =>'thurein',
             //     'password' => Hash::make('thu!@#098'),
@@ -240,7 +240,37 @@ class DatabaseSeeder extends Seeder
                 'name' =>'16:30',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
-            )            
+            ),
+            array(
+                'name' => '11:00',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
+            array(
+                'name' => '13:00',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ), 
+            array(
+                'name' => '15:00',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ), 
+            array(
+                'name' => '17:00',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ), 
+            array(
+                'name' => '19:00',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ), 
+            array(
+                'name' => '21:00',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),           
         );
         foreach ($times as $time) {
             $count = TwodTime::where("name",$time["name"])->count();
