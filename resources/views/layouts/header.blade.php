@@ -1,6 +1,6 @@
 <div class="header-row">
     <div class="calc-button-row">
-        <div class="hour-txt fs-6">{{Auth::user()->name}}</div>
+        <div class="hour-txt fs-6">adsfadsf</div>
         <div class="lucky-btn">ထိုးမည်</div>
     </div>
     <div class="calc-button-row">

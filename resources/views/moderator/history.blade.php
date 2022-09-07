@@ -2,7 +2,7 @@
 @section('title','2D')
 @section('style')
 	<style type="text/css">
-		.history a{
+		.histories a{
 			color:#0099FF;
 		}
 	</style>

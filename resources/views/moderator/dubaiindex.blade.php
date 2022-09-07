@@ -1,8 +1,8 @@
 @extends('layouts.moderator')
-@section('title','2D')
+@section('title','Dubai 2D')
 @section('style')
 	<style type="text/css">
-		.twod a{
+		.dubai2d a{
 			color:#0099FF;
 		}
 	</style>
@@ -145,7 +145,7 @@
 				//$(".loader").fadeIn();
 				$("#luckyListFormSubmit")[0].reset();
 				$.ajax({
-					url: baseUrl+'/2d',
+					url: baseUrl+'/dubai2d',
 					type: "POST",
 					data:  formdata,
 					cache:false,
@@ -158,7 +158,7 @@
 						{
 							//alert("အောင်မြင်ပါသည်");
 							$("luckyListFormSubmit").modal("hide");
-							window.location.href= baseUrl+"/history/"+response.data;
+							window.location.href= baseUrl+"/dubaihistory/"+response.data;
 						}else
 						{
 							alert(response.data);

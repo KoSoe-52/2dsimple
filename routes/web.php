@@ -57,4 +57,12 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::get("history",[ModeratorController::class,'history']);
     Route::get("history/{id}",[ModeratorController::class,'vouncher'])->name("history.vouncher");
     Route::get("logout",[LoginController::class,'logout']);
+    //dubai
+    Route::get('dubai2d',[App\Http\Controllers\DubaiModeratorController::class,'index']);
+    Route::post("dubai2d",[App\Http\Controllers\DubaiModeratorController::class,'store']);
+    Route::get("dubaihistory",[App\Http\Controllers\DubaiModeratorController::class,'history']);
+    Route::get("dubaihistory/{id}",[App\Http\Controllers\DubaiModeratorController::class,'vouncher']);
+
+    Route::get('histories',[App\Http\Controllers\DubaiModeratorController::class,'create']);
+
 });
