@@ -217,7 +217,7 @@ class DubaiModeratorController extends Controller
             $date = date("Y-m-d");
             $histories = $histories->whereDate("dubia_luck_records.date","=",$date)->get();
         }
-        return view("moderator.history",compact("histories"));
+        return view("moderator.dubaihistory",compact("histories"));
     }
     /*
     * vouncher id

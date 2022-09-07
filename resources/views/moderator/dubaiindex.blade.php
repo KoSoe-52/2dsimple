@@ -8,7 +8,7 @@
 	</style>
 @endsection
 @section('content')
-    @include('layouts.header')
+    @include('layouts.dubaiheader')
 	<div class="calc-body pt-3">
 		<div class="calc-button-row">
 			@foreach($twodlists as $key=>$twodlist)

@@ -8,10 +8,10 @@
 	</style>
 @endsection
 @section('content')
-<div style="margin-bottom:70px;margin-top:8px;">
+<div style="margin-bottom:70px;margin-top:50px;">
     <div class="card mb-2 card-div">
         <a href="{{url('history')}}">
-            <div class="card-body p-0">
+            <div class="card-body p-4">
                 <h4 class="card-title p-0">Thailand 2D</h4>
                 <p class="card-text  p-0" style="line-height:14px">History </p>
             </div>
@@ -19,7 +19,7 @@
     </div>
     <div class="card mb-2 card-div">
         <a href="{{url('dubaihistory')}}">
-            <div class="card-body p-0">
+            <div class="card-body p-4">
                 <h4 class="card-title p-0">Dubai 2D</h4>
                 <p class="card-text  p-0" style="line-height:14px">History </p>
             </div>

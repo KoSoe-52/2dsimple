@@ -2,7 +2,7 @@
 @section('title','Vouncher')
 @section('style')
 	<style type="text/css">
-		.menu2d a{
+		.histories a{
 			color:#0099FF;
 		}
 	</style>
