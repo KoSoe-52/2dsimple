@@ -18,7 +18,7 @@
   <div class="container-fluid">
     <div style="display: inline-block;width:100%;text-align:center;">
       <ul class="nav" style="width:100% !important;text-align:center;">
-        <li style="padding:5px 5px 5px 0px;" class="menu 2d twod"><a href="{{ url('2d') }}" style="padding-left:5px">  Thai2D</a></li>
+        <li style="padding:5px 5px 5px 0px;" class="menu 2d twod"><a href="{{ url('2d') }}" style="padding-left:0px">  Thai2D</a></li>
         <li style="padding:5px 5px 5px 0px;" class="menu dubai2d"><a href="{{ url('dubai2d') }}" style="padding-left:5px">  Dubai2D</a></li>
         <li style="padding:5px 5px 5px 0px;" class="menu histories"><a href="{{ url('histories') }}" style="padding-left:5px"> History</a></li>
         <li style="padding:5px 5px 5px 0px;" class="menu"><a href="{{ route('logout') }}" style="padding-left:5px"> Logout</a></li>
