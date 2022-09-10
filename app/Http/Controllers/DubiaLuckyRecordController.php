@@ -62,22 +62,22 @@ class DubiaLuckyRecordController extends Controller
             $date = date("Y-m-d");
             // $time="0003";
             //မနက်ပိုင်း
-            if($time >= "0000" && $time <= "1129")//for 11
+            if($time >= "0000" && $time <= "1114")//for 11
             {
                 $twodTime = "11:00";
-            }else if($time >= "1130" && $time <= "1329")//for 11
+            }else if($time >= "1115" && $time <= "1314")//for 11
             {
                 $twodTime = "13:00";
-            }else if($time >= "1330" && $time <= "1529")//for 11
+            }else if($time >= "1315" && $time <= "1514")//for 11
             {
                 $twodTime = "15:00";
-            }else if($time >= "1530" && $time <= "1729")//for 11
+            }else if($time >= "1515" && $time <= "1714")//for 11
             {
                 $twodTime = "17:00";
-            }else if($time >= "1730" && $time <= "1929")//for 11
+            }else if($time >= "1715" && $time <= "1914")//for 11
             {
                 $twodTime = "19:00";
-            }else if($time >= "1930" && $time <= "2359")//for 11
+            }else if($time >= "1915" && $time <= "2359")//for 11
             {
                 $twodTime = "21:00";
             }
@@ -161,22 +161,22 @@ class DubiaLuckyRecordController extends Controller
         $time = date("Hi");
         $date = date("Y-m-d");
         $terminatedNumbers = array();
-        if($time >= "0000" && $time <= "1129")//for 11
+        if($time >= "0000" && $time <= "1114")//for 11
         {
             $twodTime = "11:00";
-        }else if($time >= "1130" && $time <= "1329")//for 11
+        }else if($time >= "1115" && $time <= "1314")//for 11
         {
             $twodTime = "13:00";
-        }else if($time >= "1330" && $time <= "1529")//for 11
+        }else if($time >= "1315" && $time <= "1514")//for 11
         {
             $twodTime = "15:00";
-        }else if($time >= "1530" && $time <= "1729")//for 11
+        }else if($time >= "1515" && $time <= "1714")//for 11
         {
             $twodTime = "17:00";
-        }else if($time >= "1730" && $time <= "1929")//for 11
+        }else if($time >= "1715" && $time <= "1914")//for 11
         {
             $twodTime = "19:00";
-        }else if($time >= "1930" && $time <= "2359")//for 11
+        }else if($time >= "1915" && $time <= "2359")//for 11
         {
             $twodTime = "21:00";
         }
@@ -217,22 +217,22 @@ class DubiaLuckyRecordController extends Controller
         date_default_timezone_set("Asia/Yangon");
         $time = date("Hi");
         $date = date("Y-m-d");
-        if($time >= "0000" && $time <= "1129")//for 11
+        if($time >= "0000" && $time <= "1114")//for 11
         {
             $time = "11:00";
-        }else if($time >= "1130" && $time <= "1329")//for 11
+        }else if($time >= "1115" && $time <= "1314")//for 11
         {
             $time = "13:00";
-        }else if($time >= "1330" && $time <= "1529")//for 11
+        }else if($time >= "1315" && $time <= "1514")//for 11
         {
             $time = "15:00";
-        }else if($time >= "1530" && $time <= "1729")//for 11
+        }else if($time >= "1515" && $time <= "1714")//for 11
         {
             $time = "17:00";
-        }else if($time >= "1730" && $time <= "1929")//for 11
+        }else if($time >= "1715" && $time <= "1914")//for 11
         {
             $time = "19:00";
-        }else if($time >= "1930" && $time <= "2359")//for 11
+        }else if($time >= "1915" && $time <= "2359")//for 11
         {
             $time = "21:00";
         }
@@ -253,22 +253,22 @@ class DubiaLuckyRecordController extends Controller
         date_default_timezone_set("Asia/Yangon");
         $time = date("Hi");
         $date = date("Y-m-d");
-        if($time >= "0000" && $time <= "1129")//for 11
+        if($time >= "0000" && $time <= "1114")//for 11
         {
             $time = "11:00";
-        }else if($time >= "1130" && $time <= "1329")//for 11
+        }else if($time >= "1115" && $time <= "1314")//for 11
         {
             $time = "13:00";
-        }else if($time >= "1330" && $time <= "1529")//for 11
+        }else if($time >= "1315" && $time <= "1514")//for 11
         {
             $time = "15:00";
-        }else if($time >= "1530" && $time <= "1729")//for 11
+        }else if($time >= "1515" && $time <= "1714")//for 11
         {
             $time = "17:00";
-        }else if($time >= "1730" && $time <= "1929")//for 11
+        }else if($time >= "1715" && $time <= "1914")//for 11
         {
             $time = "19:00";
-        }else if($time >= "1930" && $time <= "2359")//for 11
+        }else if($time >= "1915" && $time <= "2359")//for 11
         {
             $time = "21:00";
         }
