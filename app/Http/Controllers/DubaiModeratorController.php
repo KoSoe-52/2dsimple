@@ -32,25 +32,25 @@ class DubaiModeratorController extends Controller
         if($time >= "0900" && $time <= "1055")//for 11
         {
             $time = "11:00";
-        }else if($time >= "1130" && $time <= "1255")//for 11
+        }else if($time >= "1115" && $time <= "1255")//for 11
         {
             $time = "13:00";
-        }else if($time >= "1330" && $time <= "1455")//for 11
+        }else if($time >= "1315" && $time <= "1455")//for 11
         {
             $time = "15:00";
-        }else if($time >= "1530" && $time <= "1655")//for 11
+        }else if($time >= "1515" && $time <= "1655")//for 11
         {
             $time = "17:00";
-        }else if($time >= "1730" && $time <= "1855")//for 11
+        }else if($time >= "1715" && $time <= "1855")//for 11
         {
             $time = "19:00";
-        }else if($time >= "1930" && $time <= "2055")//for 11
+        }else if($time >= "1915" && $time <= "2055")//for 11
         {
             $time = "21:00";
         }else
         {
-            $time = "21:00";
-            //$time ="breakTime";
+            //$time = "21:00";
+            $time ="breakTime";
         }
         if($time == "breakTime")
         {
@@ -132,25 +132,25 @@ class DubaiModeratorController extends Controller
             if($time >= "0900" && $time <= "1055")//for 11
             {
                 $time = "11:00";
-            }else if($time >= "1130" && $time <= "1255")//for 11
+            }else if($time >= "1115" && $time <= "1255")//for 11
             {
                 $time = "13:00";
-            }else if($time >= "1330" && $time <= "1455")//for 11
+            }else if($time >= "1315" && $time <= "1455")//for 11
             {
                 $time = "15:00";
-            }else if($time >= "1530" && $time <= "1655")//for 11
+            }else if($time >= "1515" && $time <= "1655")//for 11
             {
                 $time = "17:00";
-            }else if($time >= "1730" && $time <= "1855")//for 11
+            }else if($time >= "1715" && $time <= "1855")//for 11
             {
                 $time = "19:00";
-            }else if($time >= "1930" && $time <= "2055")//for 11
+            }else if($time >= "1915" && $time <= "2055")//for 11
             {
                 $time = "21:00";
             }else
             {
-                $time = "21:00";
-                //$time ="breakTime";
+                //$time = "21:00";
+                $time ="breakTime";
             }
             if($time == "breakTime")
             {
