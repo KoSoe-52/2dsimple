@@ -29,22 +29,22 @@ class DubaiModeratorController extends Controller
         //07-05-2022 15:19
         $time = date("Hi");
         $date = date("Y-m-d");
-        if($time >= "0900" && $time <= "1055")//for 11
+        if($time >= "0900" && $time <= "1100")//for 11
         {
             $time = "11:00";
-        }else if($time >= "1115" && $time <= "1255")//for 11
+        }else if($time >= "1115" && $time <= "1300")//for 11
         {
             $time = "13:00";
-        }else if($time >= "1315" && $time <= "1455")//for 11
+        }else if($time >= "1315" && $time <= "1500")//for 11
         {
             $time = "15:00";
-        }else if($time >= "1515" && $time <= "1655")//for 11
+        }else if($time >= "1515" && $time <= "1700")//for 11
         {
             $time = "17:00";
-        }else if($time >= "1715" && $time <= "1855")//for 11
+        }else if($time >= "1715" && $time <= "1900")//for 11
         {
             $time = "19:00";
-        }else if($time >= "1915" && $time <= "2055")//for 11
+        }else if($time >= "1915" && $time <= "2100")//for 11
         {
             $time = "21:00";
         }else
@@ -129,22 +129,22 @@ class DubaiModeratorController extends Controller
             date_default_timezone_set("Asia/Yangon");
             //07-05-2022 15:19
             $time = date("Hi");
-            if($time >= "0900" && $time <= "1055")//for 11
+            if($time >= "0900" && $time <= "1100")//for 11
             {
                 $time = "11:00";
-            }else if($time >= "1115" && $time <= "1255")//for 11
+            }else if($time >= "1115" && $time <= "1300")//for 11
             {
                 $time = "13:00";
-            }else if($time >= "1315" && $time <= "1455")//for 11
+            }else if($time >= "1315" && $time <= "1500")//for 11
             {
                 $time = "15:00";
-            }else if($time >= "1515" && $time <= "1655")//for 11
+            }else if($time >= "1515" && $time <= "1700")//for 11
             {
                 $time = "17:00";
-            }else if($time >= "1715" && $time <= "1855")//for 11
+            }else if($time >= "1715" && $time <= "1900")//for 11
             {
                 $time = "19:00";
-            }else if($time >= "1915" && $time <= "2055")//for 11
+            }else if($time >= "1915" && $time <= "2100")//for 11
             {
                 $time = "21:00";
             }else
