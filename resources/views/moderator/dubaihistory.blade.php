@@ -16,7 +16,7 @@
                     <input type="date" style="padding:7px;width:100%;" name="date" value="{{request()->date}}"/>
                 </td>
                 <?php
-                    $times = array("12:01","16:30");
+                    $times = array("11:00","13:00","15:00","17:00","19:00","21:00");
                 ?>
                 <td style="width:30%;max-width:30%;">
                     <select style="padding:7px;width:100%;"  name="time">
