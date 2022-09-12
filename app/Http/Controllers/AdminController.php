@@ -360,4 +360,16 @@ class AdminController extends Controller
             ]); 
         }
     }
+
+    public function record_delete($recId)
+    {
+        $DeleteRec = TwodLuckyRecord::find($recId);
+        $DeleteRec->delete();
+        return response()->json([
+            "status" => true,
+            "msg" => "Success",
+            "data" => []
+        ]);
+    }
+
 }
