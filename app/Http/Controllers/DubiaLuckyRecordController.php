@@ -30,7 +30,8 @@ class DubiaLuckyRecordController extends Controller
     {
         date_default_timezone_set("Asia/Yangon");
         $users = User::where("branch_id",Auth::user()->branch_id)->where("role_id",3)->get();
-        $records = DubiaLuckRecord::leftJoin("users","users.id","=","dubia_luck_records.user_id")
+        $records = DubiaLuckRecord::select('dubia_luck_records.*')
+            ->leftJoin("users","users.id","=","dubia_luck_records.user_id")
             ->where("users.branch_id",Auth::user()->branch_id);
             $countArray = array();
         if(!empty($request->get("number")))
@@ -292,5 +293,16 @@ class DubiaLuckyRecordController extends Controller
                 "data" => []
             ]); 
         }
+    }
+
+    public function dubaitwodrecords_delete($recId)
+    {
+        $DeleteRec = DubiaLuckRecord::find($recId);
+        $DeleteRec->delete();
+        return response()->json([
+            "status" => true,
+            "msg" => "Success",
+            "data" => []
+        ]);
     }
 }

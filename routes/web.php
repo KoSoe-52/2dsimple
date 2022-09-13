@@ -45,7 +45,10 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('twodList/{number?}/terminate',[AdminController::class, 'terminate']);   
     Route::get('twodList/{number?}/open',[AdminController::class, 'open']);   
     //dubai
-    Route::get('dubaitwodrecords',[App\Http\Controllers\DubiaLuckyRecordController::class, 'twodrecords']);   
+    Route::get('dubaitwodrecords',[App\Http\Controllers\DubiaLuckyRecordController::class, 'twodrecords']);
+    
+    Route::get('dubaitwodrecords/{id}/delete',[App\Http\Controllers\DubiaLuckyRecordController::class, 'dubaitwodrecords_delete']);
+
     Route::get('dubaitwodList/{sort?}',[App\Http\Controllers\DubiaLuckyRecordController::class, 'twodList']);   
     Route::get('dubaitwodList/{number?}/terminate',[App\Http\Controllers\DubiaLuckyRecordController::class, 'terminate']);   
     Route::get('dubaitwodList/{number?}/open',[App\Http\Controllers\DubiaLuckyRecordController::class, 'open']);  

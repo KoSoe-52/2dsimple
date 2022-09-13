@@ -86,6 +86,7 @@
                         <th>ပမာဏ</th>
                         <th>ထိုးသူအမည်</th>
                         <th>ကိုယ်စားလှယ်အမည်</th>
+                        <th>*</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,6 +100,7 @@
                             <td>{{$record->price}}</td>
                             <td>{{$record->name}}</td>
                             <td>{{$record->users->name}}</td>
+                            <td><button class="btn btn-danger"><a href="#" data-id="{{$record->id}}" class="text-white dubairecord_delete"><i class="fa fa-times"></i> Delete </a></button></td>
                         </tr>
                         <?php $total[]=$record->price; ?>
                     @endforeach
@@ -143,6 +145,40 @@
                     });
                 }
             });
+        });
+
+        var baseUrl = '{{url("")}}';
+        $(document).on("click",".dubairecord_delete",function(){
+          
+                var id = $(this).data("id");
+                Swal.fire({
+                        title: 'ဖျက်ရန်သေချာပါသလား?',
+                        showCancelButton: true,
+                        confirmButtonText: 'အတည်ပြုမည်',
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: baseUrl+'/dubaitwodrecords/'+id+'/delete',
+                            type: "GET",
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                            },
+                            cache:false,
+                            processData:false,
+                            contentType:false,
+                            success:function(response)
+                            {
+                                console.log(response);
+                                if(response.status == true)
+                                {
+                                    Swal.fire('အောင်မြင်ပါသည်', '', 'success');
+                                    window.location.reload();
+                                }
+                            }
+                        });
+                    }
+                });
+           
         });
     </script>
 @endsection

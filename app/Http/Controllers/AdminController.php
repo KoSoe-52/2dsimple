@@ -36,7 +36,8 @@ class AdminController extends Controller
     {
         date_default_timezone_set("Asia/Yangon");
         $users = User::where("branch_id",Auth::user()->branch_id)->where("role_id",3)->get();
-        $records = TwodLuckyRecord::leftJoin("users","users.id","=","twod_lucky_records.user_id")
+        $records = TwodLuckyRecord::select('twod_lucky_records.*')
+            ->leftJoin("users","users.id","=","twod_lucky_records.user_id")
             ->where("users.branch_id",Auth::user()->branch_id);
             $countArray = array();
         if(!empty($request->get("number")))
@@ -371,5 +372,8 @@ class AdminController extends Controller
             "data" => []
         ]);
     }
+
+    
+    
 
 }
