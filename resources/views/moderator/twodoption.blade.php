@@ -25,6 +25,14 @@
             </div>
         </a>
     </div>
+    <div class="card mb-2 card-div">
+        <a href="{{url('3dhistory')}}">
+            <div class="card-body p-4">
+                <h4 class="card-title p-0">3D </h4>
+                <p class="card-text  p-0" style="line-height:14px">History </p>
+            </div>
+        </a>
+    </div>
 </div>
 @endsection
 @section('script')

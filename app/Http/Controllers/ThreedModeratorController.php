@@ -202,30 +202,42 @@ class ThreedModeratorController extends Controller
     public function history(Request $request)
     {
         date_default_timezone_set("Asia/Yangon");
-        $time = date("Hi");
-
-        $histories = ThreedLuckyRecord::select("name","date","time","vouncher_id")
+        //get Day
+        $day = date("d");
+        if($day >=2 && $day <=16)
+        {
+            $Ym = date("Y-m-");
+            $date = $Ym."16";
+        }else if($day >=17 && $day<=31)
+        {
+            //next month
+            $currentDate = strtotime(date('Y-m-d'));
+            $Ym = date("Y-m-", strtotime("+1 month", $currentDate));
+            $date = $Ym."01";
+        }else
+        {
+            // day 1 
+            $Ym = date("Y-m-");
+            $date = $Ym."01";
+        }
+        //return $date;
+        $histories = ThreedLuckyRecord::select("name","date","vouncher_id")
                     ->where("user_id",Auth::user()->id)
-                    //->where("time",$time)
-                    ->groupBy("vouncher_id","date","time","name")
+                    ->whereDate("date",$date)
+                    ->groupBy("vouncher_id","date","name")
                     ->orderBy("vouncher_id","DESC");
         $countArray = array();
         if(!empty($request->get("date")))
         {
-            $countArray[] =$histories->whereDate("dubia_luck_records.date","=",$request->get("date"));
-        }
-        if(!empty($request->get("time")))
-        {
-            $countArray[] =$histories->where("dubia_luck_records.time","=",$request->get("time"));
+            $countArray[] =$histories->whereDate("threed_lucky_records.date","=",$request->get("date"));
         }
         if (count($countArray) > 0) {
             $histories = $histories->get();
         }else
         {
-            $date = date("Y-m-d");
-            $histories = $histories->whereDate("dubia_luck_records.date","=",$date)->get();
+            $histories = $histories->whereDate("threed_lucky_records.date","=",$date)->get();
         }
-        return view("moderator.dubaihistory",compact("histories"));
+        return view("moderator.3dhistory",compact("histories"));
     }
     /*
     * vouncher id

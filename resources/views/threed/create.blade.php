@@ -94,18 +94,18 @@
 					contentType:false,
 					processData:false,
 					success: function(response) {
-					    console.log(JSON.stringify(response))
-					// $("#luckyListFormSubmit")[0].reset();
-					// if(response.status === true)
-					// 	{
-					// 		//alert("အောင်မြင်ပါသည်");
-					// 		$("luckyListFormSubmit").modal("hide");
-					// 		//window.location.href= baseUrl+"/history/"+response.data;
-					// 	}else
-					// 	{
-					// 		alert(response.data);
-					// 	}
-					// }
+					    //console.log(JSON.stringify(response))
+					$("#luckyListFormSubmit")[0].reset();
+					if(response.status === true)
+						{
+							//alert("အောင်မြင်ပါသည်");
+							$("luckyListFormSubmit").modal("hide");
+							window.location.href= baseUrl+"/3dhistory/"+response.data;
+						}else
+						{
+							alert(response.data);
+						}
+					}
 				});
 			}
 		});
