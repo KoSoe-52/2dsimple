@@ -129,32 +129,38 @@ class ThreedModeratorController extends Controller
             ]);
         } else {
             date_default_timezone_set("Asia/Yangon");
-            //07-05-2022 15:19
-            $time = date("Hi");
-            if($time >= "0900" && $time <= "1100")//for 11
+            $hourMinute = date("Hi");
+            //get Day
+            $day = date("d");
+            //break Time collect
+            $breakTime="";
+            if($day >=2 && $day <=16)
             {
-                $time = "11:00";
-            }else if($time >= "1115" && $time <= "1300")//for 11
+                //ထွက်မည့်ရက် ၃ နာရီဆိုပိတ်မည်
+                if($day == 16 && $hourMinute >=1500)
+                {
+                    $breakTime ="breakTime";
+                }
+                $Ym = date("Y-m-");
+                $date = $Ym."16";
+            }else if($day >=17 && $day<=31)
             {
-                $time = "13:00";
-            }else if($time >= "1315" && $time <= "1500")//for 11
-            {
-                $time = "15:00";
-            }else if($time >= "1515" && $time <= "1700")//for 11
-            {
-                $time = "17:00";
-            }else if($time >= "1715" && $time <= "1900")//for 11
-            {
-                $time = "19:00";
-            }else if($time >= "1915" && $time <= "2100")//for 11
-            {
-                $time = "21:00";
+                //next month
+                $currentDate = strtotime(date('Y-m-d'));
+                $Ym = date("Y-m-", strtotime("+1 month", $currentDate));
+                $date = $Ym."01";
             }else
             {
-                //$time = "21:00";
-                $time ="breakTime";
+                // day 1 
+                //ထွက်မည့်ရက် ၃ နာရီဆိုပိတ်မည်
+                if($day == "01" && $hourMinute >=1500)
+                {
+                    $breakTime ="breakTime";
+                }
+                $Ym = date("Y-m-");
+                $date = $Ym."01";
             }
-            if($time == "breakTime")
+            if($breakTime == "breakTime")
             {
                 return response()->json([
                     "status" => false,
@@ -167,8 +173,7 @@ class ThreedModeratorController extends Controller
                 {
                     ThreedLuckyRecord::create([
                         "name"   => $request->get("name"),
-                        "date"   => date("Y-m-d"),
-                        "time" => $time,
+                        "date"   => $date,
                         "number" => $request->get("number")[$key],
                         "price" => $request->get("amount")[$key],
                         "user_id" => Auth::user()->id,
