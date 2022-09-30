@@ -86,7 +86,7 @@ class ThreedModeratorController extends Controller
                     )
                 );
                 $status = $this->breakNumbers($date,$data->number);
-               $remainingAmount = Auth::user()->break - $results[0]->amount;
+                $remainingAmount = Auth::user()->break - $results[0]->amount;
                 $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>0);
             }
             return $amountOfNumber;
@@ -177,13 +177,14 @@ class ThreedModeratorController extends Controller
                         "number" => $request->get("number")[$key],
                         "price" => $request->get("amount")[$key],
                         "user_id" => Auth::user()->id,
-                        "vouncher_id" => $vouncher_id
+                        "vouncher_id" => $vouncher_id,
+                        "inser_date_time" => date("Y-m-d H:i:s")
                     ]);
                 }
                 return response()->json([
                     "status" => true,
                     "data"   => $vouncher_id
-                ]);
+                ],200);
             }
         }
     }

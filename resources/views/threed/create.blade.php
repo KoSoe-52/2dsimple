@@ -38,7 +38,7 @@
     <!-- ထီထိုးသည့် lists -->
 	<div class="modal" id="luckyList">
 	  <div class="modal-dialog modal-fullscreen">
-        <form method="post" action="{{url('/2d')}}" id="luckyListFormSubmit">
+        <form method="post" action="{{url('/threed')}}" id="luckyListFormSubmit">
             @csrf
             <div class="modal-content">
                     <!-- Modal Header -->
@@ -87,25 +87,25 @@
 				//$(".loader").fadeIn();
 				$("#luckyListFormSubmit")[0].reset();
 				$.ajax({
-					url: baseUrl+'/2d',
+					url: baseUrl+'/threed',
 					type: "POST",
 					data:  formdata,
 					cache:false,
 					contentType:false,
 					processData:false,
 					success: function(response) {
-					console.log(JSON.stringify(response))
-					$("#luckyListFormSubmit")[0].reset();
-					if(response.status === true)
-						{
-							//alert("အောင်မြင်ပါသည်");
-							$("luckyListFormSubmit").modal("hide");
-							//window.location.href= baseUrl+"/history/"+response.data;
-						}else
-						{
-							alert(response.data);
-						}
-					}
+					    console.log(JSON.stringify(response))
+					// $("#luckyListFormSubmit")[0].reset();
+					// if(response.status === true)
+					// 	{
+					// 		//alert("အောင်မြင်ပါသည်");
+					// 		$("luckyListFormSubmit").modal("hide");
+					// 		//window.location.href= baseUrl+"/history/"+response.data;
+					// 	}else
+					// 	{
+					// 		alert(response.data);
+					// 	}
+					// }
 				});
 			}
 		});
