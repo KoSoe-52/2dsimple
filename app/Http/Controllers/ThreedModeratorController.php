@@ -77,17 +77,17 @@ class ThreedModeratorController extends Controller
             $amountOfNumber = array();
             foreach($array as $key=>$data)
             {
-                // $results = DB::select( DB::raw("SELECT SUM(price) as amount FROM threed_lucky_records 
-                //     WHERE number = :number AND date=:date  AND user_id=:user_id"), 
-                //     array(
-                //         'number' => $data->number,
-                //         'date'   => $date,
-                //         'user_id' => Auth::user()->id
-                //     )
-                // );
-                //$status = $this->breakNumbers($date,$data->number);
-               // $remainingAmount = Auth::user()->break - $results[0]->amount;
-                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>Auth::user()->break,"status"=>0);
+                $results = DB::select( DB::raw("SELECT SUM(price) as amount FROM threed_lucky_records 
+                    WHERE number = :number AND date=:date  AND user_id=:user_id"), 
+                    array(
+                        'number' => $data->number,
+                        'date'   => $date,
+                        'user_id' => Auth::user()->id
+                    )
+                );
+                $status = $this->breakNumbers($date,$data->number);
+               $remainingAmount = Auth::user()->break - $results[0]->amount;
+                $amountOfNumber[]=array("number"=>$data->number,"remaining"=>$remainingAmount,"status"=>0);
             }
             return $amountOfNumber;
         }
