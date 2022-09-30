@@ -67,48 +67,48 @@
     //alert(baseUrl);
 	$(document).ready(function(){
 		//ထီထိုး
-		// $(document).on("submit","#luckyListFormSubmit",function(event){
-		// 	event.preventDefault();
-		// 	var formdata= new FormData(this);
-		// 	var conf = confirm("ထီထိုးမည်မှာ သေချာပြီလား?");
-		// 	if(conf == true)
-		// 	{
-		// 		//cleart original array to empty
-		// 		selectedNumbers=[];
-		// 		console.log("test"+selectedNumbers);
-		// 		//remove selectedColor
-		// 		$(".number").removeClass("selectedColor");
-		// 		//hide modal
-		// 		$("#luckyList").modal("hide");
-		// 		//Rbutton clear background
-		// 		$(".r").removeClass("rSelected");
-		// 		//clear amount
-		// 		$("#amount").val('');
-		// 		//$(".loader").fadeIn();
-		// 		$("#luckyListFormSubmit")[0].reset();
-		// 		$.ajax({
-		// 			url: baseUrl+'/2d',
-		// 			type: "POST",
-		// 			data:  formdata,
-		// 			cache:false,
-		// 			contentType:false,
-		// 			processData:false,
-		// 			success: function(response) {
-		// 			console.log(JSON.stringify(response))
-		// 			$("#luckyListFormSubmit")[0].reset();
-		// 			if(response.status === true)
-		// 				{
-		// 					//alert("အောင်မြင်ပါသည်");
-		// 					$("luckyListFormSubmit").modal("hide");
-		// 					window.location.href= baseUrl+"/history/"+response.data;
-		// 				}else
-		// 				{
-		// 					alert(response.data);
-		// 				}
-		// 			}
-		// 		});
-		// 	}
-		// });
+		$(document).on("submit","#luckyListFormSubmit",function(event){
+			event.preventDefault();
+			var formdata= new FormData(this);
+			var conf = confirm("ထီထိုးမည်မှာ သေချာပြီလား?");
+			if(conf == true)
+			{
+				//cleart original array to empty
+				selectedNumbers=[];
+				console.log("test"+selectedNumbers);
+				//remove selectedColor
+				$(".number").removeClass("selectedColor");
+				//hide modal
+				$("#luckyList").modal("hide");
+				//Rbutton clear background
+				$(".r").removeClass("rSelected");
+				//clear amount
+				$("#amount").val('');
+				//$(".loader").fadeIn();
+				$("#luckyListFormSubmit")[0].reset();
+				$.ajax({
+					url: baseUrl+'/2d',
+					type: "POST",
+					data:  formdata,
+					cache:false,
+					contentType:false,
+					processData:false,
+					success: function(response) {
+					console.log(JSON.stringify(response))
+					$("#luckyListFormSubmit")[0].reset();
+					if(response.status === true)
+						{
+							//alert("အောင်မြင်ပါသည်");
+							$("luckyListFormSubmit").modal("hide");
+							//window.location.href= baseUrl+"/history/"+response.data;
+						}else
+						{
+							alert(response.data);
+						}
+					}
+				});
+			}
+		});
         $(document).on("change","#option100",function(){
             var myChoose = $(this).val();
             $(".l").hide();

@@ -74,5 +74,6 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
 
     //three D
     Route::get('threed',[App\Http\Controllers\ThreedModeratorController::class,'index']);
+    Route::post('threed',[App\Http\Controllers\ThreedModeratorController::class,'store']);
 
 });

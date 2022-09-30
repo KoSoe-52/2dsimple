@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\ThreedList;
 use App\Models\ThreedTerminateNumber;
-
+use App\Models\ThreedLuckyRecord;
 class ThreedModeratorController extends Controller
 {
     /**
