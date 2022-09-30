@@ -31,7 +31,7 @@
                     <div class="card-body p-0">
                         <h4 class="card-title p-0">{{$history->name}}</h4>
                         <p class="card-text  p-0" style="line-height:14px">ပြေစာအမှတ် : <b>{{$history->vouncher_id}}</b></p>
-                        <p class="card-text  p-0" style="line-height:14px">ရက်စွဲ/အချိန် : {{date('d-m-Y',strtotime($history->date))}} {{$history->time}}</p>
+                        <p class="card-text  p-0" style="line-height:14px">ရက်စွဲ : {{date('d-m-Y',strtotime($history->date))}} {{$history->time}}</p>
                     </div>
                 </a>
             </div>

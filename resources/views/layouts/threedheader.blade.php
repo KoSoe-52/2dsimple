@@ -16,7 +16,7 @@
             <option value="8">888</option>
             <option value="9">999</option>
         </select>
-        <div class="button r">ပတ်</div>
+        <div class="button threedR">ပတ်</div>
         <div class="last-price">
             <input type="number" id="amount" placeholder="အနည်းဆုံး (50) ကျပ်">
         </div>

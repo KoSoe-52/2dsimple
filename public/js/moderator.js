@@ -533,6 +533,34 @@ $(document).ready(function(){
         selectedNumberCheck(selectedNumbers);
         console.log(selectedNumbers);
     });
+    $(document).on("click",".threedR",function()
+    {
+        
+        $(this).addClass("rSelected");
+        for(var i=0; i< selectedNumbers.length;i++)
+        {
+            //console.log(selectedNumbers[i]);
+            //068 086  608 680  806 860
+            let number = selectedNumbers[i]["number"];//01
+            let reverseNumber1 = number[0]+number[2]+number[1];
+            var result = selectedNumbers.filter(p => p.number == reverseNumber1);
+            if(result.length> 0)
+            {
+                //already selected
+            }else
+            {
+                var classDigit= $(".number").hasClass(reverseNumber1);
+                if(classDigit == true)
+                {
+                    //push to selectedNumbers
+                    var remaining =$("."+reverseNumber1).data("id");
+                    selectedNumbers.push({remaining:remaining,number:reverseNumber1});
+                    $("."+reverseNumber1).addClass("selectedColor");
+                }
+            }
+        }
+        console.log(selectedNumbers);
+    });
 });//end ready
 function calculateTotal()
 {
