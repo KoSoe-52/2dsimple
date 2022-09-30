@@ -558,6 +558,76 @@ $(document).ready(function(){
                     $("."+reverseNumber1).addClass("selectedColor");
                 }
             }
+            //condition 2
+            let reverseNumber2 = number[1]+number[0]+number[2];
+            var result2 = selectedNumbers.filter(p => p.number == reverseNumber2);
+            if(result2.length> 0)
+            {
+                //already selected
+            }else
+            {
+                var classDigit= $(".number").hasClass(reverseNumber2);
+                if(classDigit == true)
+                {
+                    //push to selectedNumbers
+                    var remaining =$("."+reverseNumber2).data("id");
+                    selectedNumbers.push({remaining:remaining,number:reverseNumber2});
+                    $("."+reverseNumber2).addClass("selectedColor");
+                }
+            }
+            //condition 3
+            let reverseNumber3 = number[1]+number[2]+number[0];
+            var result3 = selectedNumbers.filter(p => p.number == reverseNumber3);
+            if(result3.length> 0)
+            {
+                //already selected
+            }else
+            {
+                var classDigit= $(".number").hasClass(reverseNumber3);
+                if(classDigit == true)
+                {
+                    //push to selectedNumbers
+                    var remaining =$("."+reverseNumber3).data("id");
+                    selectedNumbers.push({remaining:remaining,number:reverseNumber3});
+                    $("."+reverseNumber3).addClass("selectedColor");
+                }
+            }
+            //condition 4
+            //068 086  608 680  806 860
+            let reverseNumber4 = number[2]+number[0]+number[1];
+            var result4 = selectedNumbers.filter(p => p.number == reverseNumber4);
+            if(result4.length> 0)
+            {
+                //already selected
+            }else
+            {
+                var classDigit= $(".number").hasClass(reverseNumber4);
+                if(classDigit == true)
+                {
+                    //push to selectedNumbers
+                    var remaining =$("."+reverseNumber4).data("id");
+                    selectedNumbers.push({remaining:remaining,number:reverseNumber4});
+                    $("."+reverseNumber4).addClass("selectedColor");
+                }
+            }
+            //condition 5
+            //068 086  608 680  806 860
+            let reverseNumber5 = number[2]+number[1]+number[0];
+            var result5 = selectedNumbers.filter(p => p.number == reverseNumber5);
+            if(result5.length> 0)
+            {
+                //already selected
+            }else
+            {
+                var classDigit= $(".number").hasClass(reverseNumber5);
+                if(classDigit == true)
+                {
+                    //push to selectedNumbers
+                    var remaining =$("."+reverseNumber5).data("id");
+                    selectedNumbers.push({remaining:remaining,number:reverseNumber5});
+                    $("."+reverseNumber5).addClass("selectedColor");
+                }
+            }
         }
         console.log(selectedNumbers);
     });
