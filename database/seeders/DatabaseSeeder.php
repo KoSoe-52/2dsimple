@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\Branch;
 use App\Models\TwodList;
 use App\Models\TwodTime;
+use App\Models\ThreedList;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -80,17 +81,17 @@ class DatabaseSeeder extends Seeder
             }
         }
         $users =array(
-            array(
-                'name'  =>'branch2',
-                'password' => Hash::make('br2!@#098'),
-                'phone'   => '0934050',
-                'status' => 1,
-                'break' => 5000,
-                'role_id'  => 1,
-                'branch_id' => 5,
-                'created_at' => now()->toDateTimeString(),
-                'updated_at' => now()->toDateTimeString()
-            ),
+            // array(
+            //     'name'  =>'branch2',
+            //     'password' => Hash::make('br2!@#098'),
+            //     'phone'   => '0934050',
+            //     'status' => 1,
+            //     'break' => 5000,
+            //     'role_id'  => 1,
+            //     'branch_id' => 5,
+            //     'created_at' => now()->toDateTimeString(),
+            //     'updated_at' => now()->toDateTimeString()
+            // ),
             // array(
             //     'name'  =>'thurein',
             //     'password' => Hash::make('thu!@#098'),
@@ -277,6 +278,33 @@ class DatabaseSeeder extends Seeder
             if($count < 1)
             {
                 TwodTime::insert($time);
+            }
+        }
+        /*
+        * three d insert
+        */
+        for($i=0;$i<=999;$i++) {
+            if($i < 100)
+            {
+                if($i < 10)
+                {
+                    $number ="00".$i;
+                }else
+                {
+                    $number ="0".$i;
+                }
+            }else
+            {
+                $number = $i;
+            }
+            $count = ThreedList::where("number",$number)->count();
+            if($count < 1)
+            {
+                ThreedList::create([
+                    'number' => $number,
+                    'created_at' => now()->toDateTimeString(),
+                    'updated_at' => now()->toDateTimeString()
+                ]);
             }
         }
     }

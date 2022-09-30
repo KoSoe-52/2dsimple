@@ -46,12 +46,14 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('twodList/{number?}/open',[AdminController::class, 'open']);   
     //dubai
     Route::get('dubaitwodrecords',[App\Http\Controllers\DubiaLuckyRecordController::class, 'twodrecords']);
-    
     Route::get('dubaitwodrecords/{id}/delete',[App\Http\Controllers\DubiaLuckyRecordController::class, 'dubaitwodrecords_delete']);
-
     Route::get('dubaitwodList/{sort?}',[App\Http\Controllers\DubiaLuckyRecordController::class, 'twodList']);   
     Route::get('dubaitwodList/{number?}/terminate',[App\Http\Controllers\DubiaLuckyRecordController::class, 'terminate']);   
     Route::get('dubaitwodList/{number?}/open',[App\Http\Controllers\DubiaLuckyRecordController::class, 'open']);  
+    // three D
+    Route::get("3dList",[App\Http\Controllers\ThreedLuckyRecordController::class,'index'])->name('admin.3dLists');
+    Route::get("3d/{sort?}",[App\Http\Controllers\ThreedListController::class,'index'])->name('admin.3d');
+
 });
 //superadmin သည်  system admin ဖြစ်သညါ
 Route::group(['prefix'=>'SuperAdmin','middleware'=>['SuperAdmin','auth']],function(){
@@ -68,7 +70,9 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::post("dubai2d",[App\Http\Controllers\DubaiModeratorController::class,'store']);
     Route::get("dubaihistory",[App\Http\Controllers\DubaiModeratorController::class,'history']);
     Route::get("dubaihistory/{id}",[App\Http\Controllers\DubaiModeratorController::class,'vouncher']);
-
     Route::get('histories',[App\Http\Controllers\DubaiModeratorController::class,'create']);
+
+    //three D
+    Route::get('threed',[App\Http\Controllers\ThreedModeratorController::class,'index']);
 
 });

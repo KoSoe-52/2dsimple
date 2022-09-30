@@ -39,12 +39,14 @@
 					<li class="nav-item pcoded-menu-caption">
 					    <label>Menu lists</label>
 					</li>
-					<li class="nav-item"><a href="{{url('/twodrecords')}}">Thai 2D စာရင်း</a></li>
-					<li class="nav-item"><a href="{{url('/twodList')}}"> Thai 2D ပေါင်းချုပ်</a></li>
-					<li class="nav-item"><a href="{{url('/dubaitwodrecords')}}">Dubai 2D စာရင်း</a></li>
-					<li class="nav-item"><a href="{{url('/dubaitwodList')}}"> Dubai 2D ပေါင်းချုပ်</a></li>
-					<li class="nav-item"><a href="{{url('/users')}}">ကိုယ်စားလှယ်များ</a></li>
-					<li class="nav-item"><a href="{{ route('logout') }}">ထွက်မည်</a></li>
+					<li class="nav-item"><a href="{{url('/twodrecords')}}"><i class="fa fa-list text-primary" aria-hidden="true"></i> Thai 2D စာရင်း</a></li>
+					<li class="nav-item"><a href="{{url('/twodList')}}"><i class="fa fa-tasks text-primary" aria-hidden="true"></i> Thai 2D ပေါင်းချုပ်</a></li>
+					<li class="nav-item"><a href="{{url('/dubaitwodrecords')}}"><i class="fa fa-list text-primary" aria-hidden="true"></i> Dubai 2D စာရင်း</a></li>
+					<li class="nav-item"><a href="{{url('/dubaitwodList')}}"><i class="fa fa-tasks text-primary" aria-hidden="true"></i> Dubai 2D ပေါင်းချုပ်</a></li>
+					<li class="nav-item"><a href="{{url('/3dList')}}"><i class="fa fa-list text-primary" aria-hidden="true"></i> 3D စာရင်း</a></li>
+					<li class="nav-item"><a href="{{url('/3d')}}"><i class="fa fa-tasks text-primary" aria-hidden="true"></i> 3D ပေါင်းချုပ်</a></li>
+					<li class="nav-item"><a href="{{url('/users')}}"><i class="fa fa-users text-primary" aria-hidden="true"></i> ကိုယ်စားလှယ်များ</a></li>
+					<li class="nav-item"><a href="{{ route('logout') }}"><i class="fa fa-power-off text-danger" aria-hidden="true"></i> ထွက်မည်</a></li>
 				</ul>
 			</div>
 		</div>
