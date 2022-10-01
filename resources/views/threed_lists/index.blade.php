@@ -154,7 +154,7 @@
                             contentType:false,
                             success:function(response)
                             {
-                                //console.log(response);
+                                console.log(response);
                                 if(response.status == true)
                                 {
                                     Swal.fire('အောင်မြင်ပါသည်', '', 'success');
