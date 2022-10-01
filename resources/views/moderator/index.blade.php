@@ -124,7 +124,12 @@
 	//alert(baseUrl);
     //alert(baseUrl);
 	$(document).ready(function(){
-		//ထီထိုး
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+			//ထီထိုး
 		$(document).on("submit","#luckyListFormSubmit",function(event){
 			event.preventDefault();
 			var formdata= new FormData(this);

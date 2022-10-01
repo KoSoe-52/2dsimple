@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-
+use App\Models\ThreedTerminateNumber;
 class ThreedLuckyRecordController extends Controller
 {
     /**
@@ -66,7 +66,16 @@ class ThreedLuckyRecordController extends Controller
         }
         return view("threed_lucky_records.index",compact("records","users"));
     }
-
+    public function threed_delete($recId)
+    {
+        $DeleteRec = ThreedLuckyRecord::find($recId);
+        $DeleteRec->delete();
+        return response()->json([
+            "status" => true,
+            "msg" => "Success",
+            "data" => []
+        ],200);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -132,4 +141,5 @@ class ThreedLuckyRecordController extends Controller
     {
         //
     }
+    
 }

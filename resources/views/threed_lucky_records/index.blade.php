@@ -63,7 +63,7 @@
                         <th>#</th>
                         <th>ဂဏန်း</th>
                         <th>ရက်စွဲ</th>
-                        <th>အချိန်</th>
+                        <th>ထိုးသည့်ရက်စွဲ/အချိန်</th>
                         <th>ပမာဏ</th>
                         <th>ထိုးသူအမည်</th>
                         <th>ကိုယ်စားလှယ်အမည်</th>
@@ -97,38 +97,8 @@
 @endsection
 @section("script")
     <script>
-        var baseUrl = '{{url("admin/users")}}';
-        $(document).ready(function(){
-            $(document).on("click",".user_delete",function(){
-                var id = $(this).data("id");
-                var conf = confirm("Are  you sure want to delete?");
-                if(conf ==  true)
-                {
-                    $.ajax({
-                        url: baseUrl+'/delete/'+id,
-                       // url: {{url("Auth::user()->roles->name.")}}'/users/delete/'+id,
-                        type: "GET",
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                          },
-                        cache:false,
-                        processData:false,
-                        contentType:false,
-                        success:function(response)
-                        {
-                            if(response.status == true)
-                            {
-                                alert(response.msg);
-                                window.location.href=baseUrl;
-                            }
-                        }
-                    });
-                }
-            });
-        });
         var baseUrl = '{{url("")}}';
         $(document).on("click",".record_delete",function(){
-          
                 var id = $(this).data("id");
                 Swal.fire({
                         title: 'ဖျက်ရန်သေချာပါသလား?',
@@ -137,7 +107,7 @@
                     }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: baseUrl+'/twodrecords/'+id+'/delete',
+                            url: baseUrl+'/3dList/'+id+'/delete',
                             type: "GET",
                             data: {
                                 "_token": "{{ csrf_token() }}",

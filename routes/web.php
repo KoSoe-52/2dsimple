@@ -24,7 +24,7 @@ Route::get('/', function () {
 //     return view('auth.login');
 // });
 
-Auth::routes();
+Auth::routes(['register','verify']);
 
 Route::get('/home',function(){
     Auth::logout();
@@ -53,6 +53,10 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     // three D
     Route::get("3dList",[App\Http\Controllers\ThreedLuckyRecordController::class,'index'])->name('admin.3dLists');
     Route::get("3d/{sort?}",[App\Http\Controllers\ThreedListController::class,'index'])->name('admin.3d');
+    Route::get('3dList/{id}/delete',[App\Http\Controllers\ThreedLuckyRecordController::class, 'threed_delete']);
+    Route::post('3d/{number?}/terminate',[App\Http\Controllers\ThreedTerminateNumberController::class, 'terminate']);   
+    Route::post('3d/{number?}/open',[App\Http\Controllers\ThreedTerminateNumberController::class, 'open']);  
+
 
 });
 //superadmin သည်  system admin ဖြစ်သညါ

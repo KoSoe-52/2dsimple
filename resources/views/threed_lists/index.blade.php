@@ -54,7 +54,7 @@
                             <td><span class="rounded-circle bg-success p-1" style="font-size:22px;font-weight:bold;color:red;">{{$number}}</span></td>
                             <td>{{$date}}</td>
                             <td><span style="font-size:25px;font-weight:bold;color:red;">{{$amount}}</span></td>
-                            <td>
+                            <td data-id="{{$date}}">
                                 @if(in_array($number,$terminatedNumbers))
                                     <input type="checkbox" checked class="openOption" data-id="{{$number}}" id="open_{{$number}}"> <label for="open_{{$number}}" class="text-danger font-weight-bold">ဖွင့်ရန်</label>
                                 @else
@@ -76,11 +76,20 @@
 @endsection
 @section("script")
     <script>
-        var baseUrl = '{{url("")}}';
+        $(document).ready(function(){
+            var baseUrl = '{{url("")}}';
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         $(document).on("click",".closeOption",function(){
             if($(this).is(":checked"))
             {
                 var id = $(this).data("id");
+                var date = $(this).parent().data("id");
+                var formdata = new FormData();
+                formdata.append("date",date);
                 Swal.fire({
                         title: 'ရွေးထားသည့်ဂဏန်းများ ပိတ်မှာလား?',
                         showCancelButton: true,
@@ -89,17 +98,15 @@
                     if (result.isConfirmed) {
                         //Swal.fire('Saved!', '', 'success')
                         $.ajax({
-                            url: baseUrl+'/twodList/'+id+'/terminate',
-                            type: "GET",
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                            },
+                            url: baseUrl+'/3d/'+id+'/terminate',
+                            type: "POST",
+                            data: formdata,
                             cache:false,
                             processData:false,
                             contentType:false,
                             success:function(response)
                             {
-                                console.log(response);
+                                //console.log(response.data);
                                 if(response.status == true)
                                 {
                                     Swal.fire('အောင်မြင်ပါသည်', '', 'success');
@@ -128,6 +135,9 @@
             }else
             {
                 var id = $(this).data("id");
+                var date = $(this).parent().data("id");
+                var formdata = new FormData();
+                formdata.append("date",date);
                 Swal.fire({
                         title: 'ရွေးထားသည့်ဂဏန်း ပြန်ဖွင့်မည်?',
                         showCancelButton: true,
@@ -136,17 +146,15 @@
                     if (result.isConfirmed) {
                         //Swal.fire('Saved!', '', 'success')
                         $.ajax({
-                            url: baseUrl+'/twodList/'+id+'/open',
-                            type: "GET",
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                            },
+                            url: baseUrl+'/3d/'+id+'/open',
+                            type: "POST",
+                            data: formdata,
                             cache:false,
                             processData:false,
                             contentType:false,
                             success:function(response)
                             {
-                                console.log(response);
+                                //console.log(response);
                                 if(response.status == true)
                                 {
                                     Swal.fire('အောင်မြင်ပါသည်', '', 'success');
@@ -165,5 +173,7 @@
                 });
             }
         });
+    });
+        
     </script>
 @endsection
