@@ -171,7 +171,7 @@
                         $(this).prop("checked",true);
                     }
                 });
-            }
+            }//else
         });
     });
         

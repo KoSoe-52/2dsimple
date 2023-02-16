@@ -56,8 +56,6 @@ Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('3dList/{id}/delete',[App\Http\Controllers\ThreedLuckyRecordController::class, 'threed_delete']);
     Route::post('3d/{number?}/terminate',[App\Http\Controllers\ThreedTerminateNumberController::class, 'terminate']);   
     Route::post('3d/{number?}/open',[App\Http\Controllers\ThreedTerminateNumberController::class, 'open']);  
-
-
 });
 //superadmin သည်  system admin ဖြစ်သညါ
 Route::group(['prefix'=>'SuperAdmin','middleware'=>['SuperAdmin','auth']],function(){

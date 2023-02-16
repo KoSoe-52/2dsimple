@@ -44,6 +44,11 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
+            array(
+                'name' =>'ACM',
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
         );
         //$chunks = array_chunk($userData, 500);
         foreach ($branches as $branch) {
@@ -202,6 +207,17 @@ class DatabaseSeeder extends Seeder
             //     'created_at' => now()->toDateTimeString(),
             //     'updated_at' => now()->toDateTimeString()
             // ),
+            array(
+                'name'  =>'acmadmin',
+                'password' => Hash::make('acm!@#01'),
+                'phone'   => '0934050',
+                'status' => 1,
+                'break' => 5000,
+                'role_id'  => 1,
+                'branch_id' => 6,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
         );
         foreach ($users as $user) {
             $count = User::where("name",$user["name"])->count();
