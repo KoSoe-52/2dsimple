@@ -309,7 +309,7 @@ class AdminController extends Controller
         /**
          *  sum all amount
          */
-        $totalAmountOfNumber = (array_sum($totalAmountOfNumber)* 2) / 800;
+        $totalAmountOfNumber = (array_sum($totalAmountOfNumber)* 2) / 80;
         return view("twod_lists.index",compact("numberTotal","twodTime","date","terminatedNumbers","totalAmountOfNumber"));
     }
     public function terminate($id)
