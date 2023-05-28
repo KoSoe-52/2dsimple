@@ -192,6 +192,10 @@ class AdminController extends Controller
         $time = date("Hi");
         $date = date("Y-m-d");
         $terminatedNumbers = array();
+        /**
+         * totalAmountOfNumber သည် တက်ငွေ
+         */
+        $totalAmountOfNumber = array();
         // $time="0003";
         //မနက်ပိုင်း
         if($time >= "0001" && $time <= "1229")
@@ -223,6 +227,10 @@ class AdminController extends Controller
                 {
                     $terminatedNumbers[] = $twodlist->number;
                 }
+                /**
+                 * record total number of point
+                 */
+                $totalAmountOfNumber[]=$numberTotal[$twodlist->number];
             }
         }else if($time >= "1230" && $time <= "1659")
         {
@@ -252,6 +260,10 @@ class AdminController extends Controller
                 {
                     $terminatedNumbers[] = $twodlist->number;
                 }
+                /**
+                 * record total number of point
+                 */
+                $totalAmountOfNumber[]=$numberTotal[$twodlist->number];
             }
         }else
         {
@@ -284,13 +296,21 @@ class AdminController extends Controller
                 {
                     $terminatedNumbers[] = $twodlist->number;
                 }
+                /**
+                 * record total number of point
+                 */
+                $totalAmountOfNumber[]=$numberTotal[$twodlist->number];
             }
         }
         if($request->get("sorting") == "sortingamount")
         {
             arsort($numberTotal);
         }
-        return view("twod_lists.index",compact("numberTotal","twodTime","date","terminatedNumbers"));
+        /**
+         *  sum all amount
+         */
+        $totalAmountOfNumber = (array_sum($totalAmountOfNumber)* 2) / 800;
+        return view("twod_lists.index",compact("numberTotal","twodTime","date","terminatedNumbers","totalAmountOfNumber"));
     }
     public function terminate($id)
     {

@@ -27,7 +27,7 @@
                                 <option value="{{$key}}">{{$data}}</option>
                             @endif
                         @endforeach
-                                            </select>
+                    </select>
                 </div>
                 <div class="form-group col-xs-6 col-sm-6 col-md-3 col-xl-3">
                     <button type="submit" id="search" class="btn btn-primary mt-3">ရှာမည်</button>
@@ -44,6 +44,7 @@
                         <th>ရက်စွဲ</th>
                         <th>အချိန်</th>
                         <th>ပမာဏ</th>
+                        <th>Total * 2 /800</th>
                         <th>ပိတ်/မပိတ်</th>
                     </tr>
                 </thead>
@@ -52,9 +53,10 @@
                     @foreach($numberTotal as $number=>$amount)
                         <tr>
                             <td><span class="rounded-circle bg-success p-1" style="font-size:25px;font-weight:bold;color:red;">{{$number}}</span></td>
-                            <td>{{$date}}</td>
+                            <td>{{date('d-m-Y',strtotime($date))}}</td>
                             <td>{{$twodTime}}</td>
-                            <td><span style="font-size:25px;font-weight:bold;color:red;">{{$amount}}</span></td>
+                            <td><span style="font-size:25px;font-weight:bold;color:green;">{{$amount}}</span></td>
+                            <td><span style="font-size:25px;font-weight:bold;color:red;">{{ $total2[]= ($amount - $totalAmountOfNumber) > 1? ($amount - $totalAmountOfNumber):0  }}</span></td>
                             <td>
                                 @if(in_array($number,$terminatedNumbers))
                                     <input type="checkbox" checked class="openOption" data-id="{{$number}}" id="open_{{$number}}"> <label for="open_{{$number}}" class="text-danger font-weight-bold">ဖွင့်ရန်</label>
@@ -68,6 +70,7 @@
                     <tr>
                         <td colspan="3" style="text-align:right">စုစုပေါင်း</td>
                         <td style="font-weight:bold">{{array_sum($total)}}</td>
+                        <td style="font-weight:bold">{{array_sum($total2)}}</td>
                     </tr>
                 </tbody>
             </table>
