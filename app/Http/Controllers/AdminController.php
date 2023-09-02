@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\User;
@@ -382,18 +383,47 @@ class AdminController extends Controller
         }
     }
 
-    public function record_delete($recId)
+    public function record_delete(Request $request)
     {
-        $DeleteRec = TwodLuckyRecord::find($recId);
-        $DeleteRec->delete();
-        return response()->json([
-            "status" => true,
-            "msg" => "Success",
-            "data" => []
+        $validate = Validator::make($request->only('numberArray'), [
+            'numberArray' => 'required'
         ]);
+        if ($validate->fails()) {
+            return response()->json([
+                "status"  => false,
+                "msg"     => "Insufficient fields",
+                "data" => $validate->errors()
+            ]);
+        } else {
+            try{
+                if(count(explode(",",$request->numberArray)) > 0)
+                {
+                    foreach(explode(",",$request->numberArray) as $key=>$id)
+                    {
+                        $DeleteRec = TwodLuckyRecord::find($id);
+                        $DeleteRec->delete();
+                    }
+                    return response()->json([
+                        "status" => true,
+                        "msg" => "Success",
+                        "data" => []
+                    ]);
+                }else
+                {
+                    return response()->json([
+                        "status" => false,
+                        "msg" => "Please check row",
+                        "data" => []
+                    ]);
+                }
+            }catch(\Exception $e)
+            {
+                return response()->json([
+                    "status"  => false,
+                    "msg"     => $e->getMessage(),
+                    "data" => []
+                ]);
+            }  
+        }//end else
     }
-
-    
-    
-
 }

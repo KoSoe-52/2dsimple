@@ -71,6 +71,9 @@
                 </div>
             </form>
         </div>
+        <div class="col-12 mb-3">
+			<button type="button" class="btn btn-sm btn-danger del-modal-btn mb-3"  style="float:right;display:none;"><i class="fa fa-times"></i> Delete</button>
+		</div>
         <div class="table-responsive">
             <table id="zero_config" class="table table-striped table-bordered no-wrap">
                 <thead>
@@ -82,7 +85,7 @@
                         <th>ပမာဏ</th>
                         <th>ထိုးသူအမည်</th>
                         <th>ကိုယ်စားလှယ်အမည်</th>
-                        <th>*</th>
+						<th><input type="checkbox" id="all"> <label for="all" style="cursor:pointer">All</label> </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -96,7 +99,10 @@
                             <td>{{$record->price}}</td>
                             <td>{{$record->name}}</td>
                             <td>{{$record->users->name}}</td>
-                           <td><button class="btn btn-danger"><a href="#" data-id="{{$record->id}}" class="text-white record_delete"><i class="fa fa-times"></i> Delete </a></button></td>
+                           <td>
+								<input class="m-0  del-checkbox" type="checkbox" id="id{{$record->id}}" data-id="{{ $record->id }}"> 
+                                <label for="id{{$record->id}}" style="cursor:pointer">Check  </label>
+							</td>
                         </tr>
                         <?php $total[]=$record->price; ?>
                     @endforeach
@@ -116,70 +122,178 @@
         var baseUrl = '{{url("admin/users")}}';
 
         $(document).ready(function(){
-            $(document).on("click",".user_delete",function(){
-                var id = $(this).data("id");
-                var conf = confirm("Are  you sure want to delete?");
-                if(conf ==  true)
-                {
-                    $.ajax({
-                        url: baseUrl+'/delete/'+id,
-                       // url: {{url("Auth::user()->roles->name.")}}'/users/delete/'+id,
-                        type: "GET",
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                          },
-                        cache:false,
-                        processData:false,
-                        contentType:false,
-                        success:function(response)
-                        {
-                            if(response.status == true)
-                            {
-                                alert(response.msg);
-                                window.location.href=baseUrl;
-                            }
-                        }
-                    });
-                }
-            });
-        });
-
-
-
-        var baseUrl = '{{url("")}}';
-        $(document).on("click",".record_delete",function(){
-          
-                var id = $(this).data("id");
+            $.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+            // $(document).on("click",".user_delete",function(){
+            //     var id = $(this).data("id");
+            //     var conf = confirm("Are  you sure want to delete?");
+            //     if(conf ==  true)
+            //     {
+            //         $.ajax({
+            //             url: baseUrl+'/delete/'+id,
+            //            // url: {{url("Auth::user()->roles->name.")}}'/users/delete/'+id,
+            //             type: "GET",
+            //             data: {
+            //                 "_token": "{{ csrf_token() }}",
+            //               },
+            //             cache:false,
+            //             processData:false,
+            //             contentType:false,
+            //             success:function(response)
+            //             {
+            //                 if(response.status == true)
+            //                 {
+            //                     alert(response.msg);
+            //                     window.location.href=baseUrl;
+            //                 }
+            //             }
+            //         });
+            //     }
+            // });
+            $(document).on("click",".del-modal-btn",function(ev){
+				ev.preventDefault();
                 Swal.fire({
-                        title: 'ဖျက်ရန်သေချာပါသလား?',
-                        showCancelButton: true,
-                        confirmButtonText: 'အတည်ပြုမည်',
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: baseUrl+'/twodrecords/'+id+'/delete',
-                            type: "GET",
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                            },
-                            cache:false,
-                            processData:false,
-                            contentType:false,
-                            success:function(response)
+                    title: 'ဖျက်ရန်သေချာပါသလား? အားလုံး Check ထားလျှင် အကုန်ပျက်ပါမည်...',
+                    showCancelButton: true,
+                    confirmButtonText: 'အတည်ပြုမည်',
+                }).then((result) => {
+                    if(result.isConfirmed) {
+                        var idArray = [];
+                        var formdata = new FormData();
+                        $(".del-checkbox").each(function(){
+                            if(this.checked)
                             {
-                                console.log(response);
-                                if(response.status == true)
+                                idArray.push($(this).data("id"));
+                            }
+                        });
+                       // console.log(idArray);
+                        //formdata.append("idArray",idArray);
+                        formdata.append("numberArray",idArray);
+
+                        $.ajax({
+                            url:"{{ route('deleteMultiplethi') }}",
+                            type: "POST",
+                            data: formdata,
+                            cache:false,
+                            contentType:false,
+                            processData:false,
+                            success: function(response) {
+                                console.log(JSON.stringify(response))
+                                if(response.status === true)
                                 {
-                                    Swal.fire('အောင်မြင်ပါသည်', '', 'success');
-                                    window.location.reload();
+                                    Swal.fire({
+                                        title: response.msg,
+                                        icon:'success',
+                                        width: 300,
+                                        color: '#716add',
+                                        showCancelButton: false,
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                    });
+                                    setInterval(() => {
+                                        window.location.reload();
+                                    }, 1500);
+                                }else
+                                {
+                                    Swal.fire({
+                                        title: response.msg,
+                                        icon:'warning',
+                                        width: 300,
+                                        color: '#716add',
+                                        showCancelButton: false,
+                                        showConfirmButton: false,
+                                    });
                                 }
+                            },error: function (request, status, error) {
+                                Swal.fire({
+                                        title: error,
+                                        icon:'error',
+                                        width: 300,
+                                        color: '#716add',
+                                        showCancelButton: false,
+                                        showConfirmButton: false
+                                    });
                             }
                         });
                     }
                 });
-           
+				
+			});
+            $(document).on("click","#all",function(){
+				if($(this).is(":checked"))
+				{
+					$(".del-checkbox").prop("checked",true);
+					$(".del-checkbox").next().text('Checked');
+					$(".del-modal-btn").fadeIn();
+				}else
+				{
+					$('.del-checkbox').prop('checked',false);
+					$(".del-checkbox").next().text('Check');
+					$(".del-modal-btn").fadeOut();
+				}
+			});
+			$(document).on("click",".del-checkbox",function(){
+				if($(this).is(":checked"))
+				{
+					$(this).prop("checked",true);
+					$(this).next().text('Checked');
+					$(".del-modal-btn").fadeIn();
+				}else
+				{
+					$(this).prop('checked',false);
+					$(this).next().text('Check');
+					var somethingChecked = 0;
+					$(".del-checkbox").each(function(){
+						if(this.checked)
+						{
+							somethingChecked = 1;
+							console.log("checked");
+						}
+					});
+					if(somethingChecked == 1) {
+						$(".del-modal-btn").fadeIn();
+					}else
+					{
+						$(".del-modal-btn").fadeOut();
+					}
+				}
+			});
         });
-
-
+        var baseUrl = '{{url("")}}';
+        // $(document).on("click",".record_delete",function(){
+          
+        //         var id = $(this).data("id");
+        //         Swal.fire({
+        //                 title: 'ဖျက်ရန်သေချာပါသလား?',
+        //                 showCancelButton: true,
+        //                 confirmButtonText: 'အတည်ပြုမည်',
+        //             }).then((result) => {
+        //             if (result.isConfirmed) {
+        //                 $.ajax({
+        //                     url: baseUrl+'/twodrecords/'+id+'/delete',
+        //                     type: "GET",
+        //                     data: {
+        //                         "_token": "{{ csrf_token() }}",
+        //                     },
+        //                     cache:false,
+        //                     processData:false,
+        //                     contentType:false,
+        //                     success:function(response)
+        //                     {
+        //                         console.log(response);
+        //                         if(response.status == true)
+        //                         {
+        //                             Swal.fire('အောင်မြင်ပါသည်', '', 'success');
+        //                             window.location.reload();
+        //                         }
+        //                     }
+        //                 });
+        //             }
+        //         });
+           
+        // });
     </script>
 @endsection

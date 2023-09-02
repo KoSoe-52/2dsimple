@@ -97,17 +97,17 @@ class DatabaseSeeder extends Seeder
             //     'created_at' => now()->toDateTimeString(),
             //     'updated_at' => now()->toDateTimeString()
             // ),
-            // array(
-            //     'name'  =>'thurein',
-            //     'password' => Hash::make('thu!@#098'),
-            //     'phone'   => '0934050',
-            //     'status' => 1,
-            //     'break' => 5000,
-            //     'role_id'  => 1,
-            //     'branch_id' => 2,
-            //     'created_at' => now()->toDateTimeString(),
-            //     'updated_at' => now()->toDateTimeString()
-            // ),
+            array(
+                'name'  =>'thurein',
+                'password' => Hash::make('thu!@#098'),
+                'phone'   => '0934050',
+                'status' => 1,
+                'break' => 5000,
+                'role_id'  => 1,
+                'branch_id' => 2,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
             // array(
             //     'name'  =>'superadmin',
             //     'password' => Hash::make('kosoe!@#098'),
@@ -119,17 +119,17 @@ class DatabaseSeeder extends Seeder
             //     'created_at' => now()->toDateTimeString(),
             //     'updated_at' => now()->toDateTimeString()
             // ),
-            // array(
-            //     'name'  =>'moderator1',
-            //     'password' => Hash::make('moderator1!@#473'),
-            //     'phone'   => '094450',
-            //     'status' => 1,
-            //     'break' => 50000,
-            //     'role_id'  => 3,
-            //     'branch_id' => 2,
-            //     'created_at' => now()->toDateTimeString(),
-            //     'updated_at' => now()->toDateTimeString()
-            // ),
+            array(
+                'name'  =>'moderator1',
+                'password' => Hash::make('moderator1!@#473'),
+                'phone'   => '094450',
+                'status' => 1,
+                'break' => 50000,
+                'role_id'  => 3,
+                'branch_id' => 2,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString()
+            ),
             // array(
             //     'name'  =>'moderator2',
             //     'password' => Hash::make('moderator2!@#543'),
