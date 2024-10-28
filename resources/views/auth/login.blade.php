@@ -29,7 +29,7 @@
 							@enderror
                         <form method="POST" action="{{ route('login') }}" >
 							@csrf
-							<img src="{{asset('assets/images/logo.png')}}" alt="" style="width:60px;height:60px;" class="img-fluid mb-1">
+							<!-- <img src="{{asset('assets/images/logo.png')}}" alt="" style="width:60px;height:60px;" class="img-fluid mb-1"> -->
 							<h3 class="mb-2 f-w-400 text-c-green">SignIn</h3>
 							<div class="form-group mb-4">
 								<label class="floating-label text-dark" for="login">လျှို့ဝှက်အမည်</label>
