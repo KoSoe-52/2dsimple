@@ -29,7 +29,6 @@
 							@enderror
                         <form method="POST" action="{{ route('login') }}" >
 							@csrf
-							<!-- <img src="{{asset('assets/images/logo.png')}}" alt="" style="width:60px;height:60px;" class="img-fluid mb-1"> -->
 							<h3 class="mb-2 f-w-400 text-c-green">SignIn</h3>
 							<div class="form-group mb-4">
 								<label class="floating-label text-dark" for="login">လျှို့ဝှက်အမည်</label>
@@ -58,7 +57,7 @@
 							
 							<div><button type="submit" class="btn btn-block btn-primary mb-4">ဝင်မည်</button></div>
 							</form>
-							<p class="text-muted">Version 1.0.0</p>
+							<p class="text-muted">Version 1.0.1</p>
 							<p class="text-muted">Developed by IT Brother</p>
 							<!-- <p class="mb-2 text-muted">Forgot password? <a href="{{url('/login')}}" class="f-w-400">Reset</a></p>
 							<p class="mb-0 text-muted">Don’t have an account? <a href="{{url('/logout')}}" class="f-w-400">Signup</a></p>
