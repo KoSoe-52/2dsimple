@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
             //     'updated_at' => now()->toDateTimeString()
             // ),
             array(
-                'name'  =>'thurein',
+                'name'  =>'mgthurein',
                 'password' => Hash::make('thu!@#098'),
                 'phone'   => '0934050',
                 'status' => 1,

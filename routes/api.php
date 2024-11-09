@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/v1/loginUser', [App\Http\Controllers\Api\LoginController::class, 'loginUser']); 
+Route::get("/v1/three-numbers",[App\Http\Controllers\Api\ThreeNumberController::class,'threeNumber']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/v1/insert', [App\Http\Controllers\Api\BetController::class, 'insert']); 
 });
