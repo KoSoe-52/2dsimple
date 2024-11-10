@@ -81,3 +81,7 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::get("3dhistory/{id}",[App\Http\Controllers\ThreedModeratorController::class,'vouncher']);
 
 });
+
+Route::get('/{any}', function () {
+    return view('index');  // This will load React's index.html
+})->where('any', '.*');
