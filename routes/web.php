@@ -82,4 +82,6 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
 
 });
 
-
+Route::get('/{any}', function () {
+    return view('react.index');
+})->where('any', '.*');
