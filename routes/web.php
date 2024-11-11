@@ -26,10 +26,11 @@ Route::get('/', function () {
 
 Auth::routes(['register','verify']);
 
-Route::get('/home',function(){
-    Auth::logout();
-    return view("auth.login");
-});
+// Route::get('/home',function(){
+//     Auth::logout();
+//     return view("auth.login");
+// });
+
 //2d ဒိုင်ဖြစ်သညါ
 Route::group(['middleware'=>['Admin','auth']],function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
@@ -73,13 +74,13 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::get("dubaihistory",[App\Http\Controllers\DubaiModeratorController::class,'history']);
     Route::get("dubaihistory/{id}",[App\Http\Controllers\DubaiModeratorController::class,'vouncher']);
     Route::get('histories',[App\Http\Controllers\DubaiModeratorController::class,'create']);
-
     //three D
     Route::get('threed',[App\Http\Controllers\ThreedModeratorController::class,'index']);
     Route::post('threed',[App\Http\Controllers\ThreedModeratorController::class,'store']);
     Route::get("3dhistory",[App\Http\Controllers\ThreedModeratorController::class,'history']);
     Route::get("3dhistory/{id}",[App\Http\Controllers\ThreedModeratorController::class,'vouncher']);
-
 });
 
-
+Route::get('/{any}', function () {
+    return view('index'); // Return the React index.html
+})->where('any', '.*');
