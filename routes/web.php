@@ -26,10 +26,10 @@ Route::get('/', function () {
 
 Auth::routes(['register','verify']);
 
-// Route::get('/home',function(){
-//     Auth::logout();
-//     return view("auth.login");
-// });
+Route::get('/home',function(){
+    Auth::logout();
+    return view("auth.login");
+});
 
 //2d ဒိုင်ဖြစ်သညါ
 Route::group(['middleware'=>['Admin','auth']],function(){
@@ -81,6 +81,6 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::get("3dhistory/{id}",[App\Http\Controllers\ThreedModeratorController::class,'vouncher']);
 });
 
-Route::get('/{any}', function () {
-    return view('index'); // Return the React index.html
-})->where('any', '.*');
+// Route::get('/build/{any}', function () {
+//     return view('react.index');
+// })->where('any', '.*');
