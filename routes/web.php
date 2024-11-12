@@ -18,6 +18,12 @@ use App\Http\Controllers\ModeratorController;
 */
 
 Route::get('/', function () {
+    return file_get_contents(public_path('index.html'));
+   // return response()->file(public_path('index.html'));
+
+});
+
+Route::get('/login', function () {
     return view('auth.login');
 });
 // Route::get('/hash', function () {
@@ -80,6 +86,9 @@ Route::group(['middleware'=>['Moderator','auth']],function(){
     Route::get("3dhistory",[App\Http\Controllers\ThreedModeratorController::class,'history']);
     Route::get("3dhistory/{id}",[App\Http\Controllers\ThreedModeratorController::class,'vouncher']);
 });
+
+
+
 
 // Route::get('/build/{any}', function () {
 //     return view('react.index');
