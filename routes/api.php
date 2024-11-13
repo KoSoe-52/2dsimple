@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('/v1/loginUser', [App\Http\Controllers\Api\LoginController::class, 'loginUser']); 
 Route::get("/v1/three-numbers",[App\Http\Controllers\Api\ThreeNumberController::class,'threeNumber']);
-
+Route::get("/v1/bet-details",[App\Http\Controllers\Api\BetController::class,'betDetail']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/v1/insert', [App\Http\Controllers\Api\BetController::class, 'insert']); 
+    Route::post("/v1/delete-token",[App\Http\Controllers\Api\BetController::class,'deleteToken']);
 });
