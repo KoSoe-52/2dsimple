@@ -24,7 +24,7 @@ class BetController extends Controller
                     "date" => $date,
                     "time" => "15:00",
                     "number" => $num,
-                    "amount" => $bet["amount"],
+                    "amount" => $bet["condition"].$bet["amount"],
                     "user_id" => Auth::user()->id,
                     "token" => $token
                 ]);
