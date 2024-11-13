@@ -53,7 +53,7 @@ class BetController extends Controller
                         DB::raw('count(*) as total_row'),'amount')
                     ->where("date",$date->date)
                     ->groupBy(['token','date','created_at','amount'])
-                    ->orderBy("created_at","DESC")
+                    ->orderBy("created_at","ASC")
                     ->get();
         return response()->json([
             "status" => true,
