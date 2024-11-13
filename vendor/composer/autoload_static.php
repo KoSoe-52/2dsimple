@@ -438,8 +438,8 @@ class ComposerStaticInit36556f90957404458407c4d003f28b67
         ),
         'Fruitcake\\Cors\\' => 
         array (
-            0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
-            1 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
+            0 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
+            1 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
         'Faker\\' => 
         array (
@@ -547,6 +547,7 @@ class ComposerStaticInit36556f90957404458407c4d003f28b67
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
+        'App\\Http\\Middleware\\Cors' => __DIR__ . '/../..' . '/app/Http/Middleware/Cors.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\Moderator' => __DIR__ . '/../..' . '/app/Http/Middleware/Moderator.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -557,6 +558,7 @@ class ComposerStaticInit36556f90957404458407c4d003f28b67
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Bet' => __DIR__ . '/../..' . '/app/Models/Bet.php',
+        'App\\Models\\BetDate' => __DIR__ . '/../..' . '/app/Models/BetDate.php',
         'App\\Models\\Branch' => __DIR__ . '/../..' . '/app/Models/Branch.php',
         'App\\Models\\DubaiTerminateNumber' => __DIR__ . '/../..' . '/app/Models/DubaiTerminateNumber.php',
         'App\\Models\\DubiaLuckRecord' => __DIR__ . '/../..' . '/app/Models/DubiaLuckRecord.php',

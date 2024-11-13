@@ -17,12 +17,13 @@ class CreateBetsTable extends Migration
             $table->id();
             $table->date("date")->index();
             $table->string("time");
-            $table->string("number",3);
+            $table->string("number");
             $table->double("amount",12,2);
             $table->bigInteger("user_id")->unsigned();
             $table->string("token",40);
             $table->foreign("user_id")->references("id")->on("users");
             $table->foreign("time")->references("name")->on("twod_times");
+            $table->foreign("number")->references("number")->on("threed_lists");
             $table->timestamps();
         });
     }
