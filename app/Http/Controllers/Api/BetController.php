@@ -68,7 +68,17 @@ class BetController extends Controller
         return response()->json([
             "status" => true,
             "msg" => "Successfully deleted",
-            "data" => $request->token
+            "data" => []
+        ]);
+    }
+    public function deleteAllData(Request $request)
+    {
+        $date = date("Y-m-d",strtotime($request->selectedDate));
+        $results = Bet::where("date",$date)->delete();
+        return response()->json([
+            "status" => true,
+            "msg" => "Successfully deleted",
+            "data" => []
         ]);
     }
 }
